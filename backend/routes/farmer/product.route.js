@@ -3,6 +3,7 @@ const Product = require('../../models/farmer/product.model.js');
 
 router.route('/').get(
 (req,res)=>{
+    console.log(req.params.name)
     Product.find()
     .then(product=> res.json(product))
     .catch(err => res.status(400).json('Error: '+err))
@@ -55,12 +56,15 @@ router.route('/add').post(
 //     .catch(err => res.status(400).json('Error: ' + err));
 // });
 
-router.route('/update/:name').post((req, res) => {
-  Product.findById(req.params.name)
+router.route('/update').post((req, res) => {
+  Product.findOne({name:"tomato"})
     .then(product => {
-      product.name = req.body.name;
-    //   check 
-    });
+    console.log(product)
+    product.name = "Apple"
+    product.save()
+    res.send({name : "Apple"});
+    })
+    
 });
 
 module.exports = router;
