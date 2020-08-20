@@ -59,6 +59,7 @@ router.route('/update/:name').post((req, res) => {
   Product.findById(req.params.name)
     .then(product => {
       product.name = req.body.name;
+    //   check 
     });
 });
 
