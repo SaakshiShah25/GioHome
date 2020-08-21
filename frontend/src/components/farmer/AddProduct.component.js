@@ -80,7 +80,6 @@ export default class AddProduct extends Component{
         .then(res => console.log(res.data))
         .then(alert("Done"))
     
-        window.location = '/';
       }
     render(){
         return(

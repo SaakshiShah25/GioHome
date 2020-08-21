@@ -31,17 +31,13 @@ router.route('/add').post(
             available_quantity,
             date_produced,
             life
-
-            }
-            
-            );
+        });
             
 
         newProduct.save()
         .then(()=>res.json('Product added!'))
         .catch(err=> res.status(400).json('Error: '+err));
-    }
-);
+});
 
 // router.route('/:id').get((req, res) => {
 //   Exercise.findById(req.params.id)
