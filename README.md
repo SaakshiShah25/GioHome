@@ -16,7 +16,7 @@ SignUp.js
 getComponents()
 
 ### Models 
-user.model.js
+userProduct.model.js
 
 # Notes
 - ### MongoDb has two kinds -> Mongoose and MongoDb native driver
