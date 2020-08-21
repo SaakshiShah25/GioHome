@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import axios from 'axios';
+import { Router, Route, Link } from 'react-router-dom';
 
 export default class ProductList extends Component{
     constructor(props){
@@ -21,7 +22,17 @@ export default class ProductList extends Component{
       }
     render(){
         return(
+           
+                
+            
             <div className="row">
+                <div>
+                    {/* Please use history here  */}
+                <button variant="btn btn-success">
+                <Link to="/product/add" >Add products</Link>
+                </button>
+
+                </div>
                 {this.state.products.map((u)=>(
                 <div className="col-md-3">
                 <div className="card" style={{width:'18rem','margin-top':'20px'}}>

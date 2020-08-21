@@ -17,7 +17,7 @@ const port = process.env.PORT || 5000;
 
 // Get uri from 
 const uri = process.env.MONGO_URI;
-
+console.log(uri)
 // Mongo Connection
 mongoose.connect(uri,{useNewUrlParser : true, useCreateIndex : true ,useUnifiedTopology: true})
 

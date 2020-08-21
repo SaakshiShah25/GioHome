@@ -86,6 +86,7 @@ export default class AddProduct extends Component{
             <div className="row">
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
+                
                 <h3>Add Grocery Product</h3>
                 <form onSubmit={this.onSubmit}>
                 <div className="form-group">
