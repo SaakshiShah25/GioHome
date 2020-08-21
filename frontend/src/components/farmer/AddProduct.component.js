@@ -79,7 +79,6 @@ export default class AddProduct extends Component{
         axios.post('http://localhost:5000/product/add', product)
           .then(res => console.log(res.data));
     
-        window.location = '/';
       }
     render(){
         return(

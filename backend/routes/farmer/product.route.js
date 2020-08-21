@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Product = require('../../models/farmer/product.model.js');
+let Product = require('../../models/farmer/product.model.js');
 
 router.route('/').get(
 (req,res)=>{
@@ -10,38 +10,29 @@ router.route('/').get(
 
 
 
-router.route('/add').post(
-    (req,res) => {
-        
-        
-        const name = String(req.body.name);
-        
-        const description = String(req.body.description);
+router.route('/add').post((req,res) => {
+        const name = req.body.name;
+        const description = req.body.description;
         const price = Number(req.body.price);
         const available_quantity = Number(req.body.available_quantity);
         const date_produced = Date.parse(req.body.date_produced);
         const life = Number(req.body.life);
         
         
-        const newProduct = new Product(
-            {
+        const newProduct = new Product({
             name,
             description,
             price,
             available_quantity,
             date_produced,
             life
-
-            }
-            
-            );
+        });
             
 
         newProduct.save()
         .then(()=>res.json('Product added!'))
         .catch(err=> res.status(400).json('Error: '+err));
-    }
-);
+});
 
 // router.route('/:id').get((req, res) => {
 //   Exercise.findById(req.params.id)
