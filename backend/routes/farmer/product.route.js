@@ -14,16 +14,15 @@ router.route('/').get(
 router.route('/add').post(
     (req,res) => {
         
-        
+        console.log(req.body)
         const name = String(req.body.name);
-        
         const description = String(req.body.description);
         const price = Number(req.body.price);
         const available_quantity = Number(req.body.available_quantity);
         const date_produced = Date.parse(req.body.date_produced);
         const life = Number(req.body.life);
         
-        
+        console.log(name)
         const newProduct = new Product(
             {
             name,
@@ -56,15 +55,15 @@ router.route('/add').post(
 //     .catch(err => res.status(400).json('Error: ' + err));
 // });
 
-router.route('/update').post((req, res) => {
-  Product.findOne({name:"tomato"})
-    .then(product => {
-    console.log(product)
-    product.name = "Apple"
-    product.save()
-    res.send({name : "Apple"});
-    })
+// router.route('/update').post((req, res) => {
+//   Product.findOne({name:"tomato"})
+//     .then(product => {
+//     console.log(product)
+//     product.name = "Apple"
+//     product.save()
+//     res.send({name : "Apple"});
+//     })
     
-});
+// });
 
 module.exports = router;

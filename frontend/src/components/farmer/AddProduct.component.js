@@ -26,7 +26,7 @@ export default class AddProduct extends Component{
         }
     }
 
-    onChangeName(e) {
+    onChangeName (e) {
         this.setState({
           name: e.target.value
         })
@@ -70,14 +70,15 @@ export default class AddProduct extends Component{
           description: this.state.description,
           price: this.state.price,
           available_quantity: this.state.available_quantity,
-          date: this.state.date,
+          date_produced: this.state.date,
           life: this.state.life
         }
     
         console.log(product);
     
         axios.post('http://localhost:5000/product/add', product)
-          .then(res => console.log(res.data));
+        .then(res => console.log(res.data))
+        .then(alert("Done"))
     
         window.location = '/';
       }
