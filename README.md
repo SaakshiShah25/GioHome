@@ -4,7 +4,7 @@
 templates
 
 ### Components 
-Products.component.js
+userProducts.component.js
 
 ### Files 
 SignUp.js
