@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 
 export default class ProductList extends Component{
@@ -21,7 +21,7 @@ export default class ProductList extends Component{
       }
     render(){
         return(
-            <div className="row">
+            <div className="row" style={{'justify-content': 'space-around'}}>
                 {this.state.products.map((u)=>(
                 <div className="col-md-3">
                 <div className="card" style={{width:'18rem','margin-top':'20px'}}>

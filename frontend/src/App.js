@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Route} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './components/farmer/Navbar.component'
-import AddProduct from './components/farmer/AddProduct.component'
-import ProductList from './components/farmer/ProductList.component'
+import Navbar from './components/navbar.component'
+import AddProduct from './screens/farmer/AddProduct'
+import ProductList from './screens/farmer/ProductList'
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Route path="/farmer" exact component={ProductList} />
-      <Route path="/product" exact component={AddProduct} />
+      <Route path="/farmer" component={ProductList} />
+      <Route path="/product" component={AddProduct} />
     </BrowserRouter>
   );
 }
