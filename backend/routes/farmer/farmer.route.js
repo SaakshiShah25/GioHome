@@ -16,7 +16,7 @@ router.route('/add').post(
         const _id = req.body._id;
         const name = String(req.body.name);
         const location = String(req.body.location);
-        const products = String(req.body.products);
+        const products = Array(req.body.products);
         console.log(name)
         const newFarmer = new Farmer(
             {
@@ -36,6 +36,13 @@ router.route('/add').post(
     }
 );
 
+
+router.route('/update').get((req, res) => {
+    Farmer.findOne({name:"Sanket"},'products',function (err, farmer){
+        if (err) return handleError(err);
+        console.log(farmer.products);
+    });
+})
 // router.route('/:id').get((req, res) => {
 //   Exercise.findById(req.params.id)
 //     .then(exercise => res.json(exercise))

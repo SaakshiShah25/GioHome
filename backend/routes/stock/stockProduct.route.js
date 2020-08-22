@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let Product = require('../../models/farmer/product.model.js');
+const Product = require('../../models/stock/product.model.js');
 
 router.route('/').get(
 (req,res)=>{
@@ -38,6 +38,9 @@ router.route('/add').post(
         .then(()=>res.json('Product added!'))
         .catch(err=> res.status(400).json('Error: '+err));
 });
+
+
+
 
 // router.route('/:id').get((req, res) => {
 //   Exercise.findById(req.params.id)

@@ -1,39 +1,16 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Router, Route, Link } from 'react-router-dom';
 
-export default class ProductList extends Component{
+export default class Farmer extends Component{
     constructor(props){
         super(props);
-
         this.state={
             products:[]
         }
     }
-
-    componentDidMount() {
-        axios.get('http://localhost:5000/stock-product/')
-          .then(response => {
-            this.setState({ products: response.data })
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-      }
     render(){
         return(
-           
-                
-            
             <div className="row">
-                <div>
-                    {/* Please use history here  */}
-                <button variant="btn btn-success">
-                <Link to="/product/add" >Add products</Link>
-                </button>
-
-                </div>
-                {this.state.products.map((u)=>(
                 <div className="col-md-3">
                 <div className="card" style={{width:'18rem','margin-top':'20px'}}>
                     <img className="card-img-top" src="..." alt="Card image cap" />
@@ -48,7 +25,7 @@ export default class ProductList extends Component{
                     </ul>
                 </div>
                 </div>
-                ))}
+                
                 
             </div>
         );

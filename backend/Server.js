@@ -17,7 +17,7 @@ const port = process.env.PORT || 5000;
 
 // Get uri from 
 const uri = process.env.MONGO_URI;
-
+console.log(uri)
 // Mongo Connection
 mongoose.connect(uri,{useNewUrlParser : true, useCreateIndex : true ,useUnifiedTopology: true})
 
@@ -39,10 +39,10 @@ app.use(cors());
 // Routes 
 
 const farmerRoute = require("./routes/farmer/farmer.route.js");
-const productRoute = require("./routes/farmer/product.route.js");
+const stockProductRoute = require("./routes/stock/stockProduct.route.js");
 
 app.use("/farmer",farmerRoute);
-app.use("/product",productRoute);
+app.use("/stock-product",stockProductRoute);
 
 // #################_KEEP_PORT_RUNNING_################ 
 app.listen(port,()=>{

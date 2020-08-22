@@ -76,7 +76,7 @@ export default class AddProduct extends Component{
     
         console.log(product);
     
-        axios.post('http://localhost:5000/product/add', product)
+        axios.post('http://localhost:5000/stock-product/add', product)
         .then(res => console.log(res.data))
         .then(alert("Done"))
     
@@ -86,6 +86,7 @@ export default class AddProduct extends Component{
             <div className="row">
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
+                
                 <h3>Add Grocery Product</h3>
                 <form onSubmit={this.onSubmit}>
                 <div className="form-group">
