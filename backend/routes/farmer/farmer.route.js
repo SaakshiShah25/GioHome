@@ -36,13 +36,17 @@ router.route('/add').post(
     }
 );
 
+router.route('/update').get((req, res)=>{
+        Farmer.findOne({name:"Sanket"},'products',function (err, farmer){
+            if (err) {
+                res.send(err);
+              } else {
+                res.json(farmer.products);
+              }
+        });
+});
 
-// router.route('/update').get((req, res) => {
-//     Farmer.findOne({name:"Sanket"},'products',function (err, farmer){
-//         if (err) return handleError(err);
-//         return farmer.products;
-//     });
-// })
+
 
 
 // router.route('/:id').get((req, res) => {

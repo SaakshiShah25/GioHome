@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/navbar.component'
 import AddProduct from './screens/farmer/AddProduct'
 import ProductList from './screens/farmer/ProductList'
-import Farmer from './screens/farmer/Farmer'
+import FarmerPage from './screens/farmer/Farmer'
 import { Router, Link } from 'react-router-dom';
 import history from './history.js';
 function App({history}) {
@@ -13,7 +13,7 @@ function App({history}) {
       <Navbar />
       <Route path="/product" exact component={ProductList} />
       <Route path="/product/add" exact component={AddProduct} />
-      <Route path="/farmer" exact component={Farmer} />
+      <Route path="/farmer" exact component={FarmerPage} />
     </BrowserRouter>
   );
 }
