@@ -37,12 +37,14 @@ router.route('/add').post(
 );
 
 
-router.route('/update').get((req, res) => {
-    Farmer.findOne({name:"Sanket"},'products',function (err, farmer){
-        if (err) return handleError(err);
-        console.log(farmer.products);
-    });
-})
+// router.route('/update').get((req, res) => {
+//     Farmer.findOne({name:"Sanket"},'products',function (err, farmer){
+//         if (err) return handleError(err);
+//         return farmer.products;
+//     });
+// })
+
+
 // router.route('/:id').get((req, res) => {
 //   Exercise.findById(req.params.id)
 //     .then(exercise => res.json(exercise))

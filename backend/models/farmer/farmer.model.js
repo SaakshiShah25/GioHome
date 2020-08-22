@@ -14,4 +14,19 @@ const farmer = new Schema(
 );
 const Farmer = mongoose.model('Farmer',farmer);
 
-module.exports = Farmer
+findUser = function findUser(name, callback){
+    Farmer.findOne({name: name}, function(err, userObj){
+        if(err){
+            return callback(err);
+        } else if (userObj){
+            return callback(null,userObj);
+        } else {
+            return callback();
+        }
+    });
+}
+
+findUser('Sanket', function(error, userFound) {
+    console.log(userFound);
+ });
+module.exports = Farmer;
