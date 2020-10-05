@@ -47,8 +47,21 @@ router.route('/update').get((req, res)=>{
 });
 
 
+router.route('/edit').post((req, res)=>{
+    console.log(req.body);
+    var updateData = req.body;
+    Farmer.findOneAndUpdate({name:"Sanket"},{$push: {products: updateData}},function (error, success) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(success);
+        }
+    });
+
+});
 
 
+ 
 // router.route('/:id').get((req, res) => {
 //   Exercise.findById(req.params.id)
 //     .then(exercise => res.json(exercise))

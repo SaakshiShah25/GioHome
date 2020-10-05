@@ -94,7 +94,7 @@ export default class AddProduct extends Component{
                     <input 
                         type="text" 
                         className="form-control"
-                        value={this.state.duration}
+                        value={this.state.name}
                         onChange={this.onChangeName}
                         />
                     </div>

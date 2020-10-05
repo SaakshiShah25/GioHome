@@ -5,16 +5,35 @@ import { Router, Route, Link } from 'react-router-dom';
 export default class ProductList extends Component{
     constructor(props){
         super(props);
+        this.handleChange=this.handleChange.bind(this);
 
         this.state={
-            products:[]
+            products:[],
+            name:'',
         }
     }
 
+    handleChange(product){
+        const addedproduct = {
+            name:product.name,
+            description: product.description,
+            price: product.price,
+            available_quantity: product.available_quantity,
+            date_produced:product.date,
+            life: product.life,
+        }
+        
+        axios.post('http://localhost:5000/farmer/edit', addedproduct)
+        .then(res => console.log(res.data))
+        .then(alert("Done"))
+    };
+
+   
     componentDidMount() {
         axios.get('http://localhost:5000/stock-product/')
           .then(response => {
             this.setState({ products: response.data })
+            console.log(this.state.products)
           })
           .catch((error) => {
             console.log(error);
@@ -27,29 +46,35 @@ export default class ProductList extends Component{
             
             <div className="row">
                 <div>
-                    {/* Please use history here  */}
+                {/* Please use history here  */}
                 <button variant="btn btn-success">
                 <Link to="/product/add" >Add products</Link>
                 </button>
+                </div>
 
-                </div>
-                {this.state.products.map((u)=>(
-                <div className="col-md-3">
-                <div className="card" style={{width:'18rem','margin-top':'20px'}}>
-                    <img className="card-img-top" src="..." alt="Card image cap" />
-                    <div className="card-body">
-                        <h5 className="card-title">{u.name}</h5>
-                        <p className="card-text">{u.description}</p>
+                <ul className="products">
+                    {this.state.products.map((u)=>(
+                    <li key={u._id}>
+                    <div className="product">
+                    <Link to={'' + u._id}>
+                        <img
+                        className="product-image"
+                        src={u.image}
+                        alt="product"
+                        />
+                    </Link>
+                    <div className="product-name">
+                        <Link to={'' + u._id}>{u.name}</Link>
                     </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">{u.price}</li>
-                        <li className="list-group-item">{u.available_quantity}</li>
-                        <li className="list-group-item">{u.life}</li>
-                    </ul>
-                </div>
-                </div>
-                ))}
-                
+                    <div className="product-description">{u.description}</div>
+                    <div className="product-price">Price: {u.price}</div>
+                    <div className="product-life">Life: {u.life}</div>
+                    <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to list</button>
+                    </div>
+                    </li>
+                    
+                    ))}
+                </ul> 
             </div>
         );
     }
