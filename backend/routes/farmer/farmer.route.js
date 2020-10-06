@@ -61,6 +61,20 @@ router.route('/edit').post((req, res)=>{
 });
 
 
+router.route('/updateprod/:id').post((req, res) => {
+    Farmer.findById(req.params.id)
+      .then(products => {
+        products.price = Number(req.body.price);
+        products.life = Number(req.body.life);
+
+        products.save()
+        .then(() => res.json('Product updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+        })
+
+        .catch(err => res.status(400).json('Error: ' + err));
+  });
+
  
 // router.route('/:id').get((req, res) => {
 //   Exercise.findById(req.params.id)

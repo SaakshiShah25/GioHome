@@ -10,8 +10,11 @@ export default class FarmerPage extends Component{
         this.showModal = this.showModal.bind(this)
         this.handleClose = this.handleClose.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.state={
-            products:[]
+            products:[],
+            price:'',
+            life:'',
         }
     }
     componentDidMount() {
@@ -33,8 +36,21 @@ export default class FarmerPage extends Component{
         document.getElementById('product_modal').style.display='none'
       }
       handleChange(e){
-          console.log(e.target.value)
+          this.setState({[e.target.name]:e.target.value})
       }
+      handleSubmit(e){
+          e.preventDefault();
+          const updatedData = {
+            price:this.state.price,
+            life:this.state.life
+          }
+
+          axios.post('http://localhost:5000/farmer/updateprod/' + this.props.match.params.id, updatedData)
+          .then(res => console.log(res.data));
+    
+        window.location = '/';
+      }
+      
     render(){
         return(
            
@@ -52,32 +68,22 @@ export default class FarmerPage extends Component{
                             <div className="card-body">
                                 <div style={{'display':'flex'}}> 
                                     <h5 className="card-title">{u.name}</h5>
-                                    <button onClick={this.showModal} style={{'margin-left':'40px'}}>Details</button>
                                 </div>
                                 <p className="card-text">{u.description}</p>
                                 <p className="card-text">Stock: {u.available_quantity}kg</p>
+                                <form onSubmit={this.handleSubmit}>
+                                    <label for="price">Price:
+                                    <input type="text" id="price" name="price" value={u.price} onChange={(u)=>this.handleChange()}></input>
+                                    </label>
+                                    <label for="life">Life:
+                                    <input type="text" id="life" name="life" value={this.state.life} onChange={this.handleChange}/>
+                                    </label>
+                                    <input type="submit" value="Save Changes" />
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <div style={{display:'none'}} className="modal" tabindex="-1" role="dialog" id="product_modal">
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" onChange={this.handleChange}>Price: {u.price}</h5>
-                                    <button onClick={this.handleClose} type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <p>Life: {u.life}</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </Fragment>
                 ))}
                 
