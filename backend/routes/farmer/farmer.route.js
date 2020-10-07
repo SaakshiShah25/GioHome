@@ -49,10 +49,15 @@ router.route('/update').get((req, res)=>{
 
 router.route('/edit').post((req, res)=>{
     console.log(req.body);
-    var updateData = req.body;
-    Farmer.findOneAndUpdate({name:"Sanket"},{$push: {products: updateData}},function (error, success) {
+    var id=req.params.id
+    var updateData = {
+        'products.price': req.body.price ,
+        'products.life': req.body.life 
+    }
+
+    Farmer.findOneAndUpdate({name:"Sanket",'products.name':id},{$set: updateData},function (error, success) {
         if (error) {
-            console.log(error);
+            console.log(error); 
         } else {
             console.log(success);
         }
@@ -60,10 +65,10 @@ router.route('/edit').post((req, res)=>{
 
 });
 
-router.route('/updateprod/:id').post((req, res) => {
+router.route('/updateproduct/:id').post((req, res) => {
     console.log(req.body)
     var updateData = req.body;
-    Farmer.findOneAndUpdate({name:"Sanket"}, {$set:updateData},function (error, success) {
+    Farmer.findOneAndUpdate({name:"Sanket"}, {$push:{products:{name:updateData}}},function (error, success) {
         if (error) {
             console.log(error);
         } else {

@@ -35,13 +35,29 @@ export default class FarmerPage extends Component{
 
     
       handleChange(e){
-          this.setState({[e.target.name]:e.target.value})
+          this.setState({price:e.target.value})
           
       }
       hideModal = () => {
         this.setState({ showForm: false });
       };
      
+      handleSubmit(e){
+        e.preventDefault();
+        const updatedData = {
+          price:this.state.price,
+          life:this.state.life
+        }
+        const id=this.state.formdata.name
+        console.log(this.state.formdata.name)
+
+      axios.post('http://localhost:5000/farmer/updateproduct/'+id, updatedData)
+      .then(res => console.log(res.data))
+      .catch((error) => {
+          console.log(error);
+        })
+    }
+
       showform = () => {
        
         return (
@@ -56,7 +72,7 @@ export default class FarmerPage extends Component{
                     <label>Price: </label>
                     <input type="text"  onChange={this.handleChange}></input>
                     <label>Life: </label>
-                    <input type="text" onChange={this.handleChange}></input>
+                    <input type="text" ></input>
                     <input type="submit" value="Save"></input>
                 </form>
             </Modal.Body>
@@ -71,18 +87,7 @@ export default class FarmerPage extends Component{
           );
       }
 
-      handleSubmit(e){
-          e.preventDefault();
-          const updatedData = {
-            price:this.state.price,
-            life:this.state.life
-          }
-
-        axios.post('http://localhost:5000/farmer/updateprod/' + this.props.match.params.id, updatedData)
-        .then(res => console.log(res.data));
-    
-        window.location = '/';
-      }
+     
       
     render(){
         return(
