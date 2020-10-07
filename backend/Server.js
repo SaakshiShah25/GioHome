@@ -40,9 +40,10 @@ app.use(cors());
 
 const farmerRoute = require("./routes/farmer/farmer.route.js");
 const stockProductRoute = require("./routes/stock/stockProduct.route.js");
-
+const cart = require("./routes/cart/cart.route.js");
 app.use("/farmer",farmerRoute);
 app.use("/stock-product",stockProductRoute);
+app.use("/cart",cart);
 
 // #################_KEEP_PORT_RUNNING_################ 
 app.listen(port,()=>{

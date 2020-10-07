@@ -37,6 +37,7 @@ export default class FarmerPage extends Component{
       }
       handleChange(e){
           this.setState({[e.target.name]:e.target.value})
+          
       }
       handleSubmit(e){
           e.preventDefault();
@@ -45,8 +46,8 @@ export default class FarmerPage extends Component{
             life:this.state.life
           }
 
-          axios.post('http://localhost:5000/farmer/updateprod/' + this.props.match.params.id, updatedData)
-          .then(res => console.log(res.data));
+        axios.post('http://localhost:5000/farmer/updateprod/' + this.props.match.params.id, updatedData)
+        .then(res => console.log(res.data));
     
         window.location = '/';
       }
@@ -73,7 +74,7 @@ export default class FarmerPage extends Component{
                                 <p className="card-text">Stock: {u.available_quantity}kg</p>
                                 <form onSubmit={this.handleSubmit}>
                                     <label for="price">Price:
-                                    <input type="text" id="price" name="price" value={u.price} onChange={(u)=>this.handleChange()}></input>
+                                    <input type="text" id="price" name="price" value={this.state.price} onChange={(u)=>this.handleChange()}></input>
                                     </label>
                                     <label for="life">Life:
                                     <input type="text" id="life" name="life" value={this.state.life} onChange={this.handleChange}/>
