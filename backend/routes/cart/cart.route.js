@@ -18,11 +18,13 @@ router.route('/edit').post((req, res)=>{
     Cart.exists({products: updateData}, function(err, result) {
         if (err) {
           res.send(err);
-        } else {
-          res.send(result);
-          if(result==true){
-              console.log("Item already added to cart!")
-        } else{
+        } 
+        else 
+        { 
+            res.json(result)
+            if (!result)
+            {
+            
             Cart.findOneAndUpdate({name:"Sanket"},{$push: {products: updateData}},function (error, success) {
                 if (error) {
                     console.log(error);
@@ -31,6 +33,8 @@ router.route('/edit').post((req, res)=>{
                 }
             });
         }
+        
+        
         }
       })
 });

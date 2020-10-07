@@ -12,6 +12,7 @@ export default class Cart extends Component{
         this.state={
             products:[],
             name:'',
+            status: true
         }
 
     }
@@ -35,7 +36,8 @@ export default class Cart extends Component{
         }
         
         axios.post('http://localhost:5000/cart/edit', addedproduct)
-        .then(res => console.log(res.data))
+        
+        .then(res => console.log(res))
         .then(alert("Done"))
 
     };

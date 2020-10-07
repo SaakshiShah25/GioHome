@@ -2,8 +2,6 @@ import React, {Component,Fragment} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
-// import findUser from '../../../../backend/models/farmer/farmer.model'
-// const Farmer = require('../../models/farmer/farmer.model.js');
 
 export default class FarmerPage extends Component{
     constructor(props){
@@ -59,9 +57,7 @@ export default class FarmerPage extends Component{
     }
 
       showform = () => {
-       
         return (
-          
             <Modal.Dialog>
             <Modal.Header closeButton>
                 <Modal.Title>{this.state.formdata.name}</Modal.Title>
@@ -82,8 +78,6 @@ export default class FarmerPage extends Component{
                 <button variant="primary">Save changes</button>
             </Modal.Footer>
             </Modal.Dialog>
-        
- 
           );
       }
 
@@ -122,6 +116,7 @@ export default class FarmerPage extends Component{
                     
                 </Fragment>
                 ))}
+                {/* Out of fragment but the value triggered from a specific card in the fragment */}
                   {this.state.showForm ? this.showform() : null}
             </div>
            
