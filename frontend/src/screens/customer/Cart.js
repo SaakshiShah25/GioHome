@@ -12,6 +12,7 @@ export default class Cart extends Component{
         this.state={
             products:[],
             name:'',
+            status: true
         }
 
     }
@@ -35,7 +36,8 @@ export default class Cart extends Component{
         }
         
         axios.post('http://localhost:5000/cart/edit', addedproduct)
-        .then(res => console.log(res.data))
+        
+        .then(res => console.log(res))
         .then(alert("Done"))
 
     };
@@ -57,26 +59,21 @@ export default class Cart extends Component{
         return(
            
             <div className="row">
-                
-
                 <ul className="products">
-                    {this.state.products.map((u)=>(
+                    {this.state.products.length?
+                    this.state.products.map((u)=>(
+                        
                         <div>
-                   <div>
-                       {u.name}
-                   </div>
-                   <div>
-                        {u.description}
-                    </div>
-                        <div>
-                    {u.price}
+                            <div>{u.name}</div>
+                            <div>{u.description}</div>
+                            <div>{u.price}</div>
+                            <button onClick={()=>this.remove(u.name)}>
+                                Remove from Cart
+                            </button>
                         </div>
-                        <button onClick={()=>this.remove(u.name)}>
-                            Remove from Cart
-                        </button>
-
-                        </div>
-                    ))}
+                    )):
+                    <div>Cart is empty!</div>
+                    }
                 </ul> 
             </div>
         );

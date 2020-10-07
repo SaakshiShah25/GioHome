@@ -11,6 +11,7 @@ export default class LandingCustomer extends Component{
         this.state={
             products:[],
             name:'',
+           
         }
     }
 
@@ -25,8 +26,22 @@ export default class LandingCustomer extends Component{
         }
         
         axios.post('http://localhost:5000/cart/edit', addedproduct)
-        .then(res => console.log(res.data))
-        .then(alert("Done"))
+        
+  
+        .then( res => 
+            {
+                if(res.data)
+                {
+                    alert("Already in your cart")
+                }
+                else{
+                    alert("Done")
+                }
+            }
+            
+            )
+        
+        
     };
 
    

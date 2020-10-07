@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const e = require('express');
 const Cart = require('../../models/cart/cart.model.js');
 
 router.route('/').get((req, res)=>{
@@ -13,16 +14,29 @@ router.route('/').get((req, res)=>{
 
 
 router.route('/edit').post((req, res)=>{
-    console.log(req.body);
     var updateData = req.body;
-    Cart.findOneAndUpdate({name:"Sanket"},{$push: {products: updateData}},function (error, success) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log(success);
+    Cart.exists({products: updateData}, function(err, result) {
+        if (err) {
+          res.send(err);
+        } 
+        else 
+        { 
+            res.json(result)
+            if (!result)
+            {
+            
+            Cart.findOneAndUpdate({name:"Sanket"},{$push: {products: updateData}},function (error, success) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(success);
+                }
+            });
         }
-    });
-
+        
+        
+        }
+      })
 });
 
 router.route('/add').post(
