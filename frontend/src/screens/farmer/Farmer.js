@@ -2,16 +2,11 @@ import React, {Component,Fragment} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
-// import findUser from '../../../../backend/models/farmer/farmer.model'
-// const Farmer = require('../../models/farmer/farmer.model.js');
 
 export default class FarmerPage extends Component{
     constructor(props){
         super(props);
-        // this.showModal = this.showModal.bind(this)
-        // this.handleClose = this.handleClose.bind(this)
-        // this.handleChange = this.handleChange.bind(this)
-        // this.handleSubmit = this.handleSubmit.bind(this)
+
         this.state={
             products:[],
             price:'',
@@ -33,24 +28,12 @@ export default class FarmerPage extends Component{
           })
       }
 
-    //   showModal(){
-    //       document.getElementById('product_modal').style.display='block'
-    //   }
-    //   handleClose(){
-    //     document.getElementById('product_modal').style.display='none'
-    //   }
-    //   handleChange(e){
-    //       this.setState({[e.target.name]:e.target.value})
-          
-    //   }
       hideModal = () => {
         this.setState({ showForm: false });
       };
      
       showform = () => {
-       
         return (
-          
             <Modal.Dialog>
             <Modal.Header closeButton>
                 <Modal.Title>{this.state.formdata.name}</Modal.Title>
@@ -68,8 +51,6 @@ export default class FarmerPage extends Component{
                 <button variant="primary">Save changes</button>
             </Modal.Footer>
             </Modal.Dialog>
-        
- 
           );
       }
 
@@ -119,6 +100,7 @@ export default class FarmerPage extends Component{
                     
                 </Fragment>
                 ))}
+                {/* Out of fragment but the value triggered from a specific card in the fragment */}
                   {this.state.showForm ? this.showform() : null}
             </div>
            
