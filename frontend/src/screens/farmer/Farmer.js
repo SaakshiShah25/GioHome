@@ -10,8 +10,8 @@ export default class FarmerPage extends Component{
         super(props);
         // this.showModal = this.showModal.bind(this)
         // this.handleClose = this.handleClose.bind(this)
-        // this.handleChange = this.handleChange.bind(this)
-        // this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.state={
             products:[],
             price:'',
@@ -33,16 +33,11 @@ export default class FarmerPage extends Component{
           })
       }
 
-    //   showModal(){
-    //       document.getElementById('product_modal').style.display='block'
-    //   }
-    //   handleClose(){
-    //     document.getElementById('product_modal').style.display='none'
-    //   }
-    //   handleChange(e){
-    //       this.setState({[e.target.name]:e.target.value})
+    
+      handleChange(e){
+          this.setState({[e.target.name]:e.target.value})
           
-    //   }
+      }
       hideModal = () => {
         this.setState({ showForm: false });
       };
@@ -57,9 +52,12 @@ export default class FarmerPage extends Component{
             </Modal.Header>
 
             <Modal.Body>
-                <form>
-                    <label>name</label>
-                    <input type="text"></input>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Price: </label>
+                    <input type="text"  onChange={this.handleChange}></input>
+                    <label>Life: </label>
+                    <input type="text" onChange={this.handleChange}></input>
+                    <input type="submit" value="Save"></input>
                 </form>
             </Modal.Body>
 
