@@ -60,8 +60,23 @@ router.route('/add').post(
     }
 );
 
-router.route('/remove/:id').get((req, res)=>{
+
+router.route('/updatecart/:id').post((req, res) => {
+    console.log(req.body)
+    var updateData = req.body
+    var id = req.params.id
+    Cart.updateOne({"name": "Sanket", "products.name": id}, {$set: {"products.$.price": req.body.price}},function (error, success) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(success);
+        }
+    });
+  });
     
+
+
+router.route('/remove/:id').get((req, res)=>{
     var id = req.params.id;
     Cart.findOneAndUpdate({name:"Sanket"},{$pull: {products: {name:id}}},function (error, success) {
         console.log("Check")

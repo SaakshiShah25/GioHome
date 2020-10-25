@@ -3,12 +3,14 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
 
+
 export default class FarmerPage extends Component{
     constructor(props){
         super(props);
         // this.showModal = this.showModal.bind(this)
         // this.handleClose = this.handleClose.bind(this)
-        this.handleChange = this.handleChange.bind(this)
+        this.handlePriceChange = this.handlePriceChange.bind(this)
+        this.handleLifeChange = this.handleLifeChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.state={
             products:[],
@@ -32,20 +34,26 @@ export default class FarmerPage extends Component{
       }
 
     
-      handleChange(e){
+      handlePriceChange(e){
           this.setState({price:e.target.value})
-          
-      }
+         
+    }
+      handleLifeChange(e){
+          this.setState({life:e.target.value})
+    }
+
       hideModal = () => {
         this.setState({ showForm: false });
       };
      
       handleSubmit(e){
         e.preventDefault();
-        const updatedData = {
-          price:this.state.price,
-          life:this.state.life
-        }
+        const updatedData = this.state.formdata
+          console.log(updatedData);
+          updatedData.price = this.state.price
+          updatedData.life = this.state.life
+          console.log(updatedData)
+        
         const id=this.state.formdata.name
         console.log(this.state.formdata.name)
 
@@ -59,23 +67,23 @@ export default class FarmerPage extends Component{
       showform = () => {
         return (
             <Modal.Dialog>
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <Modal.Title>{this.state.formdata.name}</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
                 <form onSubmit={this.handleSubmit}>
                     <label>Price: </label>
-                    <input type="text"  onChange={this.handleChange}></input>
+                    <input type="text"  onChange={this.handlePriceChange}></input>
                     <label>Life: </label>
-                    <input type="text" ></input>
+                    <input type="text"  onChange={this.handleLifeChange}></input>
                     <input type="submit" value="Save"></input>
                 </form>
             </Modal.Body>
 
             <Modal.Footer>
                 <button variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
-                <button variant="primary">Save changes</button>
+                
             </Modal.Footer>
             </Modal.Dialog>
           );
