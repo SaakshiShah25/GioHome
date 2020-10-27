@@ -86,7 +86,7 @@ export default class Cart extends Component{
 
     render(){
         return(
-           
+            
             <div className="row">
                 <ul className="products">
                     {this.state.products.length?
@@ -105,14 +105,17 @@ export default class Cart extends Component{
                             </button>
                         </div>
                         </div>
-                        
+                       
                     )):
                     
                     <div>Cart is empty!</div>
                     }
                     {this.state.showForm ? this.showform() : null}
                 </ul> 
+                <button><Link to="/cart/checkout">Checkout</Link></button>
             </div>
+           
+           
         );
     }
 
