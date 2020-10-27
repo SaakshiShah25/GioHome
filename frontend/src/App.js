@@ -8,6 +8,7 @@ import FarmerPage from './screens/farmer/Farmer'
 import LandingCustomer from './screens/customer/LandingCustomer.js'
 import Cart from './screens/customer/Cart.js'
 import CartCheckout from './screens/customer/CartCheckout.js'
+import CustomerDetails from './screens/customer/CustomerDetails.js'
 import { Router, Link } from 'react-router-dom';
 
 import history from './history.js';
@@ -21,6 +22,7 @@ function App({history}) {
       <Route path="/customer" exact component={LandingCustomer} />
       <Route path="/cart" exact component={Cart} />
       <Route path="/cart/checkout" exact component={CartCheckout} />
+      <Route path="/cart/checkout/details" exact component={CustomerDetails} />
 
     </BrowserRouter>
   );

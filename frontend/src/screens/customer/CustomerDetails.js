@@ -7,7 +7,9 @@ import Success from './Success';
 export class CustomerDetails extends Component {
   state = {
     step: 1,
-    address:''
+    address:'',
+    delivery:'',
+    payment:''
   };
 
   // Proceed to next step
@@ -28,13 +30,14 @@ export class CustomerDetails extends Component {
 
   // Handle fields change
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
+    this.setState({
+          [e.target.name]: e.target.value
+    });
+    }
   render() {
     const { step } = this.state;
-    const { address } = this.state;
-    const values = { address };
+    const { address,delivery,payment } = this.state;
+    const values = { address,delivery,payment };
 
     switch (step) {
       case 1:

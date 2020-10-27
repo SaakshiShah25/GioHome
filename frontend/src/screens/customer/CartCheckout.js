@@ -2,7 +2,7 @@ import React, {Component,Fragment} from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
-import CustomerDetails from './CustomerDetails'
+
 
 export default class CartCheckout extends Component{
 
@@ -67,7 +67,9 @@ export default class CartCheckout extends Component{
              
                 ))}
                 <div style={{'textAlign':"center"}}>Net Total:{this.state.net_amount}</div>
-                <button onClick={CustomerDetails}>Fill Details</button>
+                <button>
+                   <Link to="/cart/checkout/details">Fill Details</Link> 
+                </button>
                 </div>
                 </div>
                 
