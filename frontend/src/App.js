@@ -9,6 +9,7 @@ import ProductList from './screens/farmer/ProductList'
 import FarmerPage from './screens/farmer/Farmer'
 import Home from './screens/farmer/Home'
 import { Router, Link } from 'react-router-dom';
+
 import history from './history.js';
 import Orders from './screens/farmer/Orders';
 function App({history}) {
@@ -20,6 +21,11 @@ function App({history}) {
       <Route path="/farmer" exact component={FarmerPage} />
       <Route path="/orders" exact component={Orders} />
       <Route path="/" exact component={Home} />
+      <Route path="/customer" exact component={LandingCustomer} />
+      <Route path="/cart" exact component={Cart} />
+      <Route path="/cart/checkout" exact component={CartCheckout} />
+      <Route path="/cart/checkout/details" exact component={CustomerDetails} />
+
     </BrowserRouter>
   );
 }
