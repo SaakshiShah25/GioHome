@@ -16,10 +16,19 @@ export class Confirm extends Component {
     e.preventDefault();
     this.props.prevStep();
   };
+  
+  componentDidMount()
+  {
+      var data = this.props.values;
+      console.log(data)
+      // Append this data to the order object
+      
+  }
 
   render() {
+    let i = 0;
     const {
-      values: { address,delivery,payment }
+      values: { address,delivery,payment,net_amount,products }
     } = this.props;
     return (
       <MuiThemeProvider>
@@ -30,6 +39,7 @@ export class Confirm extends Component {
             maxWidth='sm'
           >
             <h3>Confirm User Data</h3>
+            {/* Also display all the products here in inshort */}
             <List>
               <ListItem>
                 <ListItemText primary="Address" secondary={address} />
@@ -40,7 +50,29 @@ export class Confirm extends Component {
               <ListItem>
                 <ListItemText primary="Mode of Payment" secondary={payment} />
               </ListItem>
+              <ListItem>
+                <ListItemText primary="Net Amount" secondary={net_amount} />
+              </ListItem>
               
+              {
+              products.map(
+                
+                product => 
+                { 
+                  i  = i + 1
+                  return(
+                    <ListItem>
+                      <ListItemText primary="Sr. No." secondary={i} />
+                      <ListItemText primary="Name" secondary={product.name} />
+                      <ListItemText primary="Price" secondary={product.price} />
+                      <ListItemText primary="Quantity" secondary={product.available_quantity} />
+                    </ListItem>
+                  )
+                }
+                
+                
+              )
+              }
             </List>
             <br />
 
@@ -50,7 +82,7 @@ export class Confirm extends Component {
 
             <button
               onClick={this.continue}
-            >Confirm & Continue</button>
+            > Confirm & Continue </button>
           </Dialog>
         </>
       </MuiThemeProvider>

@@ -27,9 +27,9 @@ export class FormCustomerDetails extends Component {
             </textarea>
             <br />
             
-            <button
-              onClick={this.continue}
-            >Continue</button>
+            <button onClick={this.continue}>
+            Continue
+            </button>
           </Dialog>
         </>
       </MuiThemeProvider>
