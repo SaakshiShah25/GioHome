@@ -1,6 +1,7 @@
 // Required backend stuff
 const express = require('express');
 const cors = require('cors');
+const morgan = require('morgan');
 const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
@@ -40,9 +41,14 @@ app.use(cors());
 
 const farmerRoute = require("./routes/farmer/farmer.route.js");
 const stockProductRoute = require("./routes/stock/stockProduct.route.js");
+const orderRoute = require("./routes/orders/order.route.js");
+const homeRoute = require("./routes/signin/signin.route.js");
 const cart = require("./routes/cart/cart.route.js");
+
 app.use("/farmer",farmerRoute);
 app.use("/stock-product",stockProductRoute);
+app.use("/orders",orderRoute);
+app.use("/",homeRoute)
 app.use("/cart",cart);
 
 // #################_KEEP_PORT_RUNNING_################ 
