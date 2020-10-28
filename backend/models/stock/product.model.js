@@ -8,7 +8,7 @@ const product = new Schema(
         username : { type:String},
         description : {type:String},
         price : {type:Number},
-        available_quantity : {type: Number},
+        available_quantity : {type: String},
         date_produced : {type:Date},
         life : {type:Number} 
     

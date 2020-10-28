@@ -58,10 +58,11 @@ router.route('/edit').post((req, res)=>{
 
 });
 
-router.route('/updateprod/:id').post((req, res) => {
+router.route('/updateproduct/:id').post((req, res) => {
     console.log(req.body)
-    var updateData = req.body;
-    Farmer.findOneAndUpdate({name:"Sanket"}, {$set:updateData},function (error, success) {
+    var updateData = req.body
+    var id = req.params.id
+    Farmer.findOneAndUpdate({name:"Sanket"},{$set:{products: updateData}},{new:true},function (error, success) {
         if (error) {
             console.log(error);
         } else {

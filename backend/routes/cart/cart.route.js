@@ -13,6 +13,17 @@ router.route('/').get((req, res)=>{
 });
 
 
+router.route('/checkout').get((req, res)=>{
+    Cart.findOne({name:"Sanket"},'products',function (err, user){
+        if (err) {
+            res.send(err);
+          } else {
+            res.json(user.products);
+          }
+    });
+});
+
+
 router.route('/edit').post((req, res)=>{
     var updateData = req.body;
     Cart.exists({products: updateData}, function(err, result) {
@@ -60,8 +71,24 @@ router.route('/add').post(
     }
 );
 
-router.route('/remove/:id').get((req, res)=>{
+
+router.route('/updatecart/:id').post((req, res) => {
+    console.log(req.body)
+    var updateData = req.body.available_quantity
+    console.log(updateData)
+    var id = req.params.id
+    Cart.updateOne({"products.name":id},{$set:{"products.$.available_quantity":updateData}},function (error, success) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(success);
+        }
+    });
+  });
     
+
+
+router.route('/remove/:id').get((req, res)=>{
     var id = req.params.id;
     Cart.findOneAndUpdate({name:"Sanket"},{$pull: {products: {name:id}}},function (error, success) {
         console.log("Check")
