@@ -9,7 +9,9 @@ export class CustomerDetails extends Component {
     step: 1,
     address:'',
     delivery:'',
-    payment:''
+    payment:'',
+    net_amount: '',
+    products:[]
   };
 
   // Proceed to next step
@@ -34,10 +36,21 @@ export class CustomerDetails extends Component {
           [e.target.name]: e.target.value
     });
     }
+
+    componentDidMount()
+    {
+      console.log(this.props.location.data)
+      this.setState(
+        {
+        products:this.props.location.data.products,
+        net_amount: this.props.location.data.net_amount
+        }
+      )
+    }
   render() {
     const { step } = this.state;
-    const { address,delivery,payment } = this.state;
-    const values = { address,delivery,payment };
+    const { address,delivery,payment, products,net_amount} = this.state;
+    const values = { address,delivery,payment,products,net_amount };
 
     switch (step) {
       case 1:

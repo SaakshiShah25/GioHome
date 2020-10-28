@@ -4,6 +4,8 @@ import AppBar from '@material-ui/core/AppBar';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
+import { FaDivide } from 'react-icons/fa';
 
 export class FormDeliveryDetails extends Component {
   continue = e => {
@@ -19,6 +21,7 @@ export class FormDeliveryDetails extends Component {
   render() {
     const { values, handleChange } = this.props;
     return (
+     
       <MuiThemeProvider>
         <>
           <Dialog
@@ -26,18 +29,30 @@ export class FormDeliveryDetails extends Component {
             fullWidth
             maxWidth='sm'
           >
-
-            <div>
-            <label for="delivery">Delivery Type</label>
-            <input type="radio" name="delivery" value="express" defaultValue={values.delivery}>Express Delivery</input>
-            <input type="radio" name="delivery" value="free" defaultValue={values.delivery}>Free Delivery </input>
-            <label for="payment">Payment Mode</label>
-            <input type="radio" name="payment" value="express" defaultValue={values.payment}>Cash on Delivery</input>
-            <input type="radio" name="payment" value="free" defaultValue={values.payment}>Credit Card</input>
-            </div>
-           
             
-
+           <form>
+            <div className="radio">
+              <label >
+                <input type="radio"  name= "payment" value="cod" defaultValue={values.payment}  onChange={handleChange}/>
+                  Cash on Delivery
+              </label>
+              <label>
+                <input type="radio"  name= "payment"  value="card" defaultValue={values.payment}  onChange={handleChange}/>
+                  Credit/Debit
+              </label>
+            </div>
+            <div className="radio">
+              <label >
+                <input type="radio"  name= "delivery" value="express" defaultValue={values.delivery}  onChange={handleChange}/>
+                  Express
+              </label>
+              <label>
+                <input type="radio"  name= "delivery" value="free" defaultValue={values.delivery} onChange={handleChange}/>
+                  Free Delivery
+              </label>
+            </div>
+            </form>
+         
             <button
              onClick={this.back}
             >Back</button>
@@ -45,9 +60,14 @@ export class FormDeliveryDetails extends Component {
             <button
               onClick={this.continue}
             >Continue</button>
+          
+      
+
+            {/* </div> */}
           </Dialog>
         </>
       </MuiThemeProvider>
+    
     );
   }
 }

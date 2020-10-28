@@ -8,8 +8,6 @@ router.route('/').get(
     .catch(err => res.status(400).json('Error: '+err))
 });
 
-
-
 router.route('/add').post(
     (req,res) => {
         
