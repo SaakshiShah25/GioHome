@@ -26,6 +26,7 @@ router.route('/checkout').get((req, res)=>{
 
 router.route('/edit').post((req, res)=>{
     var updateData = req.body;
+    // console.log(updateData)
     Cart.exists({products: updateData}, function(err, result) {
         if (err) {
           res.send(err);
