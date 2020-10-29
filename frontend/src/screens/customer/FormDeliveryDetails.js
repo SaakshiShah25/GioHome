@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
+
 import { FaDivide } from 'react-icons/fa';
 
 export class FormDeliveryDetails extends Component {
