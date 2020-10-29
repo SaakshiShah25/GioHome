@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
+import  { Redirect } from 'react-router-dom'
 //http://localhost:5000/api/signup
 import {
   getFromStorage,
@@ -15,23 +17,17 @@ class Home extends Component {
       isLoading: true,
       token: '',
       signUpError: '',
-      signInError: '',
-      signInEmail: '',
-      signInPassword: '',
       signUpEmail: '',
       signUpPassword: '',
       signUpFirstName:'',
       signUpLastName:'',
     };
 
-    this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
-    this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
+    
     this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     this.onTextboxChangeSignUpFirstName = this.onTextboxChangeSignUpFirstName.bind(this);
     this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(this);
-
-    this.onSignIn = this.onSignIn.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
     this.logout = this.logout.bind(this);
   }
@@ -68,17 +64,7 @@ class Home extends Component {
     }
   }
 
-  onTextboxChangeSignInEmail(event) {
-    this.setState({
-      signInEmail: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignInPassword(event) {
-    this.setState({
-      signInPassword: event.target.value,
-    });
-  }
+  
 
   onTextboxChangeSignUpEmail(event) {
     this.setState({
@@ -158,6 +144,7 @@ class Home extends Component {
             signUpFirstName: '',
             signUpLastName: ''
           }); 
+          this.props.history.push('/signin')
         } else {
           this.setState({
             signUpError: json.message,
@@ -243,9 +230,6 @@ class Home extends Component {
     const {
       isLoading,
       token,
-      signInError,
-      signInEmail,
-      signInPassword,
       signUpFirstName,
       signUpLastName,
       signUpEmail,
@@ -260,31 +244,7 @@ class Home extends Component {
     if (!token) {
       return (
         <div>
-          <div>
-            {
-              (signInError) ? (
-                <p>{signInError}</p>
-              ) : (null)
-            }
-            <p>Sign In</p>
-            <input
-              type="email"
-              placeholder="Email"
-              value={signInEmail}
-              onChange={this.onTextboxChangeSignInEmail}
-            />
-            <br />
-            <input
-              type="password"
-              placeholder="Password"
-              value={signInPassword}
-              onChange={this.onTextboxChangeSignInPassword}
-            />
-            <br />
-            <button onClick={this.onSignIn}>Sign In</button>
-          </div>
-          <br />
-          <br />
+          
           <div>
             {
               (signUpError) ? (
@@ -319,18 +279,19 @@ class Home extends Component {
               onChange={this.onTextboxChangeSignUpPassword}
             /><br />
             <button onClick={this.onSignUp}>Sign Up</button>
+            <button>
+              <Link to="/signin">Signin</Link>
+            </button>
           </div>
 
         </div>
       );
     }
-
     return (
-      <div>
-        <p>Account</p>
-        <button onClick={this.logout}>Logout</button>
-      </div>
+      <Redirect to='/signin'  />
     );
+
+    
   }
 }
 
