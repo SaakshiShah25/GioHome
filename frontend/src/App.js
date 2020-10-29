@@ -1,16 +1,4 @@
-// import React from 'react';
-// import { BrowserRouter, Route} from "react-router-dom";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Navbar from './components/navbar.component'
-// import Sidebar from './components/sidebar.component'
-// import './Sidebar.css'
-// import AddProduct from './screens/farmer/AddProduct'
-// import ProductList from './screens/farmer/ProductList'
-// import FarmerPage from './screens/farmer/Farmer'
 import Home from './screens/farmer/Home'
-// import { Router, Link } from 'react-router-dom';
-
-// import history from './history.js';
 import Orders from './screens/farmer/Orders';
 import React from 'react';
 import { BrowserRouter, Route} from "react-router-dom";
@@ -24,6 +12,7 @@ import Cart from './screens/customer/Cart.js'
 import CartCheckout from './screens/customer/CartCheckout.js'
 import CustomerDetails from './screens/customer/CustomerDetails.js'
 import { Router, Link } from 'react-router-dom';
+import Signin from './screens/farmer/Signin.js'
 
 import history from './history.js';
 function App({history}) {
@@ -35,6 +24,7 @@ function App({history}) {
       <Route path="/farmer" exact component={FarmerPage} />
       <Route path="/orders" exact component={Orders} />
       <Route path="/" exact component={Home} />
+      <Route path="/signin" exact component={Signin} />
       <Route path="/customer" exact component={LandingCustomer} />
       <Route path="/cart" exact component={Cart} />
       <Route path="/cart/checkout" exact component={CartCheckout} />
