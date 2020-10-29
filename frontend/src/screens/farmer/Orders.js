@@ -39,7 +39,7 @@ export default class Orders extends Component{
                                 <button style={{'margin-left':'40px'}}>Mark As Delivered</button>
                             </div>
                             <p className="card-text">Quantity: {u.quantity}kgs</p>
-                            <p className="card-text">Price: {u.amount} Rs.</p>
+                            <p className="card-text">Price: {u.net_amount} Rs.</p>
                             <p className="card-text">Delivery Date: {u.delivery_date}</p>
                             <p className="card-text">{u.status}</p>
 

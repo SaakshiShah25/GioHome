@@ -118,27 +118,28 @@ class Home extends Component {
     });
 
     // Post request to backend
-    // fetch('http://localhost:5000/api/account/signup', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
+    
+    // axios.post('http://localhost:5000/api/account/signup',
+    // JSON.stringify({
     //     email: signUpEmail,
     //     password: signUpPassword,
     //     firstName: signUpFirstName,
     //     lastName: signUpLastName,
         
-    //   }),
-    // })
-    axios.post('http://localhost:5000/api/account/signup',
-    JSON.stringify({
+    //   }), )
+    fetch('http://localhost:5000/api/account/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
         email: signUpEmail,
         password: signUpPassword,
         firstName: signUpFirstName,
         lastName: signUpLastName,
         
-      }), )
+      }),
+    })
     .then(res => res.json())
       .then(json => {
         console.log('json', json);
