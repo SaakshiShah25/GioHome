@@ -89,7 +89,8 @@ export default class Cart extends Component{
             
             <div className="row">
                 <ul className="products">
-                    {this.state.products.length?
+                    { this.state.products.length?
+                    
                     this.state.products.map((u)=>(
                         
                         <div className="col-md-3">
@@ -100,19 +101,27 @@ export default class Cart extends Component{
                             <button onClick={()=>this.setState({showForm:true,formdata: u})}>
                                 Select Quantity
                             </button>
+
                             <button onClick={()=>this.remove(u.name)}>
                                 Remove from Cart
                             </button>
                         </div>
+                        
                         </div>
-                       
-                    )):
+                        
+                    ))
+                
+                    
+                   
+              
+                    :
                     
                     <div>Cart is empty!</div>
                     }
+                    <button><Link to="/cart/checkout">Checkout</Link></button>
                     {this.state.showForm ? this.showform() : null}
                 </ul> 
-                <button><Link to="/cart/checkout">Checkout</Link></button>
+               
             </div>
            
            

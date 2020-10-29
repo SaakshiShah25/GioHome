@@ -30,7 +30,7 @@ export class Success extends Component {
             <p>You will get an email with further instructions.</p>
             <p>This is your order summary</p>
             <button>
-              <Link to="/">
+              <Link to="/customer">
               Go to Home Page
               </Link>
             </button>

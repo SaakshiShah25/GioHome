@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { List, ListItem, ListItemText } from '@material-ui/core/';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
 export class Confirm extends Component {
   continue = e => {
@@ -21,6 +22,8 @@ export class Confirm extends Component {
   {
       var data = this.props.values;
       console.log(data)
+      axios.post("http://localhost:5000/orders/confirm",data)
+      .then(res => console.log(res))
       // Append this data to the order object
       
   }

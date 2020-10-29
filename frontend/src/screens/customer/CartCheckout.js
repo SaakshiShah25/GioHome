@@ -68,7 +68,7 @@ export default class CartCheckout extends Component{
                 ))}
                 <div style={{'textAlign':"center"}}>Net Total:{this.state.net_amount}</div>
                 <button>
-                   <Link to={{pathname:"/cart/checkout/details", data:{ products:this.state.products, net_amount : this.state.net_amount}}}>Fill Details</Link> 
+                   <Link to={{pathname:"/cart/checkout/details", data:{products:this.state.products, net_amount : this.state.net_amount}}}>Fill Details</Link> 
                 </button>
                 </div>
                 </div>
