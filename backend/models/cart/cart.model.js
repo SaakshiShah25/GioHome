@@ -5,7 +5,8 @@ const Schema = mongoose.Schema
 const Cart = new Schema(
     {
         name : {type: String},
-        products : { type:Array },  
+        products : { type:Array },
+        email : {type:String}  
     },
     {
         timestamps : true

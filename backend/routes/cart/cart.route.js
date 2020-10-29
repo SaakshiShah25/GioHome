@@ -1,34 +1,54 @@
 const router = require('express').Router();
-const e = require('express');
 const Cart = require('../../models/cart/cart.model.js');
 
-router.route('/').get((req, res)=>{
-    Cart.findOne({name:"Sanket"},'products',function (err, user){
-        if (err) {
+var User;
+
+// Get all products to cart
+router.route('/:id').get((req, res)=>{
+   
+    User = req.params.id
+
+    Cart.findOne({email:User},'products',function (err, user){
+        if (err) 
+        {
             res.send(err);
-          } else {
+        } 
+        else 
+        {
             res.json(user.products);
-          }
+        }
     });
+
 });
 
-
+// Checkout
 router.route('/checkout').get((req, res)=>{
-    Cart.findOne({name:"Sanket"},'products',function (err, user){
-        if (err) {
+
+    Cart.findOne({email:User},'products',function (err, user){
+
+        if(err) 
+        {
             res.send(err);
-          } else {
+        } 
+        else 
+        {
             res.json(user.products);
-          }
+        }
+
     });
+
 });
 
+// Update products to cart
 
 router.route('/edit').post((req, res)=>{
+    
     var updateData = req.body;
-    // console.log(updateData)
+   
     Cart.exists({products: updateData}, function(err, result) {
-        if (err) {
+        
+        if (err) 
+        {
           res.send(err);
         } 
         else 
@@ -37,12 +57,17 @@ router.route('/edit').post((req, res)=>{
             if (!result)
             {
             
-            Cart.findOneAndUpdate({name:"Sanket"},{$push: {products: updateData}},function (error, success) {
-                if (error) {
+            Cart.findOneAndUpdate({email:User},{$push: {products: updateData}},function (error, success) {
+                
+                if (error) 
+                {
                     console.log(error);
-                } else {
+                } 
+                else 
+                {
                     console.log(success);
                 }
+
             });
         }
         
@@ -51,16 +76,21 @@ router.route('/edit').post((req, res)=>{
       })
 });
 
+// Make new cart
+
 router.route('/add').post(
     (req,res) => {
+        const email = User;
+    
         
-        const _id = req.body._id;
         const name = String(req.body.name);
-        const products = String(req.body.products);
-        console.log(name)
+        const products = req.body.products;
+
         const newCart = new Cart(
-            {   name,
+            {   
+                name,
                 products,
+                email
             }
             
             );
@@ -69,39 +99,54 @@ router.route('/add').post(
         newCart.save()
         .then(()=>res.json('Cart Created!'))
         .catch(err=> res.status(400).json('Error: '+err));
+
     }
 );
 
 
 router.route('/updatecart/:id').post((req, res) => {
-    console.log(req.body)
+
+    
     var updateData = req.body.available_quantity
-    console.log(updateData)
     var id = req.params.id
+
     Cart.updateOne({"products.name":id},{$set:{"products.$.available_quantity":updateData}},function (error, success) {
-        if (error) {
+        
+        if (error) 
+        {
             console.log(error);
-        } else {
+        } 
+        else 
+        {
             console.log(success);
         }
+
     });
   });
     
-
+// Remove from Cart
 
 router.route('/remove/:id').get((req, res)=>{
+
     var id = req.params.id;
-    Cart.findOneAndUpdate({name:"Sanket"},{$pull: {products: {name:id}}},function (error, success) {
-        console.log("Check")
-        if (error) {
+
+    Cart.findOneAndUpdate({email:User},{$pull: {products: {name:id}}},function (error, success) {
+       
+        if (error) 
+        {
             console.log(error);
-        } else {
+        } 
+        else
+        {
             console.log(success);
         }
+
     });
 
 });
 
+// Extra
+////////////////////////////////////////////
 // router.route('/:id').delete((req, res) => {
 //   Exercise.findByIdAndDelete(req.params.id)
 //     .then(() => res.json('Exercise deleted.'))
