@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 export class FormCustomerDetails extends Component {
   continue = e => {
     e.preventDefault();
