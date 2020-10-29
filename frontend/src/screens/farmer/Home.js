@@ -37,7 +37,13 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    
     const obj = getFromStorage('the_main_app');
+    console.log(obj)
+
+    const email = getFromStorage('email')
+    console.log("Email",email)
+
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
@@ -112,11 +118,11 @@ class Home extends Component {
     //     signUpFirstName=this.signUpFirstName,
     //     signUpLastName=this.signUpLastName,
     // }
-
+     
     this.setState({
       isLoading: true,
     });
-
+    
     // Post request to backend
     
     // axios.post('http://localhost:5000/api/account/signup',
@@ -171,7 +177,7 @@ class Home extends Component {
     this.setState({
       isLoading: true,
     });
-
+    setInStorage("email",signInEmail)
     // Post request to backend
     fetch('http://localhost:5000/api/account/signin', {
       method: 'POST',
@@ -207,6 +213,7 @@ class Home extends Component {
     this.setState({
       isLoading: true,
     });
+    setInStorage("email",{})
     const obj = getFromStorage('the_main_app');
     if (obj && obj.token) {
       const { token } = obj;

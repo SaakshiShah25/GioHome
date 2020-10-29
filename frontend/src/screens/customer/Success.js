@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 export class Success extends Component {
   continue = e => {
     e.preventDefault();
-    // PROCESS FORM //
     this.props.nextStep();
   };
 

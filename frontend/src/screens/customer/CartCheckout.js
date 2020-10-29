@@ -2,7 +2,10 @@ import React, {Component,Fragment} from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
-
+import {
+  getFromStorage,
+  setInStorage,
+} from '../../utils/storage';
 
 export default class CartCheckout extends Component{
 
@@ -19,9 +22,12 @@ export default class CartCheckout extends Component{
 
     
     componentDidMount() {
+      const obj = getFromStorage('email');
 
+      console.log("Email",obj)
+      const id =  obj
 
-        axios.get('http://localhost:5000/cart/')
+        axios.get('http://localhost:5000/cart/'+id)
           .then(response => {
             console.log(response.data)
             this.setState({ products: response.data})

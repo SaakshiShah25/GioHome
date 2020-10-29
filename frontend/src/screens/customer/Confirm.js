@@ -5,11 +5,15 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { List, ListItem, ListItemText } from '@material-ui/core/';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import {
+  getFromStorage,
+  setInStorage,
+} from '../../utils/storage';
 
 export class Confirm extends Component {
+
   continue = e => {
     e.preventDefault();
-    // PROCESS FORM //
     this.props.nextStep();
   };
 
@@ -20,8 +24,11 @@ export class Confirm extends Component {
   
   componentDidMount()
   {
+      const obj = getFromStorage('email');
+      const id =  obj
       var data = this.props.values;
-      console.log(data)
+      data['email'] = id
+      
       axios.post("http://localhost:5000/orders/confirm",data)
       .then(res => console.log(res))
       // Append this data to the order object
