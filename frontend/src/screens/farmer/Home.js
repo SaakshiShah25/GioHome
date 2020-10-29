@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import  { Redirect } from 'react-router-dom'
 //http://localhost:5000/api/signup
 import {
   getFromStorage,
@@ -137,6 +138,7 @@ class Home extends Component {
             signUpFirstName: '',
             signUpLastName: ''
           }); 
+          this.props.history.push('/signin')
         } else {
           this.setState({
             signUpError: json.message,
@@ -238,10 +240,7 @@ class Home extends Component {
       );
     }
     return (
-      <div>
-        <p>Account</p>
-        <button onClick={this.logout}>Logout</button>
-      </div>
+      <Redirect to='/signin'  />
     );
 
     

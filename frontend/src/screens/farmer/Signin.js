@@ -101,6 +101,7 @@ class Signin extends Component {
             signInEmail: '',
             token: json.token,
           });
+          this.props.history.push('/customer')
         } else {
           this.setState({
             signInError: json.message,
