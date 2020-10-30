@@ -10,7 +10,8 @@ const product = new Schema(
         price : {type:Number},
         available_quantity : {type: String},
         date_produced : {type:Date},
-        life : {type:Number} 
+        life : {type:Number},
+        farmer_id : {type:Number}
     
     },
     {

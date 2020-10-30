@@ -75,12 +75,13 @@ export default class LandingCustomer extends Component{
                         />
                     </Link>
                     <div className="product-name">
-                        <Link to={'' + u._id}>{u.name}</Link>
+                        <Link to={{pathname:'/customer/products-offered',data:u.name}}>{u.name}</Link>
                     </div>
-                    <div className="product-description">{u.description}</div>
-                    <div className="product-price">Price: {u.price}</div>
-                    <div className="product-life">Life: {u.life}</div>
-                    <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button>
+                    
+
+                        {/* not needed for now transfering to somehwere else */}
+                    {/* <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button> */}
+
                     </div>
                     </li>
                     

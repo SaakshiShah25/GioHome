@@ -3,6 +3,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
 
+import {
+    getFromStorage,
+    setInStorage,
+  } from '../../utils/storage';
 
 export default class FarmerPage extends Component{
     constructor(props){
@@ -26,11 +30,13 @@ export default class FarmerPage extends Component{
           .then(response => {
             console.log(response.data)
             this.setState({ products: response.data })
-            console.log(this.state.products[0])
+            
           })
           .catch((error) => {
             console.log(error);
           })
+
+
       }
 
     

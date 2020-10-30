@@ -45,6 +45,9 @@ const orderRoute = require("./routes/orders/order.route.js");
 const homeRoute = require("./routes/signin/signin.route.js");
 const cart = require("./routes/cart/cart.route.js");
 const account = require('./routes/account/account.route.js');
+const products = require('./routes/products/products.route.js');
+
+
 
 app.use("/farmer",farmerRoute);
 app.use("/stock-product",stockProductRoute);
@@ -52,6 +55,9 @@ app.use("/orders",orderRoute);
 app.use("/",homeRoute)
 app.use("/cart",cart);
 app.use("/account",account);
+app.use("/products",products);
+
+
 
 // #################_KEEP_PORT_RUNNING_################ 
 app.listen(port,()=>{

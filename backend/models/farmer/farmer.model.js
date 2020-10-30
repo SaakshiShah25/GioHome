@@ -7,7 +7,8 @@ const farmer = new Schema(
         
         name : { type:String, required : true, trim: true },
         location : { type:String },
-        products : { type:Array }, 
+        products : { type:Array },
+        
 
     },
 

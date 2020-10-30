@@ -30,7 +30,8 @@ router.route('/add').post(
             price,
             available_quantity,
             date_produced,
-            life
+            life,
+            
         });
             
 

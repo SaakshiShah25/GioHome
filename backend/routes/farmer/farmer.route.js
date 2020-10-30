@@ -14,7 +14,8 @@ router.route('/add').post(
         const _id = req.body._id;
         const name = String(req.body.name);
         const location = String(req.body.location);
-        const products = Array(req.body.products);
+        const products = (req.body.products);
+        
         console.log(name)
         const newFarmer = new Farmer(
             {
@@ -34,7 +35,78 @@ router.route('/add').post(
     }
 );
 
+// router.route('/option').get((req, res)=>{
+//     Farmer.find({},function(error,succ){
+//         if(error)
+//         {
+//             res.send(error)
+//         }
+//         else{
+//             res.json(succ)
+//         }
+//     })
+    
+// });
+
+
+
+// Display the product named Orange and foreign key given to each product
+
+router.route('/option/:id').get((req, res)=>{
+    var name = req.params.id
+
+    Farmer.find({"products.name" : name },function(error,object){
+     
+                if(error)
+                {
+                    res.send(error)
+                }
+                else{
+                    var temp =[]
+                    object.map(
+                        farmer => farmer.products.map(
+                            product => {
+                                if(product.name == name)
+                                {
+                                   product["farmer_id"] = farmer._id
+                                   temp.push(product)
+                                    
+                                }
+                            }
+                        )
+                    )
+                    res.json(temp)
+                }
+            })
+    
+    
+});
+
+// Returns all the details of the farmer of the give id
+
+router.route('/farmer-details/:id').get((req, res)=>{
+
+    var id = req.params.id
+    Farmer.find({ _id : id},function(error,object){
+     
+                if(error)
+                {
+                    res.send(error)
+                }
+                else
+                {
+                    res.json(object)
+                }
+                
+            })
+    
+    
+});
+
+
+
 router.route('/update').get((req, res)=>{
+
         Farmer.findOne({name:"Sanket"},'products',function (err, farmer){
             if (err) {
                 res.send(err);
@@ -45,7 +117,10 @@ router.route('/update').get((req, res)=>{
 });
 
 
-router.route('/edit').post((req, res)=>{
+
+
+router.route('/edit/').post((req, res)=>{
+    
     console.log(req.body);
     var updateData = req.body;
     Farmer.findOneAndUpdate({name:"Sanket"},{$push: {products: updateData}},function (error, success) {
