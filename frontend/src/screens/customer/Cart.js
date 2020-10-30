@@ -2,10 +2,15 @@ import React, {Component,Fragment} from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
+
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+
 import {
     getFromStorage,
     setInStorage,
   } from '../../utils/storage';
+
 export default class Cart extends Component{
 
     constructor(props){
@@ -19,7 +24,8 @@ export default class Cart extends Component{
             name:'',
             showForm:false,
             formdata: {},
-            available_quantity:''
+            available_quantity:'',
+            address : []
         }
 
     }
@@ -38,12 +44,15 @@ export default class Cart extends Component{
     
 
     handleSubmit(e){
+
         e.preventDefault();
         const updatedData = this.state.formdata
-          console.log(updatedData);
-          updatedData.available_quantity = this.state.available_quantity;
-          console.log(updatedData)
-          const id=this.state.formdata.name
+        updatedData['address'] = this.state.address
+        updatedData.available_quantity = this.state.available_quantity;
+  
+
+        const id=this.state.formdata.name
+
 
       axios.post('http://localhost:5000/cart/updatecart/'+id, updatedData)
       .then(res => console.log(res.data))
@@ -53,7 +62,6 @@ export default class Cart extends Component{
     }
     componentDidMount() {
         const obj = getFromStorage('email');
-
         console.log("Email",obj)
         const id =  obj
       
@@ -68,27 +76,36 @@ export default class Cart extends Component{
             console.log(error);
           })
 
+          axios.get('http://localhost:5000/account/'+id)
+          .then(response => {
+              this.setState({
+                  address : response.data.address
+              })
+          })
+
       }
 
       showform = () => {
         return (
             <Modal.Dialog>
-            <Modal.Header>
-                <Modal.Title>Select Quantity</Modal.Title>
-            </Modal.Header>
 
-            <Modal.Body>
-                <form onSubmit={this.handleSubmit}>
-                    <label for="quantity">Quantity: </label>
-                    <input type="number" min="1" max="10"  onChange={this.handleQuantityChange}></input>
-                        <div>Total: {this.state.formdata.price}*{this.state.available_quantity}</div>
-                    <input type="submit" value="Save"></input>
-                </form>
-            </Modal.Body>
+                <Modal.Header>
+                    <Modal.Title>Select Quantity</Modal.Title>
+                </Modal.Header>
 
-            <Modal.Footer>
-                <button variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
-            </Modal.Footer>
+                <Modal.Body>
+                    <form onSubmit={this.handleSubmit}>
+                        <label for="quantity">Quantity: </label>
+                        <input type="number"   onChange={this.handleQuantityChange}></input>
+                            <div>Total: {this.state.formdata.price}*{this.state.available_quantity}</div>
+                        <input type="submit" value="Save"></input>
+                    </form>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <button variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
+                </Modal.Footer>
+
             </Modal.Dialog>
           );
       }
@@ -98,43 +115,39 @@ export default class Cart extends Component{
             
             <div className="row">
                 <ul className="products">
-                    { this.state.products.length?
-                    
-                    this.state.products.map((u)=>(
-                        
-                        <div className="col-md-3">
-                        <div className="card" style={{width:'18rem','margin-top':'20px'}}>
-                            <div>{u.name}</div>
-                            <div>{u.description}</div>
-                            <div>{u.price}</div>
-                            <button onClick={()=>this.setState({showForm:true,formdata: u})}>
-                                Select Quantity
-                            </button>
+                    { this.state.products.length ?
 
-                            <button onClick={()=>this.remove(u.name)}>
-                                Remove from Cart
-                            </button>
+                        <div>
+                            { 
+                                this.state.products.map((u)=> (
+                                
+                                <div className="col-md-3">
+                                    <div className="card" style={{width:'18rem','margin-top':'20px'}}>
+                                        <div>{u.name}</div>
+                                        <div>{u.description}</div>
+                                        <div>{u.price}</div>
+                                            <button onClick={()=>this.setState({showForm:true,formdata: u})}>
+                                                Select Quantity
+                                            </button>
+
+                                            <button onClick={()=>this.remove(u.name)}>
+                                                Remove from Cart
+                                            </button>
+                                    </div>
+                                
+                                </div>))
+                            }
+                            <button><Link to="/cart/checkout">Proceed to Checkout</Link></button>
                         </div>
-                        
-                        </div>
-                        
-                    ))
-                
-                    
-                   
-              
-                    :
-                    
-                    <div>Cart is empty!</div>
+                        : 
+                        <div>Cart is empty!</div>
                     }
-                    <button><Link to="/cart/checkout">Checkout</Link></button>
-                    {this.state.showForm ? this.showform() : null}
+                        {this.state.showForm ? this.showform() : null}
                 </ul> 
                
             </div>
            
-           
-        );
+                );
     }
 
 }

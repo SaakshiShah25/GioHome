@@ -21,7 +21,8 @@ const order = new Schema(
         delivery: {type:String},
         net_amount: {type:Number},
         payment: {type:String},
-        products:{type:Array}
+        products:{type:Array},
+        email : {type:String}
 
     },
     {

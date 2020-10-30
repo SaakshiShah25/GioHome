@@ -1,12 +1,47 @@
 import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import axios from 'axios'
+
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+
+import {
+  getFromStorage,
+  setInStorage,
+} from '../../utils/storage';
+
 export class FormCustomerDetails extends Component {
+
+  constructor(props){
+
+    super(props);
+    
+
+    this.state={
+        
+      address : []
+    }
+
+}
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
   };
+handleChangeOption = ()=>{
+  const { values, handleChange } = this.props;
+  handleChange()
+  this.continue()
+}
+  componentDidMount()
+  {
+    const obj = getFromStorage('email');
+    console.log("Email",obj)
+    const id =  obj
 
+    axios.get('http://localhost:5000/account/'+id)
+    .then(res => { this.setState({address:res.data.address})})
+  }
   render() {
     const { values, handleChange } = this.props;
     return (
@@ -25,6 +60,10 @@ export class FormCustomerDetails extends Component {
             >
             </textarea>
             <br />
+            <div>My saved Addresses</div>
+            <Dropdown options = {this.state.address} onChange={handleChange} value={""} placeholder="Select an option">
+
+            </Dropdown>
             
             <button onClick={this.continue}>
             Continue

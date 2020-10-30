@@ -14,6 +14,11 @@ email: {
     type: String,
     default: ''
 },
+address : {
+    type : Array,
+    default : []
+}
+,
 password: {
     type: String,
     default: ''
