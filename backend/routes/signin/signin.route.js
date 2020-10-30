@@ -5,6 +5,7 @@ const UserSession = require('../../models/signin/usersession.model');
   /*
    * Sign up
    */
+  
   router.route('/api/account/signup').post( (req, res, next) => {
     const { body } = req;
     const {

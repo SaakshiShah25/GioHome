@@ -33,7 +33,13 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    
     const obj = getFromStorage('the_main_app');
+    console.log(obj)
+
+    const email = getFromStorage('email')
+    console.log("Email",email)
+
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
@@ -98,11 +104,11 @@ class Home extends Component {
     //     signUpFirstName=this.signUpFirstName,
     //     signUpLastName=this.signUpLastName,
     // }
-
+     
     this.setState({
       isLoading: true,
     });
-
+    
     // Post request to backend
     
     // axios.post('http://localhost:5000/api/account/signup',
@@ -148,11 +154,53 @@ class Home extends Component {
       });
   }
 
-  
+  onSignIn() {
+    // Grab state
+    const {
+      signInEmail,
+      signInPassword,
+    } = this.state;
+
+    this.setState({
+      isLoading: true,
+    });
+    setInStorage("email",signInEmail)
+    // Post request to backend
+    fetch('http://localhost:5000/api/account/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: signInEmail,
+        password: signInPassword,
+      }),
+    }).then(res => res.json())
+      .then(json => {
+        console.log('json', json);
+        if (json.success) {
+          setInStorage('the_main_app', { token: json.token });
+          this.setState({
+            signInError: json.message,
+            isLoading: false,
+            signInPassword: '',
+            signInEmail: '',
+            token: json.token,
+          });
+        } else {
+          this.setState({
+            signInError: json.message,
+            isLoading: false,
+          });
+        }
+      });
+  }
+
   logout() {
     this.setState({
       isLoading: true,
     });
+    setInStorage("email",{})
     const obj = getFromStorage('the_main_app');
     if (obj && obj.token) {
       const { token } = obj;

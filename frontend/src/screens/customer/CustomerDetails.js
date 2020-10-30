@@ -4,6 +4,11 @@ import FormDeliveryDetails from './FormDeliveryDetails';
 import Confirm from './Confirm';
 import Success from './Success';
 
+import {
+  getFromStorage,
+  setInStorage,
+} from '../../utils/storage';
+
 export class CustomerDetails extends Component {
   state = {
     step: 1,
@@ -39,11 +44,12 @@ export class CustomerDetails extends Component {
 
     componentDidMount()
     {
-      console.log(this.props.location.data)
+      const obj = getFromStorage('email');
       this.setState(
         {
         products:this.props.location.data.products,
-        net_amount: this.props.location.data.net_amount
+        net_amount: this.props.location.data.net_amount,
+        
         }
       )
     }
