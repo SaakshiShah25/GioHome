@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 //http://localhost:5000/api/signup
 import {
   getFromStorage,
@@ -178,6 +179,9 @@ class Signin extends Component {
             />
             <br />
             <button onClick={this.onSignIn}>Sign In</button>
+            <button>
+                <Link to="/">Signup</Link>
+            </button>
           </div>
           <br />
           <br />

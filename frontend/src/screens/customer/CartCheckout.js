@@ -74,7 +74,7 @@ export default class CartCheckout extends Component{
                 </div>
                 
                 </ul> 
-                
+                 
             </div>
            
            

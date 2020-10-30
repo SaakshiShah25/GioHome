@@ -2,6 +2,7 @@ const router = require('express').Router();
 const e = require('express');
 const Cart = require('../../models/cart/cart.model.js');
 
+
 router.route('/').get((req, res)=>{
     Cart.findOne({name:"Sanket"},'products',function (err, user){
         if (err) {

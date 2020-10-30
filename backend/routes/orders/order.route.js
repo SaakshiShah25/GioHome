@@ -18,7 +18,7 @@ router.route('/confirm').post(
         const net_amount = Number(req.body.net_amount);
         const payment = String(req.body.payment);
         // const delivery_date = Date.parse(req.body.delivery_date);
-        const products = Array(req.body.products);
+        const products =(req.body.products);
         const order = new Order(
             {
                 address,
