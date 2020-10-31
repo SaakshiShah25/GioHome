@@ -80,7 +80,7 @@ export default class LandingCustomer extends Component{
                     
 
                         {/* not needed for now transfering to somehwere else */}
-                    {/* <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button> */}
+                    <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button>
 
                     </div>
                     </li>

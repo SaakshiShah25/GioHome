@@ -45,7 +45,7 @@ router.route('/edit').post((req, res)=>{
     
     var updateData = req.body;
    
-    Cart.exists({products: updateData}, function(err, result) {
+    Cart.exists({email:User,products: updateData}, function(err, result) {
         
         if (err) 
         {
@@ -80,25 +80,35 @@ router.route('/edit').post((req, res)=>{
 
 router.route('/add').post(
     (req,res) => {
-        const email = User;
+
+
+        const email = req.body.email;
     
         
         const name = String(req.body.name);
         const products = req.body.products;
 
-        const newCart = new Cart(
-            {   
-                name,
-                products,
-                email
+        Cart.exists({email:User}, function(err, result)
+        {
+            if(!result)
+            {
+                const newCart = new Cart(
+                    {   
+                        name,
+                        products,
+                        email
+                    }
+                    
+                    );
+                    
+        
+                newCart.save()
+                .then(()=>res.json('Cart Created!'))
+                .catch(err=> res.status(400).json('Error: '+err));
             }
-            
-            );
-            
+        })
 
-        newCart.save()
-        .then(()=>res.json('Cart Created!'))
-        .catch(err=> res.status(400).json('Error: '+err));
+        
 
     }
 );

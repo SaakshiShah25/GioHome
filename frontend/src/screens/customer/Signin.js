@@ -74,12 +74,14 @@ class Signin extends Component {
     const {
       signInEmail,
       signInPassword,
+     
     } = this.state;
 
     this.setState({
       isLoading: true,
     });
-
+    setInStorage("email",signInEmail)
+    
     // Post request to backend
     fetch('http://localhost:5000/api/account/signin', {
       method: 'POST',

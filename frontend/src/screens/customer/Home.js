@@ -119,6 +119,15 @@ class Home extends Component {
     //     lastName: signUpLastName,
         
     //   }), )
+    const data = {
+      name : signUpFirstName,
+      email : signUpEmail,
+      products : []
+    }
+    axios.post('http://localhost:5000/cart/add',data)
+    .then(
+      res => console.log(res.data)
+    )
     fetch('http://localhost:5000/api/account/signup', {
       method: 'POST',
       headers: {
