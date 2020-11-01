@@ -2,6 +2,10 @@ import React, {Component,Fragment} from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
+import {
+    getFromStorage,
+    setInStorage,
+  } from '../../utils/storage';
 
 export default class LandingCustomer extends Component{
     constructor(props){
@@ -46,6 +50,9 @@ export default class LandingCustomer extends Component{
 
    
     componentDidMount() {
+
+        const userType = getFromStorage("type")
+       
         axios.get('http://localhost:5000/stock-product/')
           .then(response => {
             this.setState({ products: response.data })

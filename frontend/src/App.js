@@ -19,6 +19,8 @@ import Signin from './screens/customer/Signin.js';
 import ViewOrderDetails from './screens/customer/ViewOrderDetails'
 import ProductsOffered from './screens/customer/ProductsOffered'
 import MoreDetails from './screens/customer/MoreDetails'
+import FarmerAccount from './screens/farmer/FarmerAccount'
+
 
 import history from './history.js';
 function App({history}) {
@@ -39,6 +41,9 @@ function App({history}) {
       <Route path="/account" exact component={Account} />
       <Route path="/customer/products-offered" exact component={ProductsOffered} />
       <Route path="/customer/products-offered/moredetails" exact component={MoreDetails} />
+      <Route path="/farmer-account" exact component={FarmerAccount} />
+
+      
 
 
     </BrowserRouter>

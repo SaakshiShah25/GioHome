@@ -18,6 +18,7 @@ class Signin extends Component {
       signInError: '',
       signInEmail: '',
       signInPassword: '',
+      userType: ''
       
     };
 
@@ -27,10 +28,13 @@ class Signin extends Component {
 
     this.onSignIn = this.onSignIn.bind(this);
     this.logout = this.logout.bind(this);
+
+    this.selectType = this.selectType.bind(this);
   }
 
   componentDidMount() {
     const obj = getFromStorage('the_main_app');
+
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
@@ -81,6 +85,7 @@ class Signin extends Component {
       isLoading: true,
     });
     setInStorage("email",signInEmail)
+    setInStorage("type",this.state.userType)
     
     // Post request to backend
     fetch('http://localhost:5000/api/account/signin', {
@@ -111,7 +116,8 @@ class Signin extends Component {
             isLoading: false,
           });
         }
-      });
+      })
+      .then(window.location.reload())
   }
 
   logout() {
@@ -135,12 +141,23 @@ class Signin extends Component {
               isLoading: false,
             });
           }
-        });
+        })
+        .then(setInStorage("type",""))
+        .then(window.location.reload())
     } else {
       this.setState({
         isLoading: false,
       });
     }
+  }
+  
+  // Selecting if he is a farmer or a Customer
+  // and the value is set in the internal storage 
+  // as the key -> "type"
+  selectType(event) {
+    this.setState({
+      userType: event.target.value
+    });
   }
 
   render() {
@@ -150,6 +167,7 @@ class Signin extends Component {
       signInError,
       signInEmail,
       signInPassword,
+      userType
     } = this.state;
 
     if (isLoading) {
@@ -180,10 +198,37 @@ class Signin extends Component {
               onChange={this.onTextboxChangeSignInPassword}
             />
             <br />
-            <button onClick={this.onSignIn}>Sign In</button>
+                  <div className="radio" onChange={this.selectType}>
+              
+                  <input
+                    type="radio"
+                    value="Farmer"
+                    checked={this.state.userType === "Farmer"}
+                    name="userType"
+                  
+                  />
+                    Farmer
+                  <input
+                    type="radio"
+                    value="Customer"
+                    checked={this.state.userType === "Customer"}
+                    name="userType"
+                  
+                  />
+                    Customer
+       
+                  </div>
+    
+            <button onClick={this.onSignIn}>
+             <Link to="/">
+             Sign In
+             </Link>
+              
+              </button>
             <button>
                 <Link to="/">Signup</Link>
             </button>
+          <div>{this.state.userType}</div>
           </div>
           <br />
           <br />

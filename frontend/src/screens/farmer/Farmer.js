@@ -32,9 +32,11 @@ export default class FarmerPage extends Component{
             this.setState({ products: response.data })
             
           })
-          .catch((error) => {
+          .catch(
+            (error) => {
             console.log(error);
-          })
+          }
+          )
 
 
       }
@@ -53,6 +55,7 @@ export default class FarmerPage extends Component{
       };
      
       handleSubmit(e){
+
         e.preventDefault();
         const updatedData = this.state.formdata
           console.log(updatedData);
@@ -64,10 +67,13 @@ export default class FarmerPage extends Component{
         console.log(this.state.formdata.name)
 
       axios.post('http://localhost:5000/farmer/updateproduct/'+id, updatedData)
+
       .then(res => console.log(res.data))
+      
       .catch((error) => {
           console.log(error);
         })
+
     }
 
       showform = () => {

@@ -60,9 +60,7 @@ export class FormDeliveryDetails extends Component {
             <button
               onClick={this.continue}
             >Continue</button>
-           <button>
-              <Link to="/customer" > Cancel Order </Link>
-            </button>
+           
       
 
             {/* </div> */}

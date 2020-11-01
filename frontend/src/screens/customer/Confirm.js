@@ -13,8 +13,18 @@ import {
 } from '../../utils/storage';
 
 export class Confirm extends Component {
+  constructor(props){
+    super(props);
+   
+    this.state={
+       data : []
+    }
+}
 
   continue = e => {
+    const data = this.state.data
+    axios.post("http://localhost:5000/orders/confirm",data)
+    .then(res => console.log(res))
     e.preventDefault();
     this.props.nextStep();
   };
@@ -30,9 +40,12 @@ export class Confirm extends Component {
       const id =  obj
       var data = this.props.values;
       data['email'] = id
+      this.setState(
+        {
+          data:data
+        }
+      )
       
-      axios.post("http://localhost:5000/orders/confirm",data)
-      .then(res => console.log(res))
       // Append this data to the order object
       
   }
@@ -95,6 +108,9 @@ export class Confirm extends Component {
             <button
               onClick={this.continue}
             > Confirm & Continue </button>
+            <button>
+              <Link to="/customer" > Cancel Order </Link>
+            </button>
             
           </Dialog>
         </>

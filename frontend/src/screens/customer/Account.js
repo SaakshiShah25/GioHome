@@ -19,10 +19,11 @@ export default class Account extends Component{
             email : "",
             showForm:false,
             formdata: {},
-            temp : ""
-
-           
+            temp : "",
+            isLoading:false
         }
+
+        this.logout = this.logout.bind(this);
     }
     handleChange = e => {
         this.setState({
@@ -77,6 +78,37 @@ export default class Account extends Component{
             )
             .then(window.location.reload())
       }
+      logout() {
+
+        this.setState({
+          isLoading: true,
+        });
+        const obj = getFromStorage('the_main_app');
+        if (obj && obj.token) {
+          const { token } = obj;
+          // Verify token
+          fetch('http://localhost:5000/api/account/logout?token=' + token)
+            .then(res => res.json())
+            .then(json => {
+              if (json.success) {
+                this.setState({
+                  token: '',
+                  isLoading: false
+                });
+              } else {
+                this.setState({
+                  isLoading: false,
+                });
+              }
+            })
+            .then(setInStorage("type",""))
+            .then(window.location.reload())
+        } else {
+          this.setState({
+            isLoading: false,
+          });
+        }
+      }
         
     componentDidMount() {
 
@@ -130,6 +162,8 @@ export default class Account extends Component{
                 <button onClick={()=>this.setState({showForm:true})}>Add new Address</button>
 
                 {this.state.showForm ? this.showform() : null}
+
+                <button onClick={this.logout}><Link to="/signin">Logout</Link></button>
                 
             </div>
         );
