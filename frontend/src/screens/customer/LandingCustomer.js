@@ -67,7 +67,7 @@ export default class LandingCustomer extends Component{
                     {this.state.products.map((u)=>(
                     <li key={u._id}>
                     <div className="product">
-                        
+
                     <Link to={'' + u._id}>
                         <img
                         className="product-image"
@@ -81,7 +81,7 @@ export default class LandingCustomer extends Component{
                     
 
                         {/* not needed for now transfering to somehwere else */}
-                    <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button>
+                    {/* <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button> */}
 
                     </div>
                     </li>

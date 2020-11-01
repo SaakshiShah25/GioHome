@@ -22,10 +22,39 @@ export default class ProductsOffered extends Component{
             data: [],
             farmer_data : [],
             showForm:false,
+            name:'',
 
         }
 
     }
+    handleChange(product){
+        const addedproduct = {
+            name:product.name,
+            description: product.description,
+            price: product.price,
+            available_quantity: product.available_quantity,
+            date_produced:product.date,
+            life: product.life,
+        }
+        
+        axios.post('http://localhost:5000/cart/edit', addedproduct)
+        
+  
+        .then( res => 
+            {
+                if(res.data)
+                {
+                    alert("Already in your cart")
+                }
+                else{
+                    alert("Done")
+                }
+            }
+            
+            )
+        
+        
+    };
    
     componentDidMount() {
 
@@ -86,15 +115,12 @@ export default class ProductsOffered extends Component{
                   
                    
                     console.log('Farmer Data New-> ',this.state.farmer_data)
+
                     this.setState({ showForm: true })
                     
                 }
             )
-            // .then(
-             
-            //         
-               
-            // )
+           
             
 
             }
@@ -146,9 +172,10 @@ export default class ProductsOffered extends Component{
                                             View farmer Details 
                                         </button>
                                         {/* Add to cart comes here connection left */}
-                                        <button>
-                                            Add to cart
-                                        </button>
+                                      
+                                        <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button>
+
+                                 
                                     </div>
                                 
                                 </div>))
