@@ -160,6 +160,29 @@ router.route('/updateproduct/:id').post((req, res) => {
         }
     });
   });
+
+   
+// This is only for Sanket right now 
+// the primart key for farmer has not been decided yet 
+
+  router.route('/remove-product/:id').get((req, res)=>{
+
+    var id = req.params.id;
+
+    Farmer.findOneAndUpdate({name:"Sanket"},{$pull: {products: {name:id}}},function (error, success) {
+       
+        if (error) 
+        {
+            console.log(error);
+        } 
+        else
+        {
+            console.log(success);
+        }
+
+    });
+
+});
 // router.route('/updateprod/:id').post((req, res) => {
 //     Farmer.findById(req.params.id)
 //       .then(products => {

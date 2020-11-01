@@ -5,6 +5,8 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { List, ListItem, ListItemText } from '@material-ui/core/';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import CustomerDetails from './CustomerDetails';
 import {
   getFromStorage,
   setInStorage,
@@ -93,6 +95,7 @@ export class Confirm extends Component {
             <button
               onClick={this.continue}
             > Confirm & Continue </button>
+            
           </Dialog>
         </>
       </MuiThemeProvider>

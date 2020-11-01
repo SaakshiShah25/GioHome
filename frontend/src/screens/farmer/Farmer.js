@@ -95,7 +95,15 @@ export default class FarmerPage extends Component{
           );
       }
 
-     
+      remove = (u) =>{
+        console.log("Checking data",u)
+        axios.get("http://localhost:5000/farmer/remove-product/"+u)
+        .then(
+            res => console.log( res,"Product Deleted" )
+        )
+        .then(window.location.reload())
+  }
+    
       
     render(){
         return(
@@ -122,6 +130,7 @@ export default class FarmerPage extends Component{
                             <button onClick={()=> this.setState({ showForm: true ,formdata: u})}>
                                 Update
                             </button>
+                            <button onClick={()=>this.remove(u.name)}>Stop Offering</button>
                            
                               
                             
