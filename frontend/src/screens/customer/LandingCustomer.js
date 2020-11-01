@@ -67,6 +67,7 @@ export default class LandingCustomer extends Component{
                     {this.state.products.map((u)=>(
                     <li key={u._id}>
                     <div className="product">
+                        
                     <Link to={'' + u._id}>
                         <img
                         className="product-image"
@@ -75,7 +76,7 @@ export default class LandingCustomer extends Component{
                         />
                     </Link>
                     <div className="product-name">
-                        <Link to={{pathname:'/customer/products-offered',data:u.name}}>{u.name}</Link>
+                        <Link to={{pathname:'/customer/products-offered',data:{name: u.name,id: u.farmer_id}}}>{u.name}</Link>
                     </div>
                     
 

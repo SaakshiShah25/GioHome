@@ -17,6 +17,7 @@ router.route('/add').post(
         const products = (req.body.products);
         
         console.log(name)
+       
         const newFarmer = new Farmer(
             {
             
@@ -119,17 +120,31 @@ router.route('/update').get((req, res)=>{
 
 
 
-router.route('/edit/').post((req, res)=>{
+router.route('/edit').post((req, res)=>{
     
     console.log(req.body);
     var updateData = req.body;
+    console.log("Checking -> ",req.body.name)
+    Farmer.exists({name : "Sanket", "products.name": req.body.name}, function(err, result)
+    {
+        console.log("Check Bool",result)
+        if (!result)
+        {
     Farmer.findOneAndUpdate({name:"Sanket"},{$push: {products: updateData}},function (error, success) {
         if (error) {
             console.log(error);
         } else {
             console.log(success);
         }
-    });
+        });
+        
+        }
+        else
+        {
+            res.send("Already in your list")
+            console.log("Already in my list")
+        }
+    })
 
 });
 
