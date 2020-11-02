@@ -3,6 +3,13 @@ const router = require('express').Router();
 const Order = require('../../models/orders/order.model.js');
 const Cart = require('../../models/cart/cart.model.js');
 
+router.route('/farmer').get(
+    (req,res)=>{ 
+        Order.find({"products.farmer_id":"5f3e41b85da66d33d6ebe0d7"})
+        .then(order=> res.json(order.products))
+        .catch(err => res.status(400).json('Error: '+err))
+
+});
 
 router.route('/:id').get(
     (req,res)=>{
@@ -65,32 +72,26 @@ router.route('/confirm').post(
 
 
 
-router.route('/farmer').get((req, res)=>{
-    console.log("Hello!!!")
+// router.route('/farmer').get((req, res)=>{
+//     console.log("Hello!!!")
     
-    Order.find({ email : "s@gmail.com"},function(error,object){
+//     Order.find({ email : "s@gmail.com"},function(error,object){
      
-                if(error)
-                {
-                    res.send(error)
-                    console.log(error)
-                }
-                else
-                {
-                    res.json(object)
-                    console.log("Heyyyy",object)
-                }
+//                 if(error)
+//                 {
+//                     res.send(error)
+//                     console.log(error)
+//                 }
+//                 else
+//                 {
+//                     res.json(object)
+//                     console.log("Heyyyy",object)
+//                 }
                 
-            })
-        });
+//             })
+//         });
 
 
-// router.route('/farmer').get(
-//     (req,res)=>{ 
-//         Order.findOne({email:"s@gmail.com"})
-//         .then(order=> res.json(order))
-//         .catch(err => res.status(400).json('Error: '+err))
 
-//     });
 
 module.exports = router;

@@ -109,16 +109,9 @@ class Home extends Component {
       isLoading: true,
     });
     
-    // Post request to backend
-    
-    // axios.post('http://localhost:5000/api/account/signup',
-    // JSON.stringify({
-    //     email: signUpEmail,
-    //     password: signUpPassword,
-    //     firstName: signUpFirstName,
-    //     lastName: signUpLastName,
-        
-    //   }), )
+    setInStorage("type",this.state.userType)
+  
+   
     const data = {
       name : signUpFirstName,
       email : signUpEmail,
@@ -173,7 +166,7 @@ class Home extends Component {
     this.setState({
       isLoading: true,
     });
-    setInStorage("email",signInEmail)
+    // setInStorage("email",signInEmail)
     // Post request to backend
     fetch('http://localhost:5000/api/account/signin', {
       method: 'POST',
@@ -287,6 +280,9 @@ class Home extends Component {
               value={signUpPassword}
               onChange={this.onTextboxChangeSignUpPassword}
             /><br />
+
+
+
             <button onClick={this.onSignUp}>Sign Up</button>
             <button>
               <Link to="/signin">Signin</Link>

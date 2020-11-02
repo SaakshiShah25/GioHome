@@ -38,6 +38,7 @@ class FarmerSignin extends Component {
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
+      console.log(token)
       fetch('http://localhost:5000/api/account/farmerverify?token=' + token)
         .then(res => res.json())
         .then(json => {
