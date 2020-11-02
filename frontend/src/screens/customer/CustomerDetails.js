@@ -49,14 +49,15 @@ export class CustomerDetails extends Component {
         {
         products:this.props.location.data.products,
         net_amount: this.props.location.data.net_amount,
+        farmer_id:this.props.location.data.farmer_id
         
         }
       )
     }
   render() {
     const { step } = this.state;
-    const { address,delivery,payment, products,net_amount} = this.state;
-    const values = { address,delivery,payment,products,net_amount };
+    const { address,delivery,payment, products,net_amount,farmer_id} = this.state;
+    const values = { address,delivery,payment,products,net_amount,farmer_id };
 
     switch (step) {
       case 1:

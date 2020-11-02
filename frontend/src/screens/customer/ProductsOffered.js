@@ -35,9 +35,11 @@ export default class ProductsOffered extends Component{
             available_quantity: product.available_quantity,
             date_produced:product.date,
             life: product.life,
+            farmer_id:product.farmer_id
         }
-        
-        axios.post('http://localhost:5000/cart/edit', addedproduct)
+    
+    console.log(addedproduct)
+    axios.post('http://localhost:5000/cart/edit', addedproduct)
         
   
         .then( res => 

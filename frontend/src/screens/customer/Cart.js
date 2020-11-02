@@ -65,7 +65,7 @@ export default class Cart extends Component{
         console.log("Email",obj)
         const id =  obj
       
-            console.log("Check Id", id)
+        console.log("Check Id", id)
         axios.get('http://localhost:5000/cart/'+id)
           .then(response => {
               console.log(response.data)

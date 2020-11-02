@@ -53,7 +53,7 @@ export class Confirm extends Component {
   render() {
     let i = 0;
     const {
-      values: { address,delivery,payment,net_amount,products }
+      values: { address,delivery,payment,net_amount,products,farmer_id }
     } = this.props;
     return (
       <MuiThemeProvider>

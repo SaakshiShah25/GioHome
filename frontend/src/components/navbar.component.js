@@ -36,7 +36,7 @@ export default class Navbar extends Component{
         return(
           <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
           <Sidebar />
-          <Link to="/" className="navbar-brand">Gio Home Products</Link>
+          <Link to="/farmer-home" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
           
