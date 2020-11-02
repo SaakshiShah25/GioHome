@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/navbar.component'
 import AddProduct from './screens/farmer/AddProduct'
 import ProductList from './screens/farmer/ProductList'
+import FarmerHome from './screens/farmer/FarmerHome'
+import FarmerSignin from './screens/farmer/FarmerSignin'
 import FarmerPage from './screens/farmer/Farmer'
 import LandingCustomer from './screens/customer/LandingCustomer.js'
 import Cart from './screens/customer/Cart.js'
@@ -20,6 +22,7 @@ import ViewOrderDetails from './screens/customer/ViewOrderDetails'
 import ProductsOffered from './screens/customer/ProductsOffered'
 import MoreDetails from './screens/customer/MoreDetails'
 import FarmerAccount from './screens/farmer/FarmerAccount'
+// import FarmerOrders from './screens/farmer/FarmerOrders'
 
 
 import history from './history.js';
@@ -29,6 +32,8 @@ function App({history}) {
       <Navbar />
       <Route path="/product" exact component={ProductList} />
       <Route path="/product/add" exact component={AddProduct} />
+      <Route path="/farmer-home" exact component={FarmerHome} />
+      <Route path="/farmer-signin" exact component={FarmerSignin} />
       <Route path="/farmer" exact component={FarmerPage} />
       <Route path="/orders" exact component={Orders} />
       <Route path="/orders/view" exact component={ViewOrderDetails} />
@@ -42,6 +47,7 @@ function App({history}) {
       <Route path="/customer/products-offered" exact component={ProductsOffered} />
       <Route path="/customer/products-offered/moredetails" exact component={MoreDetails} />
       <Route path="/farmer-account" exact component={FarmerAccount} />
+      {/* <Route path="/farmer-orders" exact component={FarmerOrders} /> */}
 
       
 

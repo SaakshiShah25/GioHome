@@ -3,6 +3,7 @@ const router = require('express').Router();
 const Order = require('../../models/orders/order.model.js');
 const Cart = require('../../models/cart/cart.model.js');
 
+
 router.route('/:id').get(
     (req,res)=>{
         const id = req.params.id
@@ -45,5 +46,51 @@ router.route('/confirm').post(
             
         .catch(err=> res.status(400).json('Error: '+err)))
             });
-        
+
+
+
+// router.route('/farmer-order').get((req,res)=>{
+//     var name="Apple"
+//     // const farmer="5f3e41b85da66d33d6ebe0d7"
+//     Order.find({"products.name":name},function(err,object){
+//         if(err){
+//             res.send(err)
+//         }
+//         else{
+//             console.log("Heyyyy",object)
+//             res.json(object)
+//         }
+//     })
+// })
+
+
+
+router.route('/farmer').get((req, res)=>{
+    console.log("Hello!!!")
+    
+    Order.find({ email : "s@gmail.com"},function(error,object){
+     
+                if(error)
+                {
+                    res.send(error)
+                    console.log(error)
+                }
+                else
+                {
+                    res.json(object)
+                    console.log("Heyyyy",object)
+                }
+                
+            })
+        });
+
+
+// router.route('/farmer').get(
+//     (req,res)=>{ 
+//         Order.findOne({email:"s@gmail.com"})
+//         .then(order=> res.json(order))
+//         .catch(err => res.status(400).json('Error: '+err))
+
+//     });
+
 module.exports = router;

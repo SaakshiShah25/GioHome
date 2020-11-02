@@ -43,7 +43,8 @@ router.route('/checkout').get((req, res)=>{
 
 router.route('/edit').post((req, res)=>{
     
-    var updateData = req.body;
+    const updateData = req.body;
+    console.log("Hello",updateData)
    
     Cart.exists({email:User,products: updateData}, function(err, result) {
         
@@ -65,7 +66,7 @@ router.route('/edit').post((req, res)=>{
                 } 
                 else 
                 {
-                    console.log(success);
+                    console.log("Added!",success);
                 }
 
             });
@@ -86,7 +87,7 @@ router.route('/add').post(
     
         
         const name = String(req.body.name);
-        const products = req.body.products;
+        const products = (req.body.products);
 
         Cart.exists({email:User}, function(err, result)
         {
