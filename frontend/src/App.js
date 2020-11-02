@@ -1,3 +1,5 @@
+import Landing from './screens/landing/Landing'
+
 import Home from './screens/customer/Home'
 import Orders from './screens/customer/Orders';
 import React from 'react';
@@ -21,7 +23,7 @@ import ViewOrderDetails from './screens/customer/ViewOrderDetails'
 import ProductsOffered from './screens/customer/ProductsOffered'
 import MoreDetails from './screens/customer/MoreDetails'
 import FarmerAccount from './screens/farmer/FarmerAccount'
-// import FarmerOrders from './screens/farmer/FarmerOrders'
+import FarmerOrders from './screens/farmer/FarmerOrders'
 
 
 import history from './history.js';
@@ -37,6 +39,7 @@ function App({history}) {
       <Route path="/orders" exact component={Orders} />
       <Route path="/orders/view" exact component={ViewOrderDetails} />
       <Route path="/" exact component={Home} />
+      <Route path="/landing" exact component={Landing} />
       <Route path="/signin" exact component={Signin} />
       <Route path="/customer" exact component={LandingCustomer} />
       <Route path="/cart" exact component={Cart} />

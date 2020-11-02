@@ -29,11 +29,11 @@ isDeleted: {
 }
 });
 
-UserSchema.methods.generateHash=function(password){
+FarmerUserSchema.methods.generateHash=function(password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 }
 
-UserSchema.methods.validPassword=function(password){
+FarmerUserSchema.methods.validPassword=function(password){
     return bcrypt.compareSync(password, this.password);
 }
 

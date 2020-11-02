@@ -109,21 +109,14 @@ class FarmerHome extends Component {
       isLoading: true,
     });
     
-    // Post request to backend
-    
-    // axios.post('http://localhost:5000/api/account/signup',
-    // JSON.stringify({
-    //     email: signUpEmail,
-    //     password: signUpPassword,
-    //     firstName: signUpFirstName,
-    //     lastName: signUpLastName,
-        
-    //   }), )
-    const data = {
-      name : signUpFirstName,
-      email : signUpEmail,
-      products : []
-    }
+    setInStorage("type",this.state.userType)
+  
+   
+    // const data = {
+    //   name : signUpFirstName,
+    //   email : signUpEmail,
+    //   products : []
+    // }
     // axios.post('http://localhost:5000/cart/add',data)
     // .then(
     //   res => console.log(res.data)
@@ -173,7 +166,7 @@ class FarmerHome extends Component {
     this.setState({
       isLoading: true,
     });
-    setInStorage("email",signInEmail)
+    // setInStorage("email",signInEmail)
     // Post request to backend
     fetch('http://localhost:5000/api/account/farmersignin', {
       method: 'POST',
@@ -287,6 +280,7 @@ class FarmerHome extends Component {
               value={signUpPassword}
               onChange={this.onTextboxChangeSignUpPassword}
             /><br />
+
             <button onClick={this.onSignUp}>Sign Up</button>
             <button>
               <Link to="/farmer-signin">Signin</Link>
