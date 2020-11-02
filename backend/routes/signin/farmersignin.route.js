@@ -60,7 +60,7 @@ const FarmerUserSession = require('../../models/signin/farmerusersession.model')
         });
       }
       // Save the new user
-      const newUser = new User();
+      const newUser = new FarmerUser();
       newUser.email = email;
       newUser.firstName=firstName;
       newUser.lastName=lastName;
