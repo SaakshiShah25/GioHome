@@ -9,7 +9,7 @@ import {
   setInStorage,
 } from '../../utils/storage';
 
-class Home extends Component {
+class FarmerSignup extends Component {
   constructor(props) {
     super(props);
 
@@ -30,12 +30,13 @@ class Home extends Component {
     this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
     this.logout = this.logout.bind(this);
+    this.onSignIn = this.onSignIn.bind(this);
   }
 
   componentDidMount() {
     
     const obj = getFromStorage('the_main_app');
-    console.log(obj)
+    console.log("Test",obj)
 
     const email = getFromStorage('email')
     console.log("Email",email)
@@ -43,7 +44,7 @@ class Home extends Component {
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
-      fetch('http://localhost:5000/api/account/verify?token=' + token)
+      fetch('http://localhost:5000/farmer-signup/api/account/farmerverify?token=' + token)
         .then(res => res.json())
         .then(json => {
           if (json.success) {
@@ -91,7 +92,9 @@ class Home extends Component {
   }
 
   onSignUp() {
+
     // Grab state
+    window.location.reload()
     const {
       signUpEmail,
       signUpPassword,
@@ -109,19 +112,9 @@ class Home extends Component {
       isLoading: true,
     });
     
-    setInStorage("type",this.state.userType)
+    // setInStorage("type",this.state.userType)
   
-   
-    const data = {
-      name : signUpFirstName,
-      email : signUpEmail,
-      products : []
-    }
-    axios.post('http://localhost:5000/cart/add',data)
-    .then(
-      res => console.log(res.data)
-    )
-    fetch('http://localhost:5000/api/account/signup', {
+    fetch('http://localhost:5000/farmer-signup/api/account/farmersignup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -146,7 +139,7 @@ class Home extends Component {
             signUpFirstName: '',
             signUpLastName: ''
           }); 
-          this.props.history.push('/signin')
+          this.props.history.push('/farmer-signin')
         } else {
           this.setState({
             signUpError: json.message,
@@ -168,7 +161,7 @@ class Home extends Component {
     });
     // setInStorage("email",signInEmail)
     // Post request to backend
-    fetch('http://localhost:5000/api/account/signin', {
+    fetch('http://localhost:5000/farmer-signup/api/account/farmersignin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -202,12 +195,16 @@ class Home extends Component {
     this.setState({
       isLoading: true,
     });
+
     setInStorage("email",{})
+
     const obj = getFromStorage('the_main_app');
+
     if (obj && obj.token) {
       const { token } = obj;
+
       // Verify token
-      fetch('http://localhost:5000/api/account/logout?token=' + token)
+      fetch('http://localhost:5000/farmer-signup/api/account/farmerlogout?token=' + token)
         .then(res => res.json())
         .then(json => {
           if (json.success) {
@@ -281,11 +278,9 @@ class Home extends Component {
               onChange={this.onTextboxChangeSignUpPassword}
             /><br />
 
-
-
             <button onClick={this.onSignUp}>Sign Up</button>
             <button>
-              <Link to="/signin">Signin</Link>
+              <Link to="/farmer-signin">Signin</Link>
             </button>
           </div>
 
@@ -293,11 +288,11 @@ class Home extends Component {
       );
     }
     return (
-      <Redirect to='/signin'  />
+      <Redirect to='/farmer-signin'  />
     );
 
     
   }
 }
 
-export default Home;
+export default FarmerSignup;

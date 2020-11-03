@@ -5,19 +5,13 @@ const Cart = require('../../models/cart/cart.model.js');
 
 router.route('/farmer').get(
     (req,res)=>{ 
-<<<<<<< HEAD
-        Order.findOne({email:"s@gmail.com"})
-        .then(order=> res.json(order))
-        .catch(err => res.status(400).json('Error: '+err))
-=======
         Order.find({"products.farmer_id":"5f3e41b85da66d33d6ebe0d7"})
         .then(order=> res.json(order.products))
         .catch(err => res.status(400).json('Error: '+err))
 
 });
->>>>>>> 90881059e113eb61336a67c8b7a42625489911db
 
-    });
+
     
 router.route('/:id').get(
     (req,res)=>{

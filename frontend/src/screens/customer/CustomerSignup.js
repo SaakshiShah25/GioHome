@@ -4,12 +4,14 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import  { Redirect } from 'react-router-dom'
 //http://localhost:5000/api/signup
+
+
 import {
   getFromStorage,
   setInStorage,
 } from '../../utils/storage';
 
-class FarmerHome extends Component {
+class CustomerSignup extends Component {
   constructor(props) {
     super(props);
 
@@ -40,10 +42,12 @@ class FarmerHome extends Component {
     const email = getFromStorage('email')
     console.log("Email",email)
 
+    
+    
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
-      fetch('http://localhost:5000/api/account/farmerverify?token=' + token)
+      fetch('http://localhost:5000/api/account/verify?token=' + token)
         .then(res => res.json())
         .then(json => {
           if (json.success) {
@@ -109,19 +113,19 @@ class FarmerHome extends Component {
       isLoading: true,
     });
     
-    setInStorage("type",this.state.userType)
+    // setInStorage("type",this.state.userType)
   
    
-    // const data = {
-    //   name : signUpFirstName,
-    //   email : signUpEmail,
-    //   products : []
-    // }
-    // axios.post('http://localhost:5000/cart/add',data)
-    // .then(
-    //   res => console.log(res.data)
-    // )
-    fetch('http://localhost:5000/api/account/farmersignup', {
+    const data = {
+      name : signUpFirstName,
+      email : signUpEmail,
+      products : []
+    }
+    axios.post('http://localhost:5000/cart/add',data)
+    .then(
+      res => console.log(res.data)
+    )
+    fetch('http://localhost:5000/api/account/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -146,7 +150,7 @@ class FarmerHome extends Component {
             signUpFirstName: '',
             signUpLastName: ''
           }); 
-          this.props.history.push('/farmer-signin')
+          this.props.history.push('/customer-signin')
         } else {
           this.setState({
             signUpError: json.message,
@@ -168,7 +172,7 @@ class FarmerHome extends Component {
     });
     // setInStorage("email",signInEmail)
     // Post request to backend
-    fetch('http://localhost:5000/api/account/farmersignin', {
+    fetch('http://localhost:5000/api/account/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -207,7 +211,7 @@ class FarmerHome extends Component {
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
-      fetch('http://localhost:5000/api/account/farmerlogout?token=' + token)
+      fetch('http://localhost:5000/api/account/logout?token=' + token)
         .then(res => res.json())
         .then(json => {
           if (json.success) {
@@ -281,9 +285,11 @@ class FarmerHome extends Component {
               onChange={this.onTextboxChangeSignUpPassword}
             /><br />
 
+
+
             <button onClick={this.onSignUp}>Sign Up</button>
             <button>
-              <Link to="/farmer-signin">Signin</Link>
+              <Link to="/customer-signin">Signin</Link>
             </button>
           </div>
 
@@ -291,11 +297,11 @@ class FarmerHome extends Component {
       );
     }
     return (
-      <Redirect to='/farmer-signin'  />
+      <Redirect to='/customer-signin'  />
     );
 
     
   }
 }
 
-export default FarmerHome;
+export default CustomerSignup;

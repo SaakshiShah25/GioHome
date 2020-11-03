@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-//http://localhost:5000/api/signup
+
+// http://localhost:5000/api/signup
+
 import {
   getFromStorage,
   setInStorage,
 } from '../../utils/storage';
 
-class Signin extends Component {
+class CustomerSignin extends Component {
   constructor(props) {
     super(props);
 
@@ -18,7 +20,7 @@ class Signin extends Component {
       signInError: '',
       signInEmail: '',
       signInPassword: '',
-      userType: ''
+      // userType: ''
       
     };
 
@@ -38,6 +40,7 @@ class Signin extends Component {
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
+      console.log(token)
       fetch('http://localhost:5000/api/account/verify?token=' + token)
         .then(res => res.json())
         .then(json => {
@@ -85,7 +88,7 @@ class Signin extends Component {
       isLoading: true,
     });
     setInStorage("email",signInEmail)
-    setInStorage("type",this.state.userType)
+    // setInStorage("type",this.state.userType)
     
     // Post request to backend
     fetch('http://localhost:5000/api/account/signin', {
@@ -198,7 +201,7 @@ class Signin extends Component {
               onChange={this.onTextboxChangeSignInPassword}
             />
             <br />
-                  <div className="radio" onChange={this.selectType}>
+                  {/* <div className="radio" onChange={this.selectType}>
               
                   <input
                     type="radio"
@@ -217,16 +220,16 @@ class Signin extends Component {
                   />
                     Customer
        
-                  </div>
+                  </div> */}
     
             <button onClick={this.onSignIn}>
-             <Link to="/">
+             <Link to="/customer-signin">
              Sign In
              </Link>
               
               </button>
             <button>
-                <Link to="/">Signup</Link>
+                <Link to="/customer-signup">Signup</Link>
             </button>
           <div>{this.state.userType}</div>
           </div>
@@ -247,4 +250,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default CustomerSignin;

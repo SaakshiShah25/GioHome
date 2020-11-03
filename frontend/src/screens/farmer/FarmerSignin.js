@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+
 //http://localhost:5000/api/signup
+
 import {
   getFromStorage,
   setInStorage,
@@ -39,7 +41,7 @@ class FarmerSignin extends Component {
       const { token } = obj;
       // Verify token
       console.log(token)
-      fetch('http://localhost:5000/api/account/farmerverify?token=' + token)
+      fetch('http://localhost:5000/farmer-signup/api/account/farmerverify?token=' + token)
         .then(res => res.json())
         .then(json => {
           if (json.success) {
@@ -75,6 +77,7 @@ class FarmerSignin extends Component {
   
 
   onSignIn() {
+    window.location.reload()
     // Grab state
     const {
       signInEmail,
@@ -89,7 +92,7 @@ class FarmerSignin extends Component {
     setInStorage("type",this.state.userType)
     
     // Post request to backend
-    fetch('http://localhost:5000/api/account/farmersignin', {
+    fetch('http://localhost:5000/farmer-signup/api/account/farmersignin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -110,7 +113,7 @@ class FarmerSignin extends Component {
             signInEmail: '',
             token: json.token,
           });
-          this.props.history.push('/customer')
+          this.props.history.push('/farmer')
         } else {
           this.setState({
             signInError: json.message,
@@ -129,7 +132,7 @@ class FarmerSignin extends Component {
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
-      fetch('http://localhost:5000/api/account/farmerlogout?token=' + token)
+      fetch('http://localhost:5000/farmer-signup/api/account/farmerlogout?token=' + token)
         .then(res => res.json())
         .then(json => {
           if (json.success) {
@@ -199,7 +202,7 @@ class FarmerSignin extends Component {
               onChange={this.onTextboxChangeSignInPassword}
             />
             <br />
-                  <div className="radio" onChange={this.selectType}>
+                  {/* <div className="radio" onChange={this.selectType}>
               
                   <input
                     type="radio"
@@ -218,10 +221,10 @@ class FarmerSignin extends Component {
                   />
                     Customer
        
-                  </div>
+                  </div> */}
     
             <button onClick={this.onSignIn}>
-             <Link to="/">
+             <Link to="/farmer-signin">
              Sign In
              </Link>
               
@@ -242,7 +245,13 @@ class FarmerSignin extends Component {
     return (
       <div>
         <p>Account</p>
-        <button onClick={this.logout}>Logout</button>
+        <button onClick={this.logout}>
+
+          <Link to="/">
+           Logout
+           </Link>
+
+        </button>
       </div>
     );
   }

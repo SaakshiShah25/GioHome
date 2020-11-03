@@ -77,7 +77,7 @@ class FarmerAccount extends Component {
       <div>
         <p>My Farmer's Account</p>
 
-        <button onClick={this.logout}><Link to="/signin">Logout</Link></button>
+        <button onClick={this.logout}><Link to="/farmer-signin">Logout</Link></button>
       </div>
     );
   }

@@ -163,7 +163,7 @@ export default class Account extends Component{
 
                 {this.state.showForm ? this.showform() : null}
 
-                <button onClick={this.logout}><Link to="/signin">Logout</Link></button>
+                <button onClick={this.logout}><Link to="/">Logout</Link></button>
                 
             </div>
         );
