@@ -1,11 +1,10 @@
 const router = require('express').Router();
-
 const Order = require('../../models/orders/order.model.js');
 const Cart = require('../../models/cart/cart.model.js');
 
 router.route('/farmer').get(
     (req,res)=>{ 
-        Order.find({"products.farmer_id":"5f3e41b85da66d33d6ebe0d7"})
+        Order.find({email:"s123@gmail.com"})
         .then(order=> res.json(order.products))
         .catch(err => res.status(400).json('Error: '+err))
 

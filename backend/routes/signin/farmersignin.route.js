@@ -11,7 +11,7 @@ const FarmerUserSession = require('../../models/signin/farmerusersession.model')
     const {
       firstName,
       lastName,
-        password
+      password
     } = body;
     let {
       email

@@ -14,13 +14,14 @@ class FarmerHome extends Component {
     super(props);
 
     this.state = {
-      isLoading: true,
+      isLoading: false,
       token: '',
       signUpError: '',
       signUpEmail: '',
       signUpPassword: '',
       signUpFirstName:'',
       signUpLastName:'',
+      location:''
     };
 
     
@@ -29,7 +30,7 @@ class FarmerHome extends Component {
     this.onTextboxChangeSignUpFirstName = this.onTextboxChangeSignUpFirstName.bind(this);
     this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
-    this.logout = this.logout.bind(this);
+    // this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +44,7 @@ class FarmerHome extends Component {
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
-      fetch('http://localhost:5000/api/account/farmerverify?token=' + token)
+      fetch('http://localhost:5000/farmersignup/api/account/farmerverify?token=' + token)
         .then(res => res.json())
         .then(json => {
           if (json.success) {
@@ -121,7 +122,7 @@ class FarmerHome extends Component {
     // .then(
     //   res => console.log(res.data)
     // )
-    fetch('http://localhost:5000/api/account/farmersignup', {
+    fetch('http://localhost:5000/farmersignup/api/account/farmersignup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -156,77 +157,77 @@ class FarmerHome extends Component {
       });
   }
 
-  onSignIn() {
-    // Grab state
-    const {
-      signInEmail,
-      signInPassword,
-    } = this.state;
+  // onSignIn() {
+  //   // Grab state
+  //   const {
+  //     signInEmail,
+  //     signInPassword,
+  //   } = this.state;
 
-    this.setState({
-      isLoading: true,
-    });
-    // setInStorage("email",signInEmail)
+  //   this.setState({
+  //     isLoading: true,
+  //   });
+    
     // Post request to backend
-    fetch('http://localhost:5000/api/account/farmersignin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: signInEmail,
-        password: signInPassword,
-      }),
-    }).then(res => res.json())
-      .then(json => {
-        console.log('json', json);
-        if (json.success) {
-          setInStorage('the_main_app', { token: json.token });
-          this.setState({
-            signInError: json.message,
-            isLoading: false,
-            signInPassword: '',
-            signInEmail: '',
-            token: json.token,
-          });
-        } else {
-          this.setState({
-            signInError: json.message,
-            isLoading: false,
-          });
-        }
-      });
-  }
+  //   fetch('http://localhost:5000/api/account/farmersignin', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       email: signInEmail,
+  //       password: signInPassword,
+  //     }),
+  //   }).then(res => res.json())
+  //     .then(json => {
+  //       console.log('json', json);
+  //       if (json.success) {
+  //         setInStorage('the_main_app', { token: json.token });
+  //         this.setState({
+  //           signInError: json.message,
+  //           isLoading: false,
+  //           signInPassword: '',
+  //           signInEmail: '',
+  //           token: json.token,
+  //         });
+  //       } else {
+  //         this.setState({
+  //           signInError: json.message,
+  //           isLoading: false,
+  //         });
+  //       }
+  //     });
+  // }
 
-  logout() {
-    this.setState({
-      isLoading: true,
-    });
-    setInStorage("email",{})
-    const obj = getFromStorage('the_main_app');
-    if (obj && obj.token) {
-      const { token } = obj;
-      // Verify token
-      fetch('http://localhost:5000/api/account/farmerlogout?token=' + token)
-        .then(res => res.json())
-        .then(json => {
-          if (json.success) {
-            this.setState({
-              token: '',
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false,
-      });
-    }
-  }
+  // logout() {
+  //   this.setState({
+  //     isLoading: true,
+  //   });
+  //   setInStorage("email",{})
+  //   const obj = getFromStorage('the_main_app');
+  //   if (obj && obj.token) {
+  //     const { token } = obj;
+  //     // Verify token
+  //     fetch('http://localhost:5000/api/account/farmerlogout?token=' + token)
+  //       .then(res => res.json())
+  //       .then(json => {
+  //         if (json.success) {
+  //           this.setState({
+  //             token: '',
+  //             isLoading: false
+  //           });
+  //         } else {
+  //           this.setState({
+  //             isLoading: false,
+  //           });
+  //         }
+  //       });
+  //   } else {
+  //     this.setState({
+  //       isLoading: false,
+  //     });
+  //   }
+  // }
 
   render() {
     const {

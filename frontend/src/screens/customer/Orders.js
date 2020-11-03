@@ -30,6 +30,7 @@ export default class Orders extends Component{
         const id = getFromStorage("email")
         const userType = getFromStorage("type")
         console.log(userType)
+
         if(userType=="Customer")
         {
             axios.get('http://localhost:5000/orders/'+id)
@@ -44,22 +45,22 @@ export default class Orders extends Component{
         }
 
         if(userType=="Farmer"){
-           console.log("We are seeing orders of the Farmers")
-          
-            axios.get('http://localhost:5000/orders/farmer')
-            .then(res=>{
-                console.log(res)
-                this.setState({
-                    farmer_doc:res.data
-                })
-                console.log(this.state.farmer_doc)
-            })
-            .catch(err=>console.log(err))
-        
-    
-        //    You can write all the endpoints of the Farmers here 
-        //    The Frontend might require some conditional rendering in the frontend
-        }
+            console.log("We are seeing orders of the Farmers")
+           
+             axios.get('http://localhost:5000/orders/farmer/')
+             .then(res=>{
+                 console.log(res)
+                 this.setState({
+                     farmer_doc:res.data
+                 })
+                 console.log(this.state.farmer_doc)
+             })
+             .catch(err=>console.log(err))
+         
+     
+         //    You can write all the endpoints of the Farmers here 
+         //    The Frontend might require some conditional rendering in the frontend
+         }
         
           
       }

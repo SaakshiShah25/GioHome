@@ -24,7 +24,7 @@ import ViewOrderDetails from './screens/customer/ViewOrderDetails'
 import ProductsOffered from './screens/customer/ProductsOffered'
 import MoreDetails from './screens/customer/MoreDetails'
 import FarmerAccount from './screens/farmer/FarmerAccount'
-import FarmerOrders from './screens/farmer/FarmerOrders'
+// import FarmerOrders from './screens/farmer/FarmerOrders'
 
 
 import history from './history.js';

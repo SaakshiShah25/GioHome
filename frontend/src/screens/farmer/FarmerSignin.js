@@ -13,7 +13,7 @@ class FarmerSignin extends Component {
     super(props);
 
     this.state = {
-      isLoading: true,
+      isLoading: false,
       token: '',
       signInError: '',
       signInEmail: '',
@@ -39,7 +39,7 @@ class FarmerSignin extends Component {
       const { token } = obj;
       // Verify token
       console.log(token)
-      fetch('http://localhost:5000/api/account/farmerverify?token=' + token)
+      fetch('http://localhost:5000/farmersignup/api/account/farmerverify?token=' + token)
         .then(res => res.json())
         .then(json => {
           if (json.success) {
@@ -89,7 +89,7 @@ class FarmerSignin extends Component {
     setInStorage("type",this.state.userType)
     
     // Post request to backend
-    fetch('http://localhost:5000/api/account/farmersignin', {
+    fetch('http://localhost:5000/farmersignup/api/account/farmersignin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -129,7 +129,7 @@ class FarmerSignin extends Component {
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
-      fetch('http://localhost:5000/api/account/farmerlogout?token=' + token)
+      fetch('http://localhost:5000/farmersignup/api/account/farmerlogout?token=' + token)
         .then(res => res.json())
         .then(json => {
           if (json.success) {
