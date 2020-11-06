@@ -15,7 +15,7 @@ class FarmerSignin extends Component {
     super(props);
 
     this.state = {
-      isLoading: true,
+      isLoading: false,
       token: '',
       signInError: '',
       signInEmail: '',
@@ -77,7 +77,7 @@ class FarmerSignin extends Component {
   
 
   onSignIn() {
-  
+    // window.location.reload()
     // Grab state
     const {
       signInEmail,
@@ -89,7 +89,9 @@ class FarmerSignin extends Component {
       isLoading: true,
     });
     setInStorage("email",signInEmail)
-    setInStorage("type",this.state.userType)
+    const s = getFromStorage("email")
+    console.log("rehvade",s)
+  
     
     // Post request to backend
     fetch('http://localhost:5000/farmer-signup/api/account/farmersignin', {
@@ -114,6 +116,7 @@ class FarmerSignin extends Component {
             token: json.token,
           });
           this.props.history.push('/farmer')
+          window.location.reload()
         } else {
           this.setState({
             signInError: json.message,
@@ -230,7 +233,7 @@ class FarmerSignin extends Component {
               
               </button>
             <button>
-                <Link to="/">Signup</Link>
+                <Link to="/farmer-signup">Signup</Link>
             </button>
           <div>{this.state.userType}</div>
           </div>

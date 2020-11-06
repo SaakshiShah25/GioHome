@@ -14,13 +14,14 @@ class FarmerSignup extends Component {
     super(props);
 
     this.state = {
-      isLoading: true,
+      isLoading: false,
       token: '',
       signUpError: '',
       signUpEmail: '',
       signUpPassword: '',
       signUpFirstName:'',
       signUpLastName:'',
+      location:''
     };
 
     
@@ -28,6 +29,7 @@ class FarmerSignup extends Component {
     this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     this.onTextboxChangeSignUpFirstName = this.onTextboxChangeSignUpFirstName.bind(this);
     this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(this);
+    this.onTextboxChangeLocation = this.onTextboxChangeLocation.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
     this.logout = this.logout.bind(this);
     this.onSignIn = this.onSignIn.bind(this);
@@ -91,16 +93,22 @@ class FarmerSignup extends Component {
     });
   }
 
+  onTextboxChangeLocation(event) {
+    this.setState({
+     location: event.target.value,
+    });
+  }
+
   onSignUp() {
 
     // Grab state
-    
-
+    // window.location.reload()
     const {
       signUpEmail,
       signUpPassword,
       signUpFirstName,
       signUpLastName,
+      location
     } = this.state;
     // const signup = {
     //     signUpEmail=this.signUpEmail,
@@ -125,6 +133,7 @@ class FarmerSignup extends Component {
         password: signUpPassword,
         firstName: signUpFirstName,
         lastName: signUpLastName,
+        location:location
         
       }),
     })
@@ -138,7 +147,8 @@ class FarmerSignup extends Component {
             signUpEmail: '',
             signUpPassword: '',
             signUpFirstName: '',
-            signUpLastName: ''
+            signUpLastName: '',
+            location:''
           }); 
           this.props.history.push('/farmer-signin')
         } else {
@@ -160,7 +170,7 @@ class FarmerSignup extends Component {
     this.setState({
       isLoading: true,
     });
-    // setInStorage("email",signInEmail)
+    
     // Post request to backend
     fetch('http://localhost:5000/farmer-signup/api/account/farmersignin', {
       method: 'POST',
@@ -233,6 +243,7 @@ class FarmerSignup extends Component {
       signUpFirstName,
       signUpLastName,
       signUpEmail,
+      location,
       signUpPassword,
       signUpError,
     } = this.state;
@@ -271,6 +282,12 @@ class FarmerSignup extends Component {
               placeholder="Email"
               value={signUpEmail}
               onChange={this.onTextboxChangeSignUpEmail}
+            /><br />
+            <input
+              type="text"
+              placeholder="location"
+              value={location}
+              onChange={this.onTextboxChangeLocation}
             /><br />
             <input
               type="password"

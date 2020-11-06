@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Router, Route, Link } from 'react-router-dom';
+import {
+    getFromStorage,
+    setInStorage,
+  } from '../../utils/storage';
 
 export default class ProductList extends Component{
     constructor(props){
@@ -13,6 +17,20 @@ export default class ProductList extends Component{
         }
     }
 
+    componentDidMount() {
+
+      
+
+        axios.get('http://localhost:5000/stock-product/')
+          .then(response => {
+            this.setState({ products: response.data })
+            console.log(this.state.products)
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+    }
+
     handleChange(product){
         const addedproduct = {
             name:product.name,
@@ -22,23 +40,17 @@ export default class ProductList extends Component{
             date_produced:product.date,
             life: product.life,
         }
-        
-        axios.post('http://localhost:5000/farmer/edit', addedproduct)
+        const obj = getFromStorage('email');
+        console.log("Email",obj)
+        const id =  obj
+
+        axios.post('http://localhost:5000/farmer/edit/'+id, addedproduct)
         .then(res => console.log(res.data))
         .then(alert("Done"))
     };
 
    
-    componentDidMount() {
-        axios.get('http://localhost:5000/stock-product/')
-          .then(response => {
-            this.setState({ products: response.data })
-            console.log(this.state.products)
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-      }
+   
     render(){
         return(
            

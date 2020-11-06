@@ -67,7 +67,6 @@ export default class CartCheckout extends Component{
                                 <p className="card-text">Price: {u.price}</p>
                                 <p className="card-text">Quantity Ordered: {u.available_quantity}kg</p>
                                 <div>Total product price: {u.price*u.available_quantity}</div>
-                               
                             </div>
                 </Fragment>
              

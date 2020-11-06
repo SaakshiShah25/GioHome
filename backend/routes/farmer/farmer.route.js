@@ -1,12 +1,25 @@
 const router = require('express').Router();
-const Farmer = require('../../models/farmer/farmer.model.js');
+const FarmerUser = require('../../models/signin/farmeruser.model');
 
-router.route('/').get(
-(req,res)=>{
-    Farmer.find()
-    .then(farmer=> res.json(farmer))
-    .catch(err => res.status(400).json('Error: '+err))
-});
+var farmer 
+router.route('/update/:id').get((req, res)=>{
+    farmer = req.params.id
+        FarmerUser.findOne({email:farmer},'products',function (err, farmer){
+                if (err) {
+                    res.send(err);
+                  } else {
+                    res.json(farmer.products);
+                  }
+            });
+    });
+    
+
+// router.route('/').get(
+// (req,res)=>{
+//     FarmerUser.find()
+//     .then(farmer=> res.json("----",farmer))
+//     .catch(err => res.status(400).json('Error: '+err))
+// });
 
 router.route('/add').post(
     (req,res) => {
@@ -18,7 +31,7 @@ router.route('/add').post(
         
         console.log(name)
        
-        const newFarmer = new Farmer(
+        const newFarmer = new FarmerUser(
             {
             
             name,
@@ -36,27 +49,13 @@ router.route('/add').post(
     }
 );
 
-// router.route('/option').get((req, res)=>{
-//     Farmer.find({},function(error,succ){
-//         if(error)
-//         {
-//             res.send(error)
-//         }
-//         else{
-//             res.json(succ)
-//         }
-//     })
-    
-// });
-
-
 
 // Display the product named Orange and foreign key given to each product
 
 router.route('/option/:id').get((req, res)=>{
     var name = req.params.id
 
-    Farmer.find({"products.name" : name },function(error,object){
+    FarmerUser.find({"products.name" : name },function(error,object){
      
                 if(error)
                 {
@@ -69,7 +68,7 @@ router.route('/option/:id').get((req, res)=>{
                             product => {
                                 if(product.name == name)
                                 {
-                                   product["farmer_id"] = farmer._id
+                                   product["farmer_email"] = farmer.email
                                    temp.push(product)
                                     
                                 }
@@ -87,8 +86,8 @@ router.route('/option/:id').get((req, res)=>{
 
 router.route('/farmer-details/:id').get((req, res)=>{
 
-    var id = req.params.id
-    Farmer.find({ _id : id},function(error,object){
+    
+    FarmerUser.find({ email : req.params.id},function(error,object){
      
                 if(error)
                 {
@@ -97,6 +96,7 @@ router.route('/farmer-details/:id').get((req, res)=>{
                 else
                 {
                     res.json(object)
+                    console.log("Farmer!",object)
                 }
                 
             })
@@ -106,31 +106,22 @@ router.route('/farmer-details/:id').get((req, res)=>{
 
 
 
-router.route('/update').get((req, res)=>{
-
-        Farmer.findOne({name:"Sanket"},'products',function (err, farmer){
-            if (err) {
-                res.send(err);
-              } else {
-                res.json(farmer.products);
-              }
-        });
-});
 
 
 
 
-router.route('/edit').post((req, res)=>{
-    
+
+
+router.route('/edit/:id').post((req, res)=>{
     console.log(req.body);
     var updateData = req.body;
     console.log("Checking -> ",req.body.name)
-    Farmer.exists({name : "Sanket", "products.name": req.body.name}, function(err, result)
+    FarmerUser.exists({email :farmer, "products.name": req.body.name}, function(err, result)
     {
         console.log("Check Bool",result)
         if (!result)
         {
-    Farmer.findOneAndUpdate({name:"Sanket"},{$push: {products: updateData}},function (error, success) {
+    FarmerUser.findOneAndUpdate({email:farmer},{$push: {products: updateData}},function (error, success) {
         if (error) {
             console.log(error);
         } else {
@@ -151,38 +142,81 @@ router.route('/edit').post((req, res)=>{
 router.route('/updateproduct/:id').post((req, res) => {
     console.log(req.body)
     var updateData = req.body
-    var id = req.params.id
-    Farmer.findOneAndUpdate({name:"Sanket"},{$set:{products: updateData}},{new:true},function (error, success) {
+    var name = req.params.id
+    console.log("Farmer",farmer)
+    FarmerUser.updateOne({email:farmer,"products.name":name},{$set:{"products.$.price": updateData.price,"products.$.life":updateData.life}},function (error, success) {
         if (error) {
             console.log(error);
         } else {
-            console.log(success);
+            console.log('!!!!!',success);
         }
     });
   });
 
-   
-// This is only for Sanket right now 
-// the primart key for farmer has not been decided yet 
 
-  router.route('/remove-product/:id').get((req, res)=>{
-
-    var id = req.params.id;
-
-    Farmer.findOneAndUpdate({name:"Sanket"},{$pull: {products: {name:id}}},function (error, success) {
-       
-        if (error) 
-        {
-            console.log(error);
-        } 
-        else
-        {
-            console.log(success);
+router.route('/deliver/:id').post((req,res)=>{
+    const prod = req.body
+    console.log("Hey",prod)
+    const q = prod.available_quantity
+    console.log(q)
+    const id = req.params.id
+    FarmerUser.findOneAndUpdate({email:id,"products.name":prod.name,"products.available_quantity":{$gte:q}},{$inc:{"products.$.available_quantity": - q}},function(error,success){
+        if(error){
+            res.send(error)
         }
+        else{
+            res.json(success)
+            console.log(success)
+        }
+    })
+})
+// router.route('/updateproduct/:id').post((req, res) => {
+//     console.log(req.body)
+//     // var updateData = req.body
+//     console.log("Farmer",farmer)
+//     FarmerUser.findOne({email:farmer,"products.name":req.body.name},function(err,result){
+//         console.log("result",result)
+//         if(result){
+//             result.products.map(u=>{
+//                 var prod_name=u.name
+//                 console.log("------",prod_name,req.body.name)
+//                 FarmerUser.updateOne({prod_name:req.body.name},{$set:{products: req.body}},function (error, success) {
+//                     if (error) {
+//                         console.log(error);
+//                     } else {
+//                         console.log('!!!!!',success);
+//                     }
+//                 });
+//             })
+            
+//         }
+//     })
+   
+//   });
 
-    });
 
-});
+   
+// // This is only for Sanket right now 
+// // the primart key for farmer has not been decided yet 
+
+//   router.route('/remove-product/:id').get((req, res)=>{
+
+//     var id = req.params.id;
+
+//     FarmerUser.findOneAndUpdate({email:farmer},{$pull: {products: {name:id}}},function (error, success) {
+       
+//         if (error) 
+//         {
+//             console.log(error);
+//         } 
+//         else
+//         {
+//             console.log(success);
+//         }
+
+//     });
+
+// });
 // router.route('/updateprod/:id').post((req, res) => {
 //     Farmer.findById(req.params.id)
 //       .then(products => {

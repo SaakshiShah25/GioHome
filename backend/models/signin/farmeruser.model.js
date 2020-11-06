@@ -14,7 +14,11 @@ email: {
     type: String,
     default: ''
 },
-address : {
+location: {
+    type: String,
+    default: ''
+},
+products : {
     type : Array,
     default : []
 }

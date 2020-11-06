@@ -11,7 +11,8 @@ const FarmerUserSession = require('../../models/signin/farmerusersession.model')
     const {
       firstName,
       lastName,
-        password
+      password,
+      location
     } = body;
     let {
       email
@@ -32,6 +33,12 @@ const FarmerUserSession = require('../../models/signin/farmerusersession.model')
       return res.send({
         success: false,
         message: 'Error: Email cannot be blank.'
+      });
+    }
+    if (!location) {
+      return res.send({
+        success: false,
+        message: 'Error:Location cannot be blank.'
       });
     }
     if (!password) {
@@ -64,6 +71,7 @@ const FarmerUserSession = require('../../models/signin/farmerusersession.model')
       newUser.email = email;
       newUser.firstName=firstName;
       newUser.lastName=lastName;
+      newUser.location=location;
       newUser.password = newUser.generateHash(password);
       newUser.save((err, user) => {
         if (err) {

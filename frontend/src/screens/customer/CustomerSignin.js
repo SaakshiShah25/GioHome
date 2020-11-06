@@ -15,7 +15,7 @@ class CustomerSignin extends Component {
     super(props);
 
     this.state = {
-      isLoading: true,
+      isLoading: false,
       token: '',
       signInError: '',
       signInEmail: '',

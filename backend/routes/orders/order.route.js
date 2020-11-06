@@ -1,13 +1,38 @@
 const router = require('express').Router();
-
 const Order = require('../../models/orders/order.model.js');
 const Cart = require('../../models/cart/cart.model.js');
 
-router.route('/farmer').get(
-    (req,res)=>{ 
-        Order.find({"products.farmer_email":"abc@g.com"})
-        .then(order=> res.json(order))
-        .catch(err => res.status(400).json('Error: '+err))
+// router.route('/farmer').get(
+//     (req,res)=>{ 
+//         Order.findOne({email:"ss@g.com"})
+//         .then(order=> res.json(order))
+//         .catch(err => res.status(400).json('Error: '+err))
+
+// });
+
+router.route('/farmer/:id').get((req,res)=>{ 
+    const id = req.params.id
+        Order.find({"products.farmer_email":id},function(error,success){
+            if(error){
+                res.send(error)
+            }
+            else{
+                // console.log(success)
+                // res.json(success)
+                var temp=[]
+                if(success){
+                    success.map((data)=>{
+                        data.products.map((product)=>{
+                            if(product.farmer_email==id){
+                                temp.push(product)
+                            }
+                        }
+                        )
+                    })
+                }
+                res.json(temp)
+            }
+        })
 
 });
 

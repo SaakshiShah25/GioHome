@@ -16,7 +16,7 @@ class CustomerSignup extends Component {
     super(props);
 
     this.state = {
-      isLoading: true,
+      isLoading:false,
       token: '',
       signUpError: '',
       signUpEmail: '',

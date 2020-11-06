@@ -52,7 +52,7 @@ function App({history}) {
       <Route path="/customer/products-offered" exact component={ProductsOffered} />
       <Route path="/customer/products-offered/moredetails" exact component={MoreDetails} />
       <Route path="/farmer-account" exact component={FarmerAccount} />
-      {/* <Route path="/farmer-orders" exact component={FarmerOrders} /> */}
+      <Route path="/farmer-orders" exact component={FarmerOrders} />
 
       
 
