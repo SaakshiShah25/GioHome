@@ -38,13 +38,13 @@ export default class Landing extends Component{
                 <button onClick={()=>setInStorage("type","Farmer")} >
                     <Link to="/farmer-signup">Farmer</Link>
                 </button>
-                <img src ={this.state.image ||"https://via.placeholder.com/400x300"}
+                {/* <img src ={this.state.image ||"https://via.placeholder.com/400x300"}
                 alt = "Upload Images"
                 height="300"
                 width = "400"
 
                 
-                />
+                /> */}
             </div>
         )
     }
