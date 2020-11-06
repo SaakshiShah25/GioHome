@@ -132,8 +132,9 @@ router.route('/edit/:id').post((req, res)=>{
         }
         else
         {
-            res.send("Already in your list")
-            console.log("Already in my list")
+            // res.send("Already in your list")
+            // console.log("Already in my list")
+            res.send(result)
         }
     })
 
@@ -199,24 +200,24 @@ router.route('/deliver/:id').post((req,res)=>{
 // // This is only for Sanket right now 
 // // the primart key for farmer has not been decided yet 
 
-//   router.route('/remove-product/:id').get((req, res)=>{
+  router.route('/remove-product/:id').get((req, res)=>{
 
-//     var id = req.params.id;
+    var id = req.params.id;
 
-//     FarmerUser.findOneAndUpdate({email:farmer},{$pull: {products: {name:id}}},function (error, success) {
+    FarmerUser.findOneAndUpdate({email:farmer},{$pull: {products: {name:id}}},function (error, success) {
        
-//         if (error) 
-//         {
-//             console.log(error);
-//         } 
-//         else
-//         {
-//             console.log(success);
-//         }
+        if (error) 
+        {
+            console.log(error);
+        } 
+        else
+        {
+            console.log(success);
+        }
 
-//     });
+    });
 
-// });
+});
 // router.route('/updateprod/:id').post((req, res) => {
 //     Farmer.findById(req.params.id)
 //       .then(products => {

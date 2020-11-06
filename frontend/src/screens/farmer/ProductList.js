@@ -45,8 +45,16 @@ export default class ProductList extends Component{
         const id =  obj
 
         axios.post('http://localhost:5000/farmer/edit/'+id, addedproduct)
-        .then(res => console.log(res.data))
-        .then(alert("Done"))
+        .then(res => {
+            console.log("!",res.data)
+            if (res.data){
+                alert("Already in your list")
+            }
+            else{
+                alert("Done")
+            }
+        })
+       
     };
 
    
