@@ -94,7 +94,8 @@ class FarmerSignup extends Component {
   onSignUp() {
 
     // Grab state
-    window.location.reload()
+    
+
     const {
       signUpEmail,
       signUpPassword,

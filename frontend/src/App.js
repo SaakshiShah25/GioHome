@@ -24,13 +24,14 @@ import ProductsOffered from './screens/customer/ProductsOffered'
 import MoreDetails from './screens/customer/MoreDetails'
 import FarmerAccount from './screens/farmer/FarmerAccount'
 import FarmerOrders from './screens/farmer/FarmerOrders'
-
+import ImageUpload from './image/ImageUpload'
 
 import history from './history.js';
 function App({history}) {
   return (
     <BrowserRouter>
       <Navbar />
+      <Route path="/image" exact component={ImageUpload}/>
       <Route path="/" exact component={Landing} />
       {/* Authentication for Farmer and Customer */}
       <Route path="/farmer-signup" exact component={FarmerSignup} />

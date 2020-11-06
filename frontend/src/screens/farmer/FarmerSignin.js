@@ -77,7 +77,7 @@ class FarmerSignin extends Component {
   
 
   onSignIn() {
-    window.location.reload()
+  
     // Grab state
     const {
       signInEmail,

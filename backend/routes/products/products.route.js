@@ -17,6 +17,7 @@ router.route('/add').post(
         const name = String(req.body.name);
         const location = String(req.body.location);
         const products = String(req.body.products);
+       
         console.log(name)
         const newFarmer = new Farmer(
             {
@@ -24,6 +25,7 @@ router.route('/add').post(
             name,
             location,
             products,
+           
 
             }
             

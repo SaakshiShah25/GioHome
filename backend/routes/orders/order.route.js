@@ -5,8 +5,8 @@ const Cart = require('../../models/cart/cart.model.js');
 
 router.route('/farmer').get(
     (req,res)=>{ 
-        Order.find({"products.farmer_id":"5f3e41b85da66d33d6ebe0d7"})
-        .then(order=> res.json(order.products))
+        Order.find({"products.farmer_email":"abc@g.com"})
+        .then(order=> res.json(order))
         .catch(err => res.status(400).json('Error: '+err))
 
 });

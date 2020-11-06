@@ -60,7 +60,9 @@ export default class ProductList extends Component{
                         <img
                         className="product-image"
                         src={u.image}
-                        alt="product"
+                        alt="Product Image"
+                        height="200"
+                        width="200"
                         />
                     </Link>
                     <div className="product-name">

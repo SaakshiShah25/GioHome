@@ -11,7 +11,8 @@ const product = new Schema(
         available_quantity : {type: String},
         date_produced : {type:Date},
         life : {type:Number},
-        farmer_id : {type:Number}
+        farmer_id : {type:Number},
+        image : {type:String}
     
     },
     {

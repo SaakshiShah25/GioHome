@@ -21,7 +21,7 @@ router.route('/add').post(
         const available_quantity = Number(req.body.available_quantity);
         const date_produced = Date.parse(req.body.date_produced);
         const life = Number(req.body.life);
-        
+        const image = String(req.body.image);
         console.log(name)
         const newProduct = new Product(
             {
@@ -31,7 +31,7 @@ router.route('/add').post(
             available_quantity,
             date_produced,
             life,
-            
+            image
         });
             
 
