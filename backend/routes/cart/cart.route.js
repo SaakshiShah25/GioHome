@@ -41,12 +41,14 @@ router.route('/checkout').get((req, res)=>{
 
 // Update products to cart
 
-router.route('/edit').post((req, res)=>{
+router.route('/edit/:id').post((req, res)=>{
     
     const updateData = req.body;
     console.log("Hello",updateData)
-   
-    Cart.exists({email:User,products: updateData}, function(err, result) {
+    const id = req.params.id
+    console.log("--",id)
+    Cart.exists({email:id,products: updateData}, function(err, result) {
+        
         
         if (err) 
         {
@@ -55,10 +57,11 @@ router.route('/edit').post((req, res)=>{
         else 
         { 
             res.json(result)
+            console.log(result)
             if (!result)
             {
             
-            Cart.findOneAndUpdate({email:User},{$push: {products: updateData}},function (error, success) {
+            Cart.findOneAndUpdate({email:id},{$push: {products: updateData}},function (error, success) {
                 
                 if (error) 
                 {
@@ -121,7 +124,7 @@ router.route('/updatecart/:id').post((req, res) => {
     var updateData = req.body.available_quantity
     var id = req.params.id
 
-    Cart.updateOne({"products.name":id},{$set:{"products.$.available_quantity":updateData}},function (error, success) {
+    Cart.updateOne({email:User,"products.name":id},{$set:{"products.$.available_quantity":updateData}},function (error, success) {
         
         if (error) 
         {

@@ -26,7 +26,13 @@ export default class FarmerPage extends Component{
     }
     
     componentDidMount() {
-        axios.get('http://localhost:5000/farmer/update')
+
+      const obj = getFromStorage('email');
+      console.log("Email",obj)
+      const id =  obj
+      console.log(id)
+
+        axios.get('http://localhost:5000/farmer/update/'+id)
           .then(response => {
             console.log(response.data)
             this.setState({ products: response.data })
@@ -57,14 +63,24 @@ export default class FarmerPage extends Component{
       handleSubmit(e){
 
         e.preventDefault();
-        const updatedData = this.state.formdata
-          console.log(updatedData);
-          updatedData.price = this.state.price
-          updatedData.life = this.state.life
-          console.log(updatedData)
+        // const updatedData = this.state.formdata
+        //   console.log(updatedData);
+        //   updatedData.price = this.state.price
+        //   updatedData.life = this.state.life
+        //   console.log(updatedData)
         
-        const id=this.state.formdata.name
-        console.log(this.state.formdata.name)
+        // const id=this.state.formdata.name
+        // console.log(this.state.formdata.name)
+
+        const updatedData ={
+          price:this.state.price,
+          life:this.state.life
+        }
+        
+        const obj = getFromStorage('email');
+        console.log("Email",obj)
+        const id = this.state.formdata.name
+       
 
       axios.post('http://localhost:5000/farmer/updateproduct/'+id, updatedData)
 

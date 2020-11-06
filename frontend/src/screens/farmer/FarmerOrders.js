@@ -1,33 +1,151 @@
-// import React, {Component,Fragment, version} from 'react';
-// import axios from "axios";
-// import { Link } from 'react-router-dom';
-// import Modal from 'react-bootstrap/Modal'
+import React, {Component,Fragment, version} from 'react';
+import axios from "axios";
+import { Link } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal'
 
-// export default class FarmerOrders extends Component{
-//     constructor(props){
-//         super(props);
 
-//         this.state={
-//            farmer_doc:[] 
-//         }
-//     }
-//     componentDidMount(){
-//         axios.get('http://localhost:5000/orders/farmer')
-//         .then(res=>{
-//             console.log(res)
-//             this.setState({
-//                 farmer_doc:res.data
-//             })
-//             console.log(this.state.farmer_doc)
-//         })
-//         .catch(err=>console.log(err))
+import {
+    getFromStorage,
+    setInStorage,
+  } from '../../utils/storage';
+
+export default class FarmerOrders extends Component{
+    constructor(props){
+        super(props);
+        this.deliver = this.deliver.bind(this)
+        this.getDetails = this.getDetails.bind(this)
+        this.state={
+           farmer_doc:[] ,
+           prod_map:[],
+           order:[],
+           showForm:false,
+           formdata: []
+        }
+    }
+    componentDidMount(){
+        const obj = getFromStorage('email');
+        console.log("Email",obj)
+        const id =  obj 
+        axios.get('http://localhost:5000/orders/farmer/'+id)
+        .then(res=>{
+            console.log(res.data)
+            this.setState({
+                farmer_doc:res.data
+            })
+            console.log(this.state.farmer_doc)
+            var map = new Map();
+            this.state.farmer_doc.map((product)=>{
+                if(!(map.has(product.name))){
+                    map.set(product.name,[product.available_quantity,product.price])
+                    // map.set(product.name,product.price)
+                }
+                else{
+                    var q=map.get(product.name)
+                    var quantity = q[0]
+                    var price = q[1]
+                    var new_quantity=quantity+product.available_quantity
+                    var new_price=price+product.price
+
+                    map.set(product.name,[new_quantity,new_price])
+                 
+                    this.setState({
+                        prod_map:map
+                    })
+                }
+            })
+            console.log(this.state.prod_map)
+            let prod_map=this.state.prod_map
+            let order=[]
+            for (let [key,value] of prod_map){
+                order.push({key,value})
+            }
+            console.log(order)
+            this.setState({
+                order:order
+            })
+
+        })
+        .catch(err=>console.log(err))
     
-//     }
+    }
    
 
-//     render(){
-//         return(
-//             <div>farmer order !!!!</div>
-//         )
-//     }
-// }
+    deliver = (product) => {
+        const obj = getFromStorage('email');
+        console.log("Email",obj)
+        const id =  obj 
+        console.log(product)
+        axios.post("http://localhost:5000/farmer/deliver/" + id,product)
+        .then((res)=>{
+            if(res.data){
+                alert("Product deliveved")
+            }
+            else{
+                alert("Stock is empty")
+            }
+        })
+        .catch((err)=>console.log(err))
+    }
+
+    getDetails = (prod_name) =>{
+        this.setState({
+            showForm:true
+        })
+        var temp=[]
+        this.state.farmer_doc.map((u)=>{
+            if(u.name==prod_name){
+                temp.push(u)
+            }
+        })
+        this.setState({
+          formdata:temp  
+        })
+    }
+
+    showform = () => {
+        return (
+            <Modal.Dialog>
+            
+            <div>
+            {this.state.formdata.map((u)=>(
+            <div>
+            <Modal.Header>
+                <Modal.Title>{u.name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <div>Price: {u.price}</div>
+                <div>Quantity: {u.available_quantity}</div>
+            </Modal.Body>
+            </div>
+            ))}
+           
+
+            <Modal.Footer>
+                <button variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
+                
+            </Modal.Footer>
+            </div>
+            </Modal.Dialog>
+          );
+      }
+
+    render(){
+       return(
+           <div className="row">
+           {this.state.order.map((prod_name)=>(
+               <div className="col-md-3">
+                    <div>Product: {prod_name.key}</div>
+                    <div>Quantity: {prod_name.value[0]} kg</div>
+                    <div>Price: {prod_name.value[0]*prod_name.value[1]}</div>
+                    <button onClick={()=>this.getDetails(prod_name.key)}>
+                    View Details
+                    </button>
+               </div>
+               
+               
+           ))}
+           {this.state.showForm ? this.showform() : null}
+           </div>
+       )
+    }
+}

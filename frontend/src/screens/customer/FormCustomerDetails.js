@@ -39,8 +39,8 @@ handleChangeOption = ()=>{
     console.log("Email",obj)
     const id =  obj
 
-    axios.get('http://localhost:5000/account/'+id)
-    .then(res => { this.setState({address:res.data.address})})
+    // axios.get('http://localhost:5000/account/'+id)
+    // .then(res => { this.setState({address:res.data.address})})
   }
   render() {
     const { values, handleChange } = this.props;

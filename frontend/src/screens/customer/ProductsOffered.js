@@ -35,11 +35,14 @@ export default class ProductsOffered extends Component{
             available_quantity: product.available_quantity,
             date_produced:product.date,
             life: product.life,
-            farmer_id:product.farmer_id
+            farmer_email:product.farmer_email
         }
     
     console.log(addedproduct)
-    axios.post('http://localhost:5000/cart/edit', addedproduct)
+    const obj = getFromStorage('email');
+    console.log("Email",obj)
+    const id = obj
+    axios.post('http://localhost:5000/cart/edit/' + id, addedproduct)
         
   
         .then( res => 
@@ -79,7 +82,7 @@ export default class ProductsOffered extends Component{
             )
           
             
-            axios.get('http://localhost:5000/farmer/farmer-details/'+this.state.data.farmer_id)
+            axios.get('http://localhost:5000/farmer/farmer-details/'+this.state.data.farmer_email)
             .then(
                 res => 
                 {
@@ -136,7 +139,7 @@ export default class ProductsOffered extends Component{
                         </Modal.Header>
         
                         <Modal.Body>
-                            <div>Name :{this.state.farmer_data[0].name}</div>
+                            <div>Name :{this.state.farmer_data[0].firstName}</div>
                             <div>Location: {this.state.farmer_data[0].location}</div>
                         </Modal.Body>
         
@@ -170,12 +173,12 @@ export default class ProductsOffered extends Component{
                                        
 
                                         
-                                        <button onClick={()=>this.showDetails(u.farmer_id)}>
+                                        <button onClick={()=>this.showDetails(u.farmer_email)}>
                                             View farmer Details 
                                         </button>
                                         {/* Add to cart comes here connection left */}
                                       
-                                        <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button>
+                                        <button variant="btn btn-success"  onClick={() =>this.handleChange(u)}>Add to Cart</button>
 
                                  
                                     </div>

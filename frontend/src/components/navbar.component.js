@@ -20,7 +20,10 @@ export default class Navbar extends Component{
 
   componentDidMount()
   {
+
     const userType = getFromStorage("type")
+   
+    console.log("Check",userType)
 
     this.setState(
       {
@@ -36,7 +39,7 @@ export default class Navbar extends Component{
         return(
           <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
           <Sidebar />
-          <Link to="/farmer-home" className="navbar-brand">Gio Home Products</Link>
+          <Link to="/farmer" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
           
@@ -54,7 +57,7 @@ export default class Navbar extends Component{
           </ul>
           <ul className="navbar-nav navbar-right">
           <li className="navbar-item">
-              <Link to="/orders" className="nav-link">Orders</Link>
+              <Link to="/farmer-orders" className="nav-link">Orders</Link>
             </li>
           </ul>
           </div>
@@ -67,7 +70,7 @@ export default class Navbar extends Component{
         return(
           <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
           <Sidebar />
-          <Link to="/" className="navbar-brand">Gio Home Products</Link>
+          <Link to="/customer" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
@@ -81,8 +84,8 @@ export default class Navbar extends Component{
             </li>
           </ul>
           <ul className="navbar-nav navbar-right">
-          <li className="navbar-item">
-              <Link to="/orders" className="nav-link">Orders</Link>
+            <li className="navbar-item">
+                <Link to="/orders" className="nav-link">Orders</Link>
             </li>
           </ul>
           </div>

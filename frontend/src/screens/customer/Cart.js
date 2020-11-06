@@ -76,12 +76,12 @@ export default class Cart extends Component{
             console.log(error);
           })
 
-          axios.get('http://localhost:5000/account/'+id)
-          .then(response => {
-              this.setState({
-                  address : response.data.address
-              })
-          })
+        //   axios.get('http://localhost:5000/account/'+id)
+        //   .then(response => {
+        //       this.setState({
+        //           address : response.data.address
+        //       })
+        //   })
 
       }
 
@@ -96,7 +96,7 @@ export default class Cart extends Component{
                 <Modal.Body>
                     <form onSubmit={this.handleSubmit}>
                         <label for="quantity">Quantity: </label>
-                        <input type="number"   onChange={this.handleQuantityChange}></input>
+                        <input type="number" min="1" max={this.state.formdata.available_quantity}  onChange={this.handleQuantityChange}></input>
                             <div>Total: {this.state.formdata.price}*{this.state.available_quantity}</div>
                         <input type="submit" value="Save"></input>
                     </form>
@@ -125,7 +125,9 @@ export default class Cart extends Component{
                                     <div className="card" style={{width:'18rem','margin-top':'20px'}}>
                                         <div>{u.name}</div>
                                         <div>{u.description}</div>
-                                        <div>{u.price}</div>
+                                        <div>Price: Rs. {u.price}</div>
+                                        <div>In Stock: {u.available_quantity}</div>
+                                       
                                             <button onClick={()=>this.setState({showForm:true,formdata: u})}>
                                                 Select Quantity
                                             </button>
