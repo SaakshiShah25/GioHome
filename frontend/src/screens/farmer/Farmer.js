@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
 
+
 import {
     getFromStorage,
     setInStorage,
@@ -95,22 +96,22 @@ export default class FarmerPage extends Component{
       showform = () => {
         return (
             <Modal.Dialog>
-            <Modal.Header>
+            <Modal.Header className='model'>
                 <Modal.Title>{this.state.formdata.name}</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body>
+            <Modal.Body className='model'>
                 <form onSubmit={this.handleSubmit}>
                     <label>Price: </label>
                     <input type="text"  onChange={this.handlePriceChange}></input>
                     <label>Life: </label>
                     <input type="text"  onChange={this.handleLifeChange}></input>
-                    <input type="submit" value="Save"></input>
+                    <input className='card_button-green' type="submit" value="Save"></input>
                 </form>
             </Modal.Body>
 
-            <Modal.Footer>
-                <button variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
+            <Modal.Footer className='model'>
+                <button className='card_button-red' variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
                 
             </Modal.Footer>
             </Modal.Dialog>
@@ -130,16 +131,20 @@ export default class FarmerPage extends Component{
     render(){
         return(
            
-            <div className="row">
-                <div>
-                    <button variant="btn btn-success">
-                    <Link to="/product" >Offer New Products</Link>
-                    </button>
+            <div >
+                <div style={{marginTop:30, display:"flex",justifyContent:"center"}}>
+                    
+                    <Link style={{textDecoration:'none'}} to="/product" >
+                    <button className="other-button">
+                    Offer New Products</button>
+                    </Link>
+                    
                 </div>
+                <div className="row">
                 {this.state.products.map((u)=>(
                 <Fragment>
-                    <div className="col-md-3">
-                        <div className="card" style={{width:'18rem','margin-top':'20px'}}>
+                    <div className="col-md-4">
+                        <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
                             <img className="card-img-top" src="..." alt="Card image cap" />
                             <div className="card-body">
                                 <div style={{'display':'flex'}}> 
@@ -149,11 +154,13 @@ export default class FarmerPage extends Component{
                                 <p className="card-text">Stock: {u.available_quantity}kg</p>
                                 
                             </div>
-                            <button onClick={()=> this.setState({ showForm: true ,formdata: u})}>
+                            
+                            <button className="card_button-green" onClick={()=> this.setState({ showForm: true ,formdata: u})}>
                                 Update
                             </button>
-                            <button onClick={()=>this.remove(u.name)}>Stop Offering</button>
-                           
+                            
+                            <button className="card_button-red" onClick={()=>this.remove(u.name)}>Stop Offering</button>
+                            
                               
                             
                         </div>
@@ -163,7 +170,7 @@ export default class FarmerPage extends Component{
                 ))}
                 {/* Out of fragment but the value triggered from a specific card in the fragment */}
                   {this.state.showForm ? this.showform() : null}
-            </div>
+            </div></div>
            
         );
     }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 import { Router, Route, Link } from 'react-router-dom';
 import {
@@ -64,15 +64,61 @@ export default class ProductList extends Component{
            
                 
             
-            <div className="row">
-                <div>
+            <div>
+                <div style={{marginTop:30 ,display:'flex',justifyContent:'center'}}>
                 {/* Please use history here  */}
-                <button variant="btn btn-success">
-                <Link to="/product/add" >Add products</Link>
+                
+                <Link style={{textDecoration:'none'}} to="/product/add" >
+                <button className="other-button">Add products
                 </button>
+                </Link>
+               
+                </div>
+                <div className="row">
+
+                {this.state.products.map((u)=>(
+                    <Fragment>
+                    <div className="col-md-4">
+                        <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
+                        <Link to={'' + u._id}>
+                        <img
+                        className="product-image"
+                        src={u.image}
+                        alt="Product Image"
+                        height="200"
+                        width="200"
+                        />
+                    </Link>
+                            {/* <img className="card-img-top" src="..." alt="Card image cap" /> */}
+                            <div className="card-body">
+                                <div style={{'display':'flex'}}> 
+                                    <h5 style={{'textAlign':'center'}} className="card-title"><Link to={'' + u._id}>{u.name}</Link></h5>
+                                </div>
+                                <div className="product-description">{u.description}</div>
+                                <div className="product-price">Price: {u.price}</div>
+                                <div className="product-life">Life: {u.life}</div>
+                                {/* <p className="card-text">{u.description}</p>
+                                <p className="card-text">Stock: {u.available_quantity}kg</p> */}
+                                
+                            </div>
+                            <button className="card_button-green" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to list</button>
+                            
+                            {/* <button className="card_button" onClick={()=> this.setState({ showForm: true ,formdata: u})}>
+                                Update
+                            </button>
+                            
+                            <button className="card_button" onClick={()=>this.remove(u.name)}>Stop Offering</button> */}
+                            
+                              
+                            
+                        </div>
+                    </div>
+                    
+                    </Fragment>
+                ))}
                 </div>
 
-                <ul className="products">
+                {/* <ul className="products">
                     {this.state.products.map((u)=>(
                     <li key={u._id}>
                     <div className="product">
@@ -96,7 +142,7 @@ export default class ProductList extends Component{
                     </li>
                     
                     ))}
-                </ul> 
+                </ul>  */}
             </div>
         );
     }

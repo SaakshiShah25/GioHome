@@ -89,21 +89,21 @@ export default class Cart extends Component{
         return (
             <Modal.Dialog>
 
-                <Modal.Header>
+                <Modal.Header className='model'>
                     <Modal.Title>Select Quantity</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body className='model'>
                     <form onSubmit={this.handleSubmit}>
                         <label for="quantity">Quantity: </label>
                         <input type="number" min="1" max={this.state.formdata.available_quantity}  onChange={this.handleQuantityChange}></input>
                             <div>Total: {this.state.formdata.price}*{this.state.available_quantity}</div>
-                        <input type="submit" value="Save"></input>
+                        <input className='card_button-green' type="submit" value="Save"></input>
                     </form>
                 </Modal.Body>
 
-                <Modal.Footer>
-                    <button variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
+                <Modal.Footer className='model'>
+                    <button className='card_button-red' variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
                 </Modal.Footer>
 
             </Modal.Dialog>
@@ -113,39 +113,45 @@ export default class Cart extends Component{
     render(){
         return(
             
-            <div className="row">
-                <ul className="products">
+            <div>
+                <Fragment className="products">
                     { this.state.products.length ?
-
                         <div>
+                        <div className="row">
                             { 
                                 this.state.products.map((u)=> (
                                 
-                                <div className="col-md-3">
-                                    <div className="card" style={{width:'18rem','margin-top':'20px'}}>
+                                <div className="col-md-4">
+                                    <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
                                         <div>{u.name}</div>
                                         <div>{u.description}</div>
                                         <div>Price: Rs. {u.price}</div>
                                         <div>In Stock: {u.available_quantity}</div>
                                        
-                                            <button onClick={()=>this.setState({showForm:true,formdata: u})}>
+                                            <button className="card_button-green" onClick={()=>this.setState({showForm:true,formdata: u})}>
                                                 Select Quantity
                                             </button>
 
-                                            <button onClick={()=>this.remove(u.name)}>
+                                            <button className="card_button-red" onClick={()=>this.remove(u.name)}>
                                                 Remove from Cart
                                             </button>
                                     </div>
                                 
                                 </div>))
                             }
-                            <button><Link to="/cart/checkout">Proceed to Checkout</Link></button>
+                            </div>
+                            <div style={{display:"flex",justifyContent:"center"}}>
+                            <Link style={{textDecoration:'none'}} to="/cart/checkout">
+                            <button className='other-button'>Proceed to Checkout</button>
+                            </Link>
+                            </div>
                         </div>
+                        
                         : 
                         <div>Cart is empty!</div>
                     }
                         {this.state.showForm ? this.showform() : null}
-                </ul> 
+                </Fragment> 
                
             </div>
            

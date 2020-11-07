@@ -37,27 +37,27 @@ export default class Navbar extends Component{
       if(this.state.userType == "Farmer")
       {
         return(
-          <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+          <nav className="navbar navbar-custom navbar-expand-lg">
           <Sidebar />
-          <Link to="/farmer" className="navbar-brand">Gio Home Products</Link>
+          <Link style={{fontWeight:'bolder'}} to="/farmer" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
           
             
             <li className="navbar-item">
-            <Link to="/farmer" className="nav-link">Farmer</Link>
+            <Link style={{fontWeight:'bold'}} to="/farmer" className="nav-link">Farmer</Link>
             </li>
             <li className="navbar-item">
-            <Link to="/product" className="nav-link">Stock</Link>
+            <Link style={{fontWeight:'bold'}} to="/product" className="nav-link">Stock</Link>
             </li>
             <li className="navbar-item">
-            <Link to="/farmer-account" className="nav-link">Account</Link>
+            <Link style={{fontWeight:'bold'}} to="/farmer-account" className="nav-link">Account</Link>
             </li>
             
           </ul>
           <ul className="navbar-nav navbar-right">
           <li className="navbar-item">
-              <Link to="/farmer-orders" className="nav-link">Orders</Link>
+              <Link style={{fontWeight:'bold'}} to="/farmer-orders" className="nav-link">Orders</Link>
             </li>
           </ul>
           </div>
@@ -68,24 +68,24 @@ export default class Navbar extends Component{
       else if (this.state.userType == "Customer")
       {
         return(
-          <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+          <nav className="navbar navbar-custom navbar-expand-lg">
           <Sidebar />
-          <Link to="/customer" className="navbar-brand">Gio Home Products</Link>
+          <Link style={{fontWeight:'bolder'}} to="/customer" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
-            <Link to="/customer" className="nav-link">Customer</Link>
+            <Link style={{fontWeight:'bold'}} to="/customer" className="nav-link">Customer</Link>
             </li>
             <li className="navbar-item">
-            <Link to="/cart" className="nav-link">Cart</Link>
+            <Link style={{fontWeight:'bold'}} to="/cart" className="nav-link">Cart</Link>
             </li>
             <li className="navbar-item">
-            <Link to="/account" className="nav-link">Account</Link>
+            <Link style={{fontWeight:'bold'}} to="/account" className="nav-link">Account</Link>
             </li>
           </ul>
           <ul className="navbar-nav navbar-right">
             <li className="navbar-item">
-                <Link to="/orders" className="nav-link">Orders</Link>
+                <Link style={{fontWeight:'bold'}} to="/orders" className="nav-link">Orders</Link>
             </li>
           </ul>
           </div>
@@ -95,9 +95,9 @@ export default class Navbar extends Component{
       }
       else {
         return(
-          <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+          <nav className="navbar navbar-custom navbar-expand-lg">
             <Sidebar />
-            <Link to="/" className="navbar-brand">Gio Home Products</Link>
+            <Link  style={{fontWeight:'bolder'}} to="/" className="navbar-brand">Gio Home Products</Link>
           </nav>
         )
         

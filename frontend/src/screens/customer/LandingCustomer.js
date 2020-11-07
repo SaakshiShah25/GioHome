@@ -70,31 +70,36 @@ export default class LandingCustomer extends Component{
             <div className="row">
                 
 
-                <ul className="products">
+                {/* <ul className="products"> */}
                     {this.state.products.map((u)=>(
-                    <li key={u._id}>
-                    <div className="product">
+                    
+                    <div className="col-md-4">
 
-                    <Link to={'' + u._id}>
+                    {/* <Link to={'' + u._id}>
                         <img
                         className="product-image"
                         src={u.image}
                         alt="product"
                         />
-                    </Link>
+                    </Link> */}
+                    <div className='column'>
                     <div className="product-name">
-                        <Link to={{pathname:'/customer/products-offered',data:{name: u.name,id: u.farmer_id}}}>{u.name}</Link>
-                    </div>
+                    
+                        <Link style={{textDecoration:'none'}} to={{pathname:'/customer/products-offered',data:{name: u.name,id: u.farmer_id}}}>
+                        <button className='customer-button'>{u.name}</button>
+                        </Link>
+                        
+                    </div></div>
                     
 
                         {/* not needed for now transfering to somehwere else */}
                     {/* <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button> */}
 
                     </div>
-                    </li>
+                    
                     
                     ))}
-                </ul> 
+                {/* </ul>  */}
             </div>
         );
     }

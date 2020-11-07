@@ -32,11 +32,15 @@ export default class Landing extends Component{
     render(){
         return(
             <div>
-                <button onClick={()=>setInStorage("type","Customer")}>
-                    <Link to="/customer-signup">Customer</Link>
+            <h1 style={{marginTop:'20px',textAlign:'center'}}>Welcome ! सुस्वागतम ! Bienvenue !</h1>
+            <h4 style={{marginTop:'20px',textAlign:'center'}}> A ONE-STOP SHOP FOR 100% FARM-FRESH PRODUCTS</h4>
+            
+            <div className="landing-container">
+                <button className='landing-button' onClick={()=>setInStorage("type","Customer")}>
+                    <Link style={{textDecoration:'none',color:'#3ab54a', fontFamily:'Open Sans',fontSize:'40px',fontWeight:'bolder'}} to="/customer-signup">Customer</Link>
                 </button>
-                <button onClick={()=>setInStorage("type","Farmer")} >
-                    <Link to="/farmer-signup">Farmer</Link>
+                <button className='landing-button' onClick={()=>setInStorage("type","Farmer")} >
+                    <Link style={{textDecoration:'none',color:' #3ab54a',fontFamily:'Open Sans',fontSize:'40px',fontWeight:'bolder'}} to="/farmer-signup">Farmer</Link>
                 </button>
                 {/* <img src ={this.state.image ||"https://via.placeholder.com/400x300"}
                 alt = "Upload Images"
@@ -45,7 +49,7 @@ export default class Landing extends Component{
 
                 
                 /> */}
-            </div>
+            </div></div>
         )
     }
 }

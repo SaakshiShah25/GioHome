@@ -190,15 +190,15 @@ class FarmerSignin extends Component {
                 <p>{signInError}</p>
               ) : (null)
             }
-            <p>Sign In</p>
-            <input
+            <h1 style={{textAlign:'center'}}>Sign In</h1>
+            <input style={{marginLeft:'25%' ,width: '50%'}}
               type="email"
               placeholder="Email"
               value={signInEmail}
               onChange={this.onTextboxChangeSignInEmail}
             />
             <br />
-            <input
+            <input style={{marginLeft:'25%' ,width: '50%'}}
               type="password"
               placeholder="Password"
               value={signInPassword}
@@ -225,16 +225,22 @@ class FarmerSignin extends Component {
                     Customer
        
                   </div> */}
+
+                  
     
-            <button onClick={this.onSignIn}>
-             <Link to="/farmer-signin">
+            <div className="row" style={{display:"flex", justifyContent:"center"}}>
+            <div style={{justifyContent:'space-around'}}>
+            <button className='card_button-green' onClick={this.onSignIn}>
+             <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/farmer-signin">
              Sign In
              </Link>
               
               </button>
-            <button>
-                <Link to="/farmer-signup">Signup</Link>
+              <h5 style={{textAlign:"center"}}>OR</h5>
+            <button style={{borderRadius:'5px'}} className='other-button'>
+                <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/farmer-signup">Signup</Link>
             </button>
+            </div></div>
           <div>{this.state.userType}</div>
           </div>
           <br />
@@ -248,9 +254,9 @@ class FarmerSignin extends Component {
     return (
       <div>
         <p>Account</p>
-        <button onClick={this.logout}>
+        <button className="card_button-red" onClick={this.logout}>
 
-          <Link to="/">
+          <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/">
            Logout
            </Link>
 

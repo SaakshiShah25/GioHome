@@ -76,7 +76,7 @@ export default class Orders extends Component{
                 
                
                             <div className="col-md-3">
-                               <div className="card" style={{width:'18rem','margin-top':'20px'}}>
+                               <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
                                     <img className="card-img-top" src="..." alt="Card image cap" />
                                     <div className="card-body">
                                         <div style={{'display':'flex'}}> 
@@ -87,9 +87,11 @@ export default class Orders extends Component{
                                         <p className="card-text">Shipping Address: {u.address}</p>
                                         <p className="card-text">Price: {u.net_amount} Rs.</p>
                                     </div>
-                                    <button >
-                                        <Link to={{pathname:'/orders/view',data:u.products}}>View details</Link>
-                                    </button>
+                                    
+                                        <Link style={{textDecoration:'none'}} to={{pathname:'/orders/view',data:u.products}}>
+                                        <button className="card_button-green"> View details</button>
+                                        </Link>
+                                    
                                 </div>
                                 
                             </div>
@@ -100,11 +102,11 @@ export default class Orders extends Component{
                         }
                         </div>
                     : 
-                    <div>
-                        No orders yet?
-                        <Link to='/customer'> Find something for you </Link> 
+                    <h3 style={{display:"flex",justifyContent:'center'}}>
+                        No orders yet? 
+                        <Link style={{textDecoration:'none'}} to='/customer'> Find something for you </Link> 
                         
-                    </div>
+                    </h3>
                 }
             
             </div>
