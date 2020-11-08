@@ -161,13 +161,20 @@ export default class ProductsOffered extends Component{
                 <ul className="products">
                     { this.state.data.length ?
 
-                        <div>
+                        <div >
+                           
                             { 
+                             
                                 this.state.data.map((u)=> (
                                 
-                                <div className="col-md-3">
-                                    <div className="card" style={{marginLeft:'40px'}}>
-                                        
+                                    <div className="col-md-3">
+                                    <div className="card" >
+                                    <img style={{paddingTop:"20px"}}
+                                        src={u.image || "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8//5bPQAI/gNVQZKKMQAAAABJRU5ErkJggg=="}
+                                        alt="Uploaded Images"
+                                        height="200"
+                                        width="200"
+                                        />
                                         <div className="card-heading"> Name: {u.name}</div>
                                         <div className="card-desc">Price : {u.price}</div>
                                         <div className="card-desc"> Available Quantity: {u.available_quantity}</div>
@@ -181,9 +188,11 @@ export default class ProductsOffered extends Component{
                                         </div>
                                  
                                     </div>
+                            
                                 
-                                </div>))
-                                 
+                                    </div>
+                                ))
+                                
                             }
                            
                         </div>

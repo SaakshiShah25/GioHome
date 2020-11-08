@@ -231,7 +231,7 @@ class FarmerSignin extends Component {
             <div className="row" style={{display:"flex", justifyContent:"center",paddingLeft:"10px",borderRadius:"10px"}}>
             <div style={{justifyContent:'space-around'}}>
             <button className='card_button-green' onClick={this.onSignIn}>
-             <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/farmer-signin">
+             <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/farmer">
              Sign In
              </Link>
               

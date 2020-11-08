@@ -77,16 +77,12 @@ export default class Orders extends Component{
                
                             <div className="col-md-3">
                                <div className="card">
-                                    {/* <img className="card-img-top" src="..." alt="Card image cap" /> */}
-                                    
-                                        
                                         <p className="card-heading">{u.name}</p>
                                         <p className="order-details">Shipping Address: {u.address}</p>
                                         <p className="order-details">Price: {u.net_amount} Rs.</p>
                                         <Link className="link" to={{pathname:'/orders/view',data:u.products}}>
                                             <button className="card_button-green"> View details</button>
                                         </Link>
-                                    
                                 </div>
                                 
                             </div>

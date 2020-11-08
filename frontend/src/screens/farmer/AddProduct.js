@@ -181,11 +181,11 @@ export default class AddProduct extends Component{
                 <div className="col-md-2"></div>
                 <div className="col-md-8">
                 
-                <h3>Add Grocery Product</h3>
+                <h3 style={{marginTop:"20px"}}>Add Grocery Product</h3>
                 <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label>Name : </label>
-                    <input 
+                    <input style={{paddingLeft:"10px",borderRadius:"10px"}}
                         type="text" 
                         className="form-control"
                         value={this.state.name}
@@ -194,16 +194,17 @@ export default class AddProduct extends Component{
                     </div>
                     <div className="form-group">
                     <label>Description : </label>
-                    <input 
+                    <input style={{paddingLeft:"10px",borderRadius:"10px"}}
                         type="text" 
                         className="form-control"
+                      
                         value={this.state.description}
                         onChange={this.onChangeDescription}
                         />
                     </div>
                     <div className="form-group">
                     <label>Price :</label>
-                    <input 
+                    <input style={{paddingLeft:"10px",borderRadius:"10px"}}
                         type="text" 
                         className="form-control"
                         value={this.state.price}
@@ -212,7 +213,7 @@ export default class AddProduct extends Component{
                     </div>
                     <div className="form-group">
                     <label>Quantity</label>
-                    <input 
+                    <input style={{paddingLeft:"10px",borderRadius:"10px"}}
                         type="number" 
                         min="1"
                         className="form-control"
@@ -222,8 +223,8 @@ export default class AddProduct extends Component{
                     </div>
                     <div className="form-group">
                     <label>Date: </label>
-                    <div>
-                        <DatePicker
+                    <div style={{paddingLeft:"10px",borderRadius:"10px"}}>
+                        <DatePicker 
                         selected={this.state.date}
                         onChange={this.onChangeDate}
                         />
@@ -231,9 +232,9 @@ export default class AddProduct extends Component{
                     </div>
                     
                     
-                    <div className="form-group">
+                    <div className="form-group" >
                     <label>Life :</label>
-                    <input 
+                    <input style={{paddingLeft:"10px",borderRadius:"10px"}}
                         type="text" 
                         className="form-control"
                         value={this.state.life}
@@ -241,48 +242,12 @@ export default class AddProduct extends Component{
                         />
                     </div>
 
-                        {/* **************Image Upload************************* */}
-
-                        <div className="center">
-                          <br/>
-                          <h2 className="green-text">Upload Image</h2>
-                          <br/>
-                          <br/>
-                        <div className="row">
-                          <progress value={this.state.progress} max="100" className="progress" />
-                        </div>
-                        <br />
-                        <br />
-                        <br />
-                        <div className="file-field input-field">
-                          <div className="btn">
-                            <span>File</span>
-                            <input type="file" onChange={this.handleChange} />
-                          </div>
-                          <div className="file-path-wrapper">
-                            <input className="file-path validate" type="text" />
-                          </div>
-                        </div>
-                        <button
-                          onClick={this.handleUpload}
-                          className="waves-effect waves-light btn">
-                          Upload
-                        </button>
-                        <br />
-                        <br />
-                        <img
-                          src={this.state.url || "https://via.placeholder.com/400x300"}
-                          alt="Uploaded Images"
-                          height="300"
-                          width="400"
-                        />
-                      </div>
-                              {/* *************************************** */}
+                        
 
 
-                      <div className="form-group">
-                        <button onClick={this.onSubmit}> 
-                          <Link to="/product">Add Product</Link>
+                      <div>
+                        <button className="card_button-red" onClick={this.onSubmit}> 
+                          <Link style= {{textDecoration: "none" ,color:"white"}} to="/product">Add Product</Link>
                         </button>
                       </div>
                 </form>

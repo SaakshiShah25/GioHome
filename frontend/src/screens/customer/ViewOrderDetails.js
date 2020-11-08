@@ -8,10 +8,10 @@ export default class Orders extends Component{
     render(){
        const orders = this.props.location.data
         return(
-            <div className="row">
+            <div >
             {orders.map((u)=>(
               
-               <div className="col-md-4">
+               <div className="col-md-3">
                    <div className="card" >
                         <img className="card-img-top" src="..." alt='' />
                         <div className="card-body">

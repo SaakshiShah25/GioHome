@@ -64,14 +64,37 @@ html {
 }
 
 
-.card {
+/* .card {
   width: 370px;
-  margin-left: 30px !important;
+  margin-left: 60px !important;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin-top:40px;
+  
+} */
+
+.card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* margin-top:40px; */
+  width: 370px;
+  /* margin-left: 40px; */
+
+  min-width: 550px;
+  position: relative;
+  /* max-width: 1240px; */
+  /* min-width: 370px; */
+  /* margin: 0 auto;
+   
+  display: grid;
+   
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px; */
 }
 
 .card-title{
@@ -184,10 +207,24 @@ html {
 }
 
 .col-md-3{
-  justify-content:space-around;
+
+  /* justify-content:space-around; */
   margin: 30px;
+  padding-left: 20px;
   display:inline-block;
+
 }
+.col-md-4{
+
+  /* justify-content:space-around; */
+  margin-left: 20px;
+  
+  padding-left: 30px;
+  
+
+}
+
+
 
 .landing-button{
   border-width: 0px;

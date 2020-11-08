@@ -137,7 +137,7 @@ export default class Account extends Component{
                 
             
             <div>
-                
+                 <h2 style={{textAlign:'center',paddingTop:"30px",paddingBottom:"30px"}}>My Account Details</h2>
                 <h3 style={{textAlign:'center'}}>{this.state.firstname} {this.state.lastname}</h3>
                 <h3 style={{textAlign:'center'}}>{this.state.email}</h3>
                 {/* Redirect to orders of the customer */}
@@ -154,7 +154,7 @@ export default class Account extends Component{
                             {u}
                             
                         
-                        <button onClick={()=>this.remove(u)}>x</button></h4>
+                        <button className='card_button-red'  style={{textAlign:"center"}} onClick={()=>this.remove(u)}>Remove</button></h4>
                         </div>
 
 

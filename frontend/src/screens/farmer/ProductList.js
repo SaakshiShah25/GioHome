@@ -46,12 +46,12 @@ export default class ProductList extends Component{
 
         axios.post('http://localhost:5000/farmer/edit/'+id, addedproduct)
         .then(res => {
-            console.log("!",res.data)
+            console.log("ttttt!",res.data)
             if (res.data){
                 alert("Already in your list")
             }
             else{
-                alert("Done")
+                alert("Product added")
             }
         })
        
@@ -80,12 +80,12 @@ export default class ProductList extends Component{
 
                 {this.state.products.map((u)=>(
                     <Fragment>
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                         <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
-                        <Link to={'' + u._id}>
+                        {/* <Link to={'' + u._id}> */}
                     
    
-                        <img
+                        {/* <img
                         
                         className="product-image"
                         
@@ -93,16 +93,16 @@ export default class ProductList extends Component{
                         
                         height="200"
                         width="200"
-                        />
-                    </Link>
+                        /> */}
+                    {/* </Link> */}
                             {/* <img className="card-img-top" src="..." alt="Card image cap" /> */}
                             <div className="card-body">
                                 <div style={{'display':'flex'}}> 
                                     <h5 style={{'textAlign':'center'}} className="card-title"><Link to={'' + u._id}>{u.name}</Link></h5>
                                 </div>
-                                <div className="product-description">{u.description}</div>
+                                {/* <div className="product-description">{u.description}</div>
                                 <div className="product-price">Price: {u.price}</div>
-                                <div className="product-life">Life: {u.life}</div>
+                                <div className="product-life">Life: {u.life}</div> */}
                                 {/* <p className="card-text">{u.description}</p>
                                 <p className="card-text">Stock: {u.available_quantity}kg</p> */}
                                 

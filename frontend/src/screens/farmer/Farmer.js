@@ -309,19 +309,18 @@ export default class FarmerPage extends Component{
                     </Link>
                     
                 </div>
-                <div className="row">
+                <div>
                 {this.state.products.map((u)=>(
                 <Fragment>
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                         <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
                             <img className="card-img-top" src={u.image}
                             height="200"
                             width="200"
                              />
                             <div className="card-body">
-                                <div style={{'display':'flex'}}> 
-                                    <h5 className="card-title">{u.name}</h5>
-                                </div>
+                                
+                                <h5 className="card-title">{u.name}</h5>
                                 <p className="card-text">{u.description}</p>
                                 <p className="card-text">Stock: {u.available_quantity} kg</p>
                                 <p className="card-text">Price: {u.price} ₹</p>

@@ -288,7 +288,12 @@ class CustomerSignup extends Component {
 
             <div className="row" style={{display:"flex", justifyContent:"center",borderRadius:"10px"}}>
             <div style={{justifyContent:'space-around'}}>
-            <button className='card_button-green' onClick={this.onSignUp}>Sign Up</button>
+
+            <button className='card_button-green' onClick={this.onSignUp}>
+            <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/customer">
+              Sign Up
+              </Link>
+              </button>
             <h5 style={{textAlign:"center"}}>Already registered?</h5>
             {/* <button style={{borderRadius:'5px'}}className='other-button'>
               <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/customer-signin">Signin</Link>
