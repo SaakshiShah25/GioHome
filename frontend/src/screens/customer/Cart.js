@@ -142,7 +142,7 @@ export default class Cart extends Component{
                             }
                             </div>
                             <div style={{display:"flex",justifyContent:"center"}}>
-                            <Link style={{textDecoration:'none'}} to="/cart/checkout">
+                            <Link className="link" to="/cart/checkout">
                             <button className='other-button'>Proceed to Checkout</button>
                             </Link>
                             </div>
