@@ -14,12 +14,15 @@ export default class FarmerPage extends Component{
         // this.showModal = this.showModal.bind(this)
         // this.handleClose = this.handleClose.bind(this)
         this.handlePriceChange = this.handlePriceChange.bind(this)
+        this.handleQtyChange = this.handleQtyChange.bind(this)
         this.handleLifeChange = this.handleLifeChange.bind(this)
+
         this.handleSubmit = this.handleSubmit.bind(this)
         this.state={
             products:[],
             price:'',
             life:'',
+            available_quantity: 0,
             showForm: false,
             formdata : {}
         }
@@ -52,9 +55,12 @@ export default class FarmerPage extends Component{
           this.setState({price:e.target.value})
          
     }
-      handleLifeChange(e){
-          this.setState({life:e.target.value})
+      handleQtyChange(e){
+          this.setState({available_quantity:e.target.value})
     }
+    handleLifeChange(e){
+      this.setState({life:e.target.value})
+}
 
       hideModal = () => {
         this.setState({ showForm: false });
@@ -74,7 +80,8 @@ export default class FarmerPage extends Component{
 
         const updatedData ={
           price:this.state.price,
-          life:this.state.life
+          life:this.state.life,
+          available_quantity:this.state.available_quantity
         }
         
         const obj = getFromStorage('email');
@@ -103,8 +110,11 @@ export default class FarmerPage extends Component{
                 <form onSubmit={this.handleSubmit}>
                     <label>Price: </label>
                     <input type="text"  onChange={this.handlePriceChange}></input>
+                    <label>Available Quantity: </label>
+                    <input type="text"  onChange={this.handleQtyChange}></input>
                     <label>Life: </label>
                     <input type="text"  onChange={this.handleLifeChange}></input>
+
                     <input type="submit" value="Save"></input>
                 </form>
             </Modal.Body>
@@ -146,7 +156,11 @@ export default class FarmerPage extends Component{
                                     <h5 className="card-title">{u.name}</h5>
                                 </div>
                                 <p className="card-text">{u.description}</p>
-                                <p className="card-text">Stock: {u.available_quantity}kg</p>
+                                <p className="card-text">Stock: {u.available_quantity} kg</p>
+                                <p className="card-text">Price: {u.price} ₹</p>
+                                <p className="card-text">Life: {u.life} Days</p>
+
+                                <p className="card-text">Updated on: {u.updatedAt}</p>
                                 
                             </div>
                             <button onClick={()=> this.setState({ showForm: true ,formdata: u})}>
