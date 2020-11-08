@@ -39,25 +39,25 @@ export default class Navbar extends Component{
         return(
           <nav className="navbar navbar-custom navbar-expand-lg">
           <Sidebar />
-          <Link style={{fontWeight:'bolder'}} to="/farmer" className="navbar-brand">Gio Home Products</Link>
+          <Link to="/farmer" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
           
             
             <li className="navbar-item">
-            <Link style={{fontWeight:'bold'}} to="/farmer" className="nav-link">Farmer</Link>
+            <Link to="/farmer" className="nav-link">Farmer</Link>
             </li>
             <li className="navbar-item">
-            <Link style={{fontWeight:'bold'}} to="/product" className="nav-link">Stock</Link>
+            <Link to="/product" className="nav-link">Stock</Link>
             </li>
             <li className="navbar-item">
-            <Link style={{fontWeight:'bold'}} to="/farmer-account" className="nav-link">Account</Link>
+            <Link to="/farmer-account" className="nav-link">Account</Link>
             </li>
             
           </ul>
           <ul className="navbar-nav navbar-right">
           <li className="navbar-item">
-              <Link style={{fontWeight:'bold'}} to="/farmer-orders" className="nav-link">Orders</Link>
+              <Link to="/farmer-orders" className="nav-link">Orders</Link>
             </li>
           </ul>
           </div>
@@ -70,22 +70,22 @@ export default class Navbar extends Component{
         return(
           <nav className="navbar navbar-custom navbar-expand-lg">
           <Sidebar />
-          <Link style={{fontWeight:'bolder'}} to="/customer" className="navbar-brand">Gio Home Products</Link>
+          <Link to="/customer" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
-            <Link style={{fontWeight:'bold'}} to="/customer" className="nav-link">Customer</Link>
+            <Link to="/customer" className="nav-link">Customer</Link>
             </li>
             <li className="navbar-item">
-            <Link style={{fontWeight:'bold'}} to="/cart" className="nav-link">Cart</Link>
+            <Link to="/cart" className="nav-link">Cart</Link>
             </li>
             <li className="navbar-item">
-            <Link style={{fontWeight:'bold'}} to="/account" className="nav-link">Account</Link>
+            <Link to="/account" className="nav-link">Account</Link>
             </li>
           </ul>
           <ul className="navbar-nav navbar-right">
             <li className="navbar-item">
-                <Link style={{fontWeight:'bold'}} to="/orders" className="nav-link">Orders</Link>
+                <Link to="/orders" className="nav-link">Orders</Link>
             </li>
           </ul>
           </div>
@@ -97,7 +97,7 @@ export default class Navbar extends Component{
         return(
           <nav className="navbar navbar-custom navbar-expand-lg">
             <Sidebar />
-            <Link  style={{fontWeight:'bolder'}} to="/" className="navbar-brand">Gio Home Products</Link>
+            <Link to="/" className="navbar-brand">Gio Home Products</Link>
           </nav>
         )
         

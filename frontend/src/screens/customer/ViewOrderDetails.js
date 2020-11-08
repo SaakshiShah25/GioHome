@@ -10,22 +10,20 @@ export default class Orders extends Component{
         return(
             <div className="row">
             {orders.map((u)=>(
-               <div>
-               <div className="col-md-3">
-                   <div className="card" style={{width:'18rem','margin-top':'20px'}}>
+              
+               <div className="col-md-4">
+                   <div className="card" >
                         <img className="card-img-top" src="..." alt="Card image cap" />
                         <div className="card-body">
-                            <div style={{'display':'flex'}}> 
-                                <h5 className="card-title">{u.name}</h5>
-                            </div>
-                            <p className="card-text">Price: {u.price}</p>
-                            <p className="card-text">Quantity: {u.available_quantity} Rs.</p>
+                            <p className="card-heading">{u.name}</p>
+                            <p className="card-desc">Price: {u.price}</p>
+                            <p className="card-desc">Quantity: {u.available_quantity} Rs.</p>
                         </div>
                     </div>
                 </div>
                
               
-            </div>
+           
             ))}
             </div>
         )

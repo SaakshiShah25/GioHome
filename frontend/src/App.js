@@ -1,5 +1,4 @@
 import Landing from './screens/landing/Landing'
-
 import CustomerSignup from './screens/customer/CustomerSignup'
 import Orders from './screens/customer/Orders';
 import React from 'react';
@@ -25,6 +24,7 @@ import MoreDetails from './screens/customer/MoreDetails'
 import FarmerAccount from './screens/farmer/FarmerAccount'
 import FarmerOrders from './screens/farmer/FarmerOrders'
 import ImageUpload from './image/ImageUpload'
+import './index.css';
 
 import history from './history.js';
 function App({history}) {
