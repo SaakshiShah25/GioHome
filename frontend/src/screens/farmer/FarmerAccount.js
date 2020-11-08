@@ -18,7 +18,8 @@ class FarmerAccount extends Component {
       signInError: '',
       signInEmail: '',
       signInPassword: '',
-      userType: ''
+      userType: '',
+      data: ""
       
     };
 
@@ -29,6 +30,16 @@ class FarmerAccount extends Component {
 
   componentDidMount() {
     const obj = getFromStorage('the_main_app');
+    const obj1 = getFromStorage('email');
+      console.log("Email",obj1)
+      const id =  obj1
+      console.log("Testing",id)
+      axios.get('http://localhost:5000/farmer/farmer-details/'+id)
+      .then(response => {
+        console.log("test",response.data[0])
+        this.setState({ data: response.data[0] })
+        
+      })
 
   }
 
@@ -76,8 +87,12 @@ class FarmerAccount extends Component {
     return (
       <div>
       <h2 style={{textAlign:'center',marginTop:'200px'}}>My Farmer's Account</h2>
+      
       <div  style={{display:"flex",justifyContent:"center"}}>
-        
+      <div>
+          <div>{this.state.data.firstName} {this.state.data.lastName}</div>
+          <div> {this.state.data.location} </div>
+        </div>
       <button className="other-button" onClick={this.logout}>
         <Link onClick={this.logout} style={{textDecoration:'none',color:"whitesmoke"}} to="/farmer-signin">
         Logout
