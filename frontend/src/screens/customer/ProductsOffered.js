@@ -132,22 +132,24 @@ export default class ProductsOffered extends Component{
               
             showform = () => {
                 return (
+                    
                     <Modal.Dialog>
         
-                        <Modal.Header>
-                            <Modal.Title>Farmer Details</Modal.Title>
+                        <Modal.Header className='model' >
+                            <Modal.Title >Farmer Details</Modal.Title>
                         </Modal.Header>
         
-                        <Modal.Body>
-                            <div>Name :{this.state.farmer_data[0].firstName}</div>
-                            <div>Location: {this.state.farmer_data[0].location}</div>
+                        <Modal.Body className='model'>
+                            <div style={{fontWeight:"bolder",fontFamily:'Open Sans'}} >Name : {this.state.farmer_data[0].firstName}</div>
+                            <div style={{fontWeight:"bolder",fontFamily:'Open Sans'}}>Location: {this.state.farmer_data[0].location}</div>
                         </Modal.Body>
         
-                        <Modal.Footer>
-                            <button variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
+                        <Modal.Footer className='model'>
+                            <button className='card_button-red' variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
                         </Modal.Footer>
         
                     </Modal.Dialog>
+                
                   );
               }
       
@@ -156,7 +158,6 @@ export default class ProductsOffered extends Component{
         return(
             
             <div className="row" style={{padding:"30px"}}>
-                Test
                 <ul className="products">
                     { this.state.data.length ?
 
@@ -165,7 +166,7 @@ export default class ProductsOffered extends Component{
                                 this.state.data.map((u)=> (
                                 
                                 <div className="col-md-3">
-                                    <div className="card" style={{width:'18rem','margin-top':'20px'}}>
+                                    <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
                                         
                                         <div> Name: {u.name}</div>
                                         <div>Price : {u.price}</div>
@@ -173,12 +174,12 @@ export default class ProductsOffered extends Component{
                                        
 
                                         
-                                        <button onClick={()=>this.showDetails(u.farmer_email)}>
+                                        <button className='card_button-green' onClick={()=>this.showDetails(u.farmer_email)}>
                                             View farmer Details 
                                         </button>
                                         {/* Add to cart comes here connection left */}
                                       
-                                        <button variant="btn btn-success"  onClick={() =>this.handleChange(u)}>Add to Cart</button>
+                                        <button className='card_button-green'  onClick={() =>this.handleChange(u)}>Add to Cart</button>
 
                                  
                                     </div>

@@ -43,11 +43,11 @@ export default class Account extends Component{
         return (
             <Modal.Dialog>
 
-                <Modal.Header>
+                <Modal.Header className='model'>
                     <Modal.Title>Add your New Address</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body className='model'>
                     <form onSubmit={this.handleSubmit}>
                         
                         <textarea  name="address" placeholder="Enter Your Address" 
@@ -57,12 +57,12 @@ export default class Account extends Component{
 
               </textarea>
                            
-                        <input type="submit" value="Save Address" onClick = {this.onSubmit}></input>
+                        <input className='card_button-green' type="submit" value="Save Address" onClick = {this.onSubmit}></input>
                     </form>
                 </Modal.Body>
 
-                <Modal.Footer>
-                    <button variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
+                <Modal.Footer className='model'>
+                    <button className='card_button-red' variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
                 </Modal.Footer>
 
             </Modal.Dialog>
@@ -138,33 +138,35 @@ export default class Account extends Component{
             
             <div>
                 
-                <div>{this.state.firstname} {this.state.lastname}</div>
-                <div>{this.state.email}</div>
+                <h3 style={{textAlign:'center'}}>{this.state.firstname} {this.state.lastname}</h3>
+                <h3 style={{textAlign:'center'}}>{this.state.email}</h3>
                 {/* Redirect to orders of the customer */}
-                <button>
-                    <Link to="/orders"> My Orders</Link>
-                </button>
-                <div>  My saved Addresses</div>
+                <div style={{display:"flex",justifyContent:'center'}}>
+                <button className='other-button'>
+                    <Link style={{textDecoration:'none',color:'whitesmoke'}} to="/orders"> My Orders</Link>
+                </button></div>
+                <h2 style={{textAlign:'center'}} >  My saved Addresses</h2>
                 {
                     this.state.address.map(
                         u=> 
                         <div>
-                        <div>
+                        <h4 style={{textAlign:'center'}}>
                             {u}
                             
-                        </div>
-                        <button onClick={()=>this.remove(u)}>x</button>
+                        
+                        <button onClick={()=>this.remove(u)}>x</button></h4>
                         </div>
 
 
                 )}
-
-                <button onClick={()=>this.setState({showForm:true})}>Add new Address</button>
+                <div style={{display:'flex',justifyContent:'center'}}>
+                <div style={{justifyContent:"space-around"}}>
+                <button className='card_button-green' onClick={()=>this.setState({showForm:true})}>Add new Address</button>
 
                 {this.state.showForm ? this.showform() : null}
 
-                <button onClick={this.logout}><Link to="/">Logout</Link></button>
-                
+                <button className='card_button-red' onClick={this.logout}><Link style={{textDecoration:'none',color:'whitesmoke'}} to="/">Logout</Link></button>
+                </div></div>
             </div>
         );
     }

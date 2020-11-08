@@ -56,7 +56,7 @@ export default class CartCheckout extends Component{
            <div className="row">
                 <ul className="products">
                 <div className="col-md-3">
-                <div className="card" style={{width:'18rem','margin-top':'20px'}}>
+                <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
                 {this.state.products.map((u)=>(
                 <Fragment>
                         <img className="card-img-top" src="..." alt="Card image cap" />
@@ -72,8 +72,8 @@ export default class CartCheckout extends Component{
              
                 ))}
                 <div style={{'textAlign':"center"}}>Net Total:{this.state.net_amount}</div>
-                <button>
-                   <Link to={{pathname:"/cart/checkout/details", data:{products:this.state.products, net_amount : this.state.net_amount}}}>Fill Details</Link> 
+                <button className='other-button'>
+                   <Link style={{color:'whitesmoke',textDecoration:'none'}} to={{pathname:"/cart/checkout/details", data:{products:this.state.products, net_amount : this.state.net_amount}}}>Fill Details</Link> 
                 </button>
                 </div>
                 </div>

@@ -257,28 +257,28 @@ class CustomerSignup extends Component {
                 <p>{signUpError}</p>
               ) : (null)
             }
-            <p>Sign Up</p>
-            <input
+            <h1 style={{textAlign:"center"}}>Sign Up</h1>
+            <input style={{marginLeft:'25%' ,width: '50%'}}
               type="text"
               placeholder="First Name"
               value={signUpFirstName}
               onChange={this.onTextboxChangeSignUpFirstName}
             />
             <br />
-            <input
+            <input style={{marginLeft:'25%' ,width: '50%'}}
               type="text"
               placeholder="Last Name"
               value={signUpLastName}
               onChange={this.onTextboxChangeSignUpLastName}
             />
             <br />
-            <input
+            <input style={{marginLeft:'25%' ,width: '50%'}}
               type="email"
               placeholder="Email"
               value={signUpEmail}
               onChange={this.onTextboxChangeSignUpEmail}
             /><br />
-            <input
+            <input style={{marginLeft:'25%' ,width: '50%'}}
               type="password"
               placeholder="Password"
               value={signUpPassword}
@@ -286,12 +286,16 @@ class CustomerSignup extends Component {
             /><br />
 
 
-
-            <button onClick={this.onSignUp}>Sign Up</button>
-            <button>
-              <Link to="/customer-signin">Signin</Link>
+<div className="row" style={{display:"flex", justifyContent:"center"}}>
+            <div style={{justifyContent:'space-around'}}>
+            <button className='card_button-green' onClick={this.onSignUp}>Sign Up</button>
+            <h5 style={{textAlign:"center"}}>OR</h5>
+            <button style={{borderRadius:'5px'}}className='other-button'>
+              <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/customer-signin">Signin</Link>
             </button>
+            </div></div>
           </div>
+
 
         </div>
       );

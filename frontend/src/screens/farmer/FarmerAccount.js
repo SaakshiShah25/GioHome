@@ -75,9 +75,15 @@ class FarmerAccount extends Component {
   render() {
     return (
       <div>
-        <p>My Farmer's Account</p>
-
-        <button onClick={this.logout}><Link to="/farmer-signin">Logout</Link></button>
+      <h2 style={{textAlign:'center',marginTop:'200px'}}>My Farmer's Account</h2>
+      <div  style={{display:"flex",justifyContent:"center"}}>
+        
+      <button className="other-button" onClick={this.logout}>
+        <Link onClick={this.logout} style={{textDecoration:'none',color:"whitesmoke"}} to="/farmer-signin">
+        Logout
+        </Link>
+        </button>
+      </div>
       </div>
     );
   }
