@@ -91,7 +91,7 @@ export default class AddProduct extends Component{
             this.setState({ url });
           })
           .then(console.log("this is to be sent:",this.state.image_name))
-          alert("Image Uploaded: "+this.state.image.name)
+          alert("Image Uploaded: "+this.state.image_name)
          
         }
      
