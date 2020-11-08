@@ -41,7 +41,7 @@ export default class Navbar extends Component{
           <nav className="navbar navbar-custom navbar-expand-lg" id="nav">
           {/* <Sidebar /> */}
           <FaIcons.FaCarrot className='menu-bars'/>
-          <Link to="/farmer" className="navbar-brand">Gio Home Products</Link>
+          <Link to="/farmer" className="navbar-brand">Farmer's Mart</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
           
@@ -73,7 +73,7 @@ export default class Navbar extends Component{
           <nav className="navbar navbar-custom navbar-expand-lg">
           {/* <Sidebar /> */}
           <FaIcons.FaCarrot className='menu-bars' />
-          <Link to="/customer" className="navbar-brand">Gio Home Products</Link>
+          <Link to="/customer" className="navbar-brand">Farmer's Mart</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
@@ -101,7 +101,7 @@ export default class Navbar extends Component{
           <nav className="navbar navbar-custom navbar-expand-lg">
             {/* <Sidebar /> */}
             <FaIcons.FaCarrot className='menu-bars'/>
-            <Link to="/" className="navbar-brand">Gio Home Products</Link>
+            <Link to="/" className="navbar-brand">Farmer's Mart</Link>
           </nav>
         )
         
