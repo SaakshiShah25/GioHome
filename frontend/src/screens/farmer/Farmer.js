@@ -318,18 +318,14 @@ export default class FarmerPage extends Component{
                             height="200"
                             width="200"
                              />
-                            <div className="card-body">
-                                
-                                    <h5 className="card-heading">{u.name}</h5>
-                                
+                             <h5 className="card-heading">{u.name}</h5>
                                 <p className="card-desc">{u.description}</p>
                                 <p className="card-details">Stock: {u.available_quantity} kg</p>
                                 <p className="card-details">Price: {u.price} ₹</p>
                                 <p className="card-details">Life: {u.life} Days</p>
 
                                 {/* <p className="card-text">Updated on: {u.updatedAt}</p> */}
-                                
-                            </div>
+                            
                             
                             <button className="card_button-green" onClick={()=> this.setState({ showForm: true ,formdata: u})}>
                                 Update

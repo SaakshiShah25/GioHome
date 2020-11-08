@@ -21,6 +21,10 @@ html {
   color: #39FF14;
 }
 
+.nav-link:hover{
+  color: black;
+}
+
 
 /*Stock Products*/
 .products {
@@ -72,6 +76,7 @@ html {
   align-items: center;
   text-align: center;
   margin-top:40px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .card-title{
@@ -82,8 +87,9 @@ html {
 
 .card-heading{
   color: #0E53A5;
-  font-weight: 600;
+  font-weight: bold !important;
   font-size: 20px;
+  font-family: 'Open Sans';
 }
 
 .card-desc{
@@ -91,15 +97,18 @@ html {
   color:#333;
   font-weight:500;
   margin-bottom: 2px;
+  font-family: 'Open Sans', sans-serif;
 }
 .card-details{
   font-size: 16px;
-  color: #666666;
-  font-weight: 400
+  color: #666;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .card_button-green{
   background: #3ab54a;
+  font-family: 'Open Sans', sans-serif;
   color: #fff;
   border: none;
   font-size: 14px;
@@ -115,6 +124,7 @@ html {
 
 .card_button-red{
   background: #ff4f63;
+  font-family: 'Open Sans', sans-serif;
   color: #fff;
   border: none;
   font-size: 14px;
@@ -192,6 +202,11 @@ html {
   margin: 30px;
   display:inline-block;
 }
+.col-md-4{
+  justify-content:space-around;
+ 
+  display:inline-block;
+}
 
 .landing-button{
   border-width: 0px;
@@ -241,7 +256,7 @@ html {
   font-size: 2rem;
   height:75px;
   background: none;
-  color:whitesmoke
+  color:#ed5e21 !important;
 }
 
 

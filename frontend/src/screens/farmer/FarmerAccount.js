@@ -92,8 +92,8 @@ class FarmerAccount extends Component {
       <div>
           <div>{this.state.data.firstName} {this.state.data.lastName}</div>
           <div> {this.state.data.location} </div>
-        </div>
-      <button className="other-button" onClick={this.logout}>
+      </div>
+      <button className="card_button-red" onClick={this.logout}>
         <Link onClick={this.logout} style={{textDecoration:'none',color:"whitesmoke"}} to="/farmer-signin">
         Logout
         </Link>
