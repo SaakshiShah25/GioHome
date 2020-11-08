@@ -61,7 +61,7 @@ export default class CartCheckout extends Component{
                 <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px',marginRight:'600px'}}>
                 {this.state.products.map((u)=>(
                 <Fragment>
-                        {/* <img className="card-img-top" src="..." alt="Card image cap" /> */}
+                        <img className="card-img-top" src="..." alt="" />
                             <div className="card-body">
                               
                                 <p className="card-heading">{u.name}</p>

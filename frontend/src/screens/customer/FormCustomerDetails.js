@@ -47,11 +47,12 @@ handleChangeOption = ()=>{
     return (
       <MuiThemeProvider>
         <>
-          <Dialog
+          <Dialog 
             open
             fullWidth
             maxWidth='sm'
           >
+            <div style={{backgroundColor:'#e8f5e9'}}>
             <label for="address"></label>
             <textarea cols="50" name="address" placeholder="Enter Your Address" 
               id="address"
@@ -65,9 +66,10 @@ handleChangeOption = ()=>{
 
             </Dropdown>
             
-            <button onClick={this.continue}>
+            <button className="card_button-green" onClick={this.continue}>
             Continue
             </button>
+            </div>
           </Dialog>
         </>
       </MuiThemeProvider>

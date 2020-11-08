@@ -13,7 +13,7 @@ export default class Orders extends Component{
               
                <div className="col-md-4">
                    <div className="card" >
-                        <img className="card-img-top" src="..." alt="Card image cap" />
+                        <img className="card-img-top" src="..." alt='' />
                         <div className="card-body">
                             <p className="card-heading">{u.name}</p>
                             <p className="card-desc">Price: {u.price}</p>

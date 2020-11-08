@@ -57,6 +57,8 @@ export default class ProductList extends Component{
        
     };
 
+    
+
    
    
     render(){
@@ -81,10 +83,14 @@ export default class ProductList extends Component{
                     <div className="col-md-4">
                         <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
                         <Link to={'' + u._id}>
+                    
+   
                         <img
+                        
                         className="product-image"
+                        
                         src={u.image}
-                        alt="Product Image"
+                        
                         height="200"
                         width="200"
                         />

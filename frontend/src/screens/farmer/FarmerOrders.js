@@ -109,10 +109,10 @@ export default class FarmerOrders extends Component{
             <div>
             {this.state.formdata.map((u)=>(
             <div>
-            <Modal.Header>
+            <Modal.Header className='model'>
                 <Modal.Title>{u.name}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className='model'>
                 <div>Price: {u.price}</div>
                 <div>Quantity: {u.available_quantity}</div>
             </Modal.Body>
@@ -120,8 +120,8 @@ export default class FarmerOrders extends Component{
             ))}
            
 
-            <Modal.Footer>
-                <button variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
+            <Modal.Footer className='model'>
+                <button className='card_button-red' variant="secondary" onClick={()=>this.setState({ showForm: false })}>Close</button>
                 
             </Modal.Footer>
             </div>
@@ -133,13 +133,15 @@ export default class FarmerOrders extends Component{
        return(
            <div className="row">
            {this.state.order.map((prod_name)=>(
-               <div className="col-md-3">
-                    <div>Product: {prod_name.key}</div>
-                    <div>Quantity: {prod_name.value[0]} kg</div>
-                    <div>Price: {prod_name.value[0]*prod_name.value[1]}</div>
-                    <button onClick={()=>this.getDetails(prod_name.key)}>
+               <div style={{marginLeft:'80px'}} className="col-md-5">
+               <div className="card green lighten-5">
+                    <div style={{fontWeight:"bolder"}}>Product: {prod_name.key}</div>
+                    <div style={{fontWeight:"bolder"}}>Quantity: {prod_name.value[0]} kg</div>
+                    <div style={{fontWeight:"bolder"}}>Price: {prod_name.value[0]*prod_name.value[1]}</div>
+                    <button className='other-button' onClick={()=>this.getDetails(prod_name.key)}>
                     View Details
                     </button>
+                    </div>
                </div>
                
                

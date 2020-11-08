@@ -63,6 +63,7 @@ export class Confirm extends Component {
             fullWidth
             maxWidth='sm'
           >
+            <div style={{backgroundColor:'#e8f5e9'}}>
             <h3>Confirm User Data</h3>
             {/* Also display all the products here in inshort */}
             <List>
@@ -100,17 +101,19 @@ export class Confirm extends Component {
               }
             </List>
             <br />
-
-            <button
+            <div>
+            <button className='card_button-red'
               onClick={this.back}
             >Back</button>
 
-            <button
+            <button className='card_button-green'
               onClick={this.continue}
-            > Confirm & Continue </button>
-            <button>
-              <Link to="/customer" > Cancel Order </Link>
+            > Continue </button>
+            <button className='card_button-red'>
+              <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/customer" > Cancel Order </Link>
             </button>
+            </div>
+            </div>
             
           </Dialog>
         </>

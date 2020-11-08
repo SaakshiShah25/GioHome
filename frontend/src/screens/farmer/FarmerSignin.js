@@ -254,8 +254,10 @@ class FarmerSignin extends Component {
     }
 
     return (
+     
       <div>
-        <p>Account</p>
+        <h3 style={{marginTop:'20px',textAlign:'center'}}>Account</h3>
+        <div style={{display:'flex',justifyContent:'center'}}>
         <button className="card_button-red" onClick={this.logout}>
 
           <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/">
@@ -263,7 +265,7 @@ class FarmerSignin extends Component {
            </Link>
 
         </button>
-      </div>
+      </div></div>
     );
   }
 }

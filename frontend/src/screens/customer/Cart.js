@@ -149,7 +149,7 @@ export default class Cart extends Component{
                         </div>
                         
                         : 
-                        <div>Cart is empty!</div>
+                        <h1 style={{textAlign:'center',marginTop:'180px'}}>Cart is empty!</h1>
                     }
                         {this.state.showForm ? this.showform() : null}
                 </Fragment> 

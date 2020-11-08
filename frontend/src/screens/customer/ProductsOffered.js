@@ -188,7 +188,7 @@ export default class ProductsOffered extends Component{
                            
                         </div>
                         : 
-                        <div>No Sellers available</div>
+                        <h1 style={{marginLeft:'300px',marginTop:'180px'}}>No sellers available right now :( </h1>
                     }
                     
                     {this.state.showForm ? this.showform() : null}

@@ -317,7 +317,7 @@ export default class FarmerPage extends Component{
                             <img className="card-img-top" src={u.image}
                             height="200"
                             width="200"
-                            alt="Card image cap" />
+                             />
                             <div className="card-body">
                                 
                                     <h5 className="card-heading">{u.name}</h5>

@@ -228,9 +228,10 @@ class CustomerSignin extends Component {
 
     return (
       <div>
-        <p>Account</p>
-        <button onClick={this.logout}>Logout</button>
-      </div>
+        <h3 style={{marginTop:'20px',textAlign:'center'}}>Account</h3>
+        <div style={{display:'flex',justifyContent:'center'}}>
+        <button className='card_button-red' onClick={this.logout}>Logout</button>
+      </div></div>
     );
   }
 }
