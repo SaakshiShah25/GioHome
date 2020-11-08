@@ -7,7 +7,7 @@ const Cart = require('../../models/cart/cart.model.js');
 //         Order.findOne({email:"ss@g.com"})
 //         .then(order=> res.json(order))
 //         .catch(err => res.status(400).json('Error: '+err))
-
+ 
 // });
 
 router.route('/farmer/:id').get((req,res)=>{ 

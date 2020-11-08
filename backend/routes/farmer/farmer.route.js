@@ -20,6 +20,26 @@ router.route('/update/:id').get((req, res)=>{
 //     .then(farmer=> res.json("----",farmer))
 //     .catch(err => res.status(400).json('Error: '+err))
 // });
+router.route('/product-image').post(
+    (req,res)=>{
+        var image_url = req.body.image_url
+        var product_name = req.body.product_name
+        
+        console.log("This is the check data:",image_url,product_name)
+        FarmerUser.findOneAndUpdate({email:farmer,"products.name":product_name},{$set:{"products.$.image": image_url}},function (error, success) {
+            if (error) {
+                console.log(error);
+                res.send(error)
+                
+            } else {
+                console.log('!!!!!',success);
+                res.send("Done")
+                
+            }
+        });
+    }
+
+)
 
 router.route('/add').post(
     (req,res) => {
