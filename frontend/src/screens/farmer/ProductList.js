@@ -139,11 +139,7 @@ export default class ProductList extends Component{
                     <div className="product-life">Life: {u.life}</div> */}
                     <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to list</button>
                     </div>
-                    </li>
-                    
-                    ))}
-                </ul>  */}
-            </div>
+
         );
     }
 }
