@@ -97,7 +97,7 @@ export default class Cart extends Component{
                     <form onSubmit={this.handleSubmit}>
                         <label for="quantity">Quantity: </label>
                         <input type="number" min="1" max={this.state.formdata.available_quantity}  onChange={this.handleQuantityChange}></input>
-                            <div>Total: {this.state.formdata.price}*{this.state.available_quantity}</div>
+                            <div>Total: ₹{this.state.formdata.price}*{this.state.available_quantity}</div>
                         <input className='card_button-green' type="submit" value="Save"></input>
                     </form>
                 </Modal.Body>
@@ -125,8 +125,8 @@ export default class Cart extends Component{
                                     <div className="card" >
                                         <div className="card-heading">{u.name}</div>
                                         <div className="card-desc">{u.description}</div>
-                                        <div className="card-details">Price: Rs. {u.price}</div>
-                                        <div className="card-details">In Stock: {u.available_quantity}</div>
+                                        <div className="card-details">Price: ₹{u.price}</div>
+                                        <div className="card-details">In Stock: {u.available_quantity}kg</div>
                                             <div className="button-display">
                                                 <button className="card_button-green" onClick={()=>this.setState({showForm:true,formdata: u})}>
                                                     Select Quantity

@@ -82,7 +82,7 @@ export default class Orders extends Component{
                                         
                                         <p className="card-heading">{u.name}</p>
                                         <p className="order-details">Shipping Address: {u.address}</p>
-                                        <p className="order-details">Price: {u.net_amount} Rs.</p>
+                                        <p className="order-details">Price: ₹{u.net_amount}</p>
                                         <Link className="link" to={{pathname:'/orders/view',data:u.products}}>
                                             <button className="card_button-green"> View details</button>
                                         </Link>

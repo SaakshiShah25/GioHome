@@ -113,8 +113,8 @@ export default class FarmerOrders extends Component{
                 <Modal.Title>{u.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body className='model'>
-                <div>Price: {u.price}</div>
-                <div>Quantity: {u.available_quantity}</div>
+                <div>Price: ₹{u.price}</div>
+                <div>Quantity: {u.available_quantity}kg</div>
             </Modal.Body>
             </div>
             ))}
@@ -136,8 +136,8 @@ export default class FarmerOrders extends Component{
                <div style={{marginLeft:'80px'}} className="col-md-5">
                <div className="card green lighten-5">
                     <div style={{fontWeight:"bolder"}}>Product: {prod_name.key}</div>
-                    <div style={{fontWeight:"bolder"}}>Quantity: {prod_name.value[0]} kg</div>
-                    <div style={{fontWeight:"bolder"}}>Price: {prod_name.value[0]*prod_name.value[1]}</div>
+                    <div style={{fontWeight:"bolder"}}>Quantity: {prod_name.value[0]}kg</div>
+                    <div style={{fontWeight:"bolder"}}>Price: ₹{prod_name.value[0]*prod_name.value[1]}</div>
                     <button className='other-button' onClick={()=>this.getDetails(prod_name.key)}>
                     View Details
                     </button>

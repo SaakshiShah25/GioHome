@@ -86,13 +86,14 @@ class FarmerAccount extends Component {
   render() {
     return (
       <div>
-      <h2 style={{textAlign:'center',marginTop:'200px'}}>My Farmer's Account</h2>
+      <h2 style={{textAlign:'center',marginTop:'15%'}}>My Farmer's Account</h2>
       
+      
+          <div style={{fontWeight:'bolder',display:"flex",justifyContent:"center"}}>{this.state.data.firstName} {this.state.data.lastName}</div>
+          <div style={{fontWeight:'bolder',display:"flex",justifyContent:"center"}}> {this.state.data.location} </div>
+        
       <div  style={{display:"flex",justifyContent:"center"}}>
-      <div>
-          <div>{this.state.data.firstName} {this.state.data.lastName}</div>
-          <div> {this.state.data.location} </div>
-        </div>
+      
       <button className="other-button" onClick={this.logout}>
         <Link onClick={this.logout} style={{textDecoration:'none',color:"whitesmoke"}} to="/farmer-signin">
         Logout

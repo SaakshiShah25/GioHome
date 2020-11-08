@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
 import storage from "../../Firebase/index";
+import empty_image from "../../stock_images/empty_image.jpg";
+
+
 
 import {
     getFromStorage,
@@ -118,11 +121,11 @@ export default class FarmerPage extends Component{
 
             <Modal.Body className='model'>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Price: </label>
+                    <label>Price (in ₹): </label>
                     <input type="text"  onChange={this.handlePriceChange}></input>
-                    <label>Available Quantity: </label>
+                    <label>Available Quantity (in kg): </label>
                     <input type="text"  onChange={this.handleQtyChange}></input>
-                    <label>Life: </label>
+                    <label>Life (in days): </label>
                     <input type="text"  onChange={this.handleLifeChange}></input>
                     <input className='card_button-green' type="submit" value="Save"></input>
                 </form>
@@ -314,18 +317,18 @@ export default class FarmerPage extends Component{
                 <Fragment>
                     <div className="col-md-4">
                         <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
-                            <img className="card-img-top" src={u.image}
+                            <img className="card-img-top" src={u.image || empty_image}
                             height="200"
-                            width="200"
+                            width="200" s
                              />
                             <div className="card-body">
                                 <div style={{'display':'flex'}}> 
                                     <h5 className="card-title">{u.name}</h5>
                                 </div>
                                 <p className="card-text">{u.description}</p>
-                                <p className="card-text">Stock: {u.available_quantity} kg</p>
-                                <p className="card-text">Price: {u.price} ₹</p>
-                                <p className="card-text">Life: {u.life} Days</p>
+                                <p className="card-text">Stock: {u.available_quantity}kg</p>
+                                <p className="card-text">Price: ₹{u.price} </p>
+                                <p className="card-text">Life: {u.life} days</p>
 
                                 {/* <p className="card-text">Updated on: {u.updatedAt}</p> */}
                                 

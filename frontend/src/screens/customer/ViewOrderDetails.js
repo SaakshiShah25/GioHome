@@ -16,8 +16,8 @@ export default class Orders extends Component{
                         <img className="card-img-top" src="..." alt='' />
                         <div className="card-body">
                             <p className="card-heading">{u.name}</p>
-                            <p className="card-desc">Price: {u.price}</p>
-                            <p className="card-desc">Quantity: {u.available_quantity} Rs.</p>
+                            <p className="card-desc">Price: ₹{u.price}</p>
+                            <p className="card-desc">Quantity: {u.available_quantity}kg</p>
                         </div>
                     </div>
                 </div>

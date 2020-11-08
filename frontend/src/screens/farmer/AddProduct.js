@@ -202,7 +202,7 @@ export default class AddProduct extends Component{
                         />
                     </div>
                     <div className="form-group">
-                    <label>Price :</label>
+                    <label>Price (in ₹):</label>
                     <input 
                         type="text" 
                         className="form-control"
@@ -211,7 +211,7 @@ export default class AddProduct extends Component{
                         />
                     </div>
                     <div className="form-group">
-                    <label>Quantity</label>
+                    <label>Quantity (in kg):</label>
                     <input 
                         type="number" 
                         min="1"
@@ -232,7 +232,7 @@ export default class AddProduct extends Component{
                     
                     
                     <div className="form-group">
-                    <label>Life :</label>
+                    <label>Life (in days):</label>
                     <input 
                         type="text" 
                         className="form-control"
@@ -280,9 +280,9 @@ export default class AddProduct extends Component{
                               {/* *************************************** */}
 
 
-                      <div className="form-group">
-                        <button onClick={this.onSubmit}> 
-                          <Link to="/product">Add Product</Link>
+                      <div style={{display:'flex', justifyContent:'center'}} className="form-group">
+                        <button className='card_button-green' onClick={this.onSubmit}> 
+                          <Link style={{textDecoration:'none',color:"whitesmoke"}} to="/product">Add Product</Link>
                         </button>
                       </div>
                 </form>
