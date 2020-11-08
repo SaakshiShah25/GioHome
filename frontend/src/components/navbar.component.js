@@ -30,14 +30,14 @@ export default class Navbar extends Component{
         userType : userType
       }
     )
-  }
+    }
 
     render(){
 
       if(this.state.userType == "Farmer")
       {
         return(
-          <nav className="navbar navbar-custom navbar-expand-lg">
+          <nav className="navbar navbar-custom navbar-expand-lg" id="nav">
           <Sidebar />
           <Link to="/farmer" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
@@ -74,7 +74,7 @@ export default class Navbar extends Component{
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
-            <Link to="/customer" className="nav-link">Customer</Link>
+            <Link to="/customer" className="nav-link active">Customer</Link>
             </li>
             <li className="navbar-item">
             <Link to="/cart" className="nav-link">Cart</Link>

@@ -166,7 +166,7 @@ export default class ProductsOffered extends Component{
                                 this.state.data.map((u)=> (
                                 
                                 <div className="col-md-3">
-                                    <div className="card">
+                                    <div className="card" style={{marginLeft:'40px'}}>
                                         
                                         <div className="card-heading"> Name: {u.name}</div>
                                         <div className="card-desc">Price : {u.price}</div>
@@ -174,10 +174,10 @@ export default class ProductsOffered extends Component{
                                        
 
                                         <div className="button-display">
-                                            <button className='card_button-green' onClick={()=>this.showDetails(u.farmer_email)}>
+                                            <button className='card_button-green'  onClick={() =>this.handleChange(u)}>Add to Cart</button>
+                                            <button className='card_button-red' onClick={()=>this.showDetails(u.farmer_email)}>
                                                 Farmer Details 
                                             </button>
-                                            <button className='card_button-green'  onClick={() =>this.handleChange(u)}>Add to Cart</button>
                                         </div>
                                  
                                     </div>

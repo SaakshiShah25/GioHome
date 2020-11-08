@@ -54,14 +54,14 @@ export default class CartCheckout extends Component{
     render(){
         return(
            <div className="row">
+                <div className="col-md-2"></div>
                 <ul className="products">
                 
-                <div className="col-md-2"></div>
                 <div className="col-md-6">
-                <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
+                <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px',marginRight:'600px'}}>
                 {this.state.products.map((u)=>(
                 <Fragment>
-                        <img className="card-img-top" src="..." alt="Card image cap" />
+                        {/* <img className="card-img-top" src="..." alt="Card image cap" /> */}
                             <div className="card-body">
                                 <p className="card-heading">{u.name}</p>
                                 <p className="card-details">Price: {u.price}</p>
@@ -71,17 +71,17 @@ export default class CartCheckout extends Component{
                 </Fragment>
              
                 ))}
-                <div style={{'textAlign':"center"}}>Net Total:{this.state.net_amount}</div>
-                <button className='other-button'>
-                   <Link style={{color:'whitesmoke',textDecoration:'none'}} to={{pathname:"/cart/checkout/details", data:{products:this.state.products, net_amount : this.state.net_amount}}}>Fill Details</Link> 
+                <div style={{'textAlign':"center",fontWeight:'700'}}>Net Total:{this.state.net_amount}</div>
+                <button className='other-button' style={{marginTop:'20px'}}>
+                   <Link style={{color:'white',textDecoration:'none'}} to={{pathname:"/cart/checkout/details", data:{products:this.state.products, net_amount : this.state.net_amount}}}>Fill Details</Link> 
                 </button>
                 </div>
                 </div>
                 
+              </ul> 
               <div className="col-md-2"></div>
-                </ul> 
-            </div>
            
+            </div>
            
         );
     }
