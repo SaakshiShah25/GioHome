@@ -75,28 +75,9 @@ export default class LandingCustomer extends Component{
                         
                     
                     <div className="col-md-3">
-
-                    {/* <Link to={'' + u._id}>
-                        <img
-                        className="product-image"
-                        src={u.image}
-                        alt="product"
-                        />
-                    </Link> */}
-                    
-                   
-                    
                         <Link className="link" to={{pathname:'/customer/products-offered',data:{name: u.name,id: u.farmer_id}}}>
                         <button className='customer-button'>{u.name}</button>
                         </Link>
-                        
-                    
-                    
-
-                        {/* not needed for now transfering to somehwere else */}
-                    {/* <button variant="btn btn-success" value={this.state.name} onClick={() =>this.handleChange(u)}>Add to Cart</button> */}
-
-                    
                     </div>
                     
                     

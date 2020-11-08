@@ -55,18 +55,18 @@ export default class CartCheckout extends Component{
         return(
            <div className="row">
                 <ul className="products">
-                <div className="col-md-3">
+                
+                <div className="col-md-2"></div>
+                <div className="col-md-6">
                 <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
                 {this.state.products.map((u)=>(
                 <Fragment>
                         <img className="card-img-top" src="..." alt="Card image cap" />
                             <div className="card-body">
-                                <div style={{'display':'flex'}}> 
-                                    <h5 className="card-title">{u.name}</h5>
-                                </div>
-                                <p className="card-text">Price: {u.price}</p>
-                                <p className="card-text">Quantity Ordered: {u.available_quantity}kg</p>
-                                <div>Total product price: {u.price*u.available_quantity}</div>
+                                <p className="card-heading">{u.name}</p>
+                                <p className="card-details">Price: {u.price}</p>
+                                <p className="card-details">Quantity Ordered: {u.available_quantity}kg</p>
+                                <p className="card-desc">Total product price: {u.price*u.available_quantity}</p>
                             </div>
                 </Fragment>
              
@@ -78,8 +78,8 @@ export default class CartCheckout extends Component{
                 </div>
                 </div>
                 
+              <div className="col-md-2"></div>
                 </ul> 
-               
             </div>
            
            

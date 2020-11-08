@@ -141,7 +141,7 @@ export default class Account extends Component{
                 <h3 style={{textAlign:'center'}}>{this.state.firstname} {this.state.lastname}</h3>
                 <h3 style={{textAlign:'center'}}>{this.state.email}</h3>
                 {/* Redirect to orders of the customer */}
-                <div style={{display:"flex",justifyContent:'center'}}>
+                <div style={{display:"flex",justifyContent:'center',marginTop:'100px'}}>
                 <button className='other-button'>
                     <Link style={{textDecoration:'none',color:'whitesmoke'}} to="/orders"> My Orders</Link>
                 </button></div>
@@ -159,14 +159,15 @@ export default class Account extends Component{
 
 
                 )}
-                <div style={{display:'flex',justifyContent:'center'}}>
-                <div style={{justifyContent:"space-around"}}>
-                <button className='card_button-green' onClick={()=>this.setState({showForm:true})}>Add new Address</button>
+                <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+               
+                  <button className='card_button-green' onClick={()=>this.setState({showForm:true})}>Add new Address</button>
 
-                {this.state.showForm ? this.showform() : null}
+                  {this.state.showForm ? this.showform() : null}
 
-                <button className='card_button-red' onClick={this.logout}><Link style={{textDecoration:'none',color:'whitesmoke'}} to="/">Logout</Link></button>
-                </div></div>
+                  <button className='card_button-red' onClick={this.logout}><Link style={{textDecoration:'none',color:'whitesmoke'}} to="/">Logout</Link></button>
+                </div>
+                
             </div>
         );
     }

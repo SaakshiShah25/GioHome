@@ -166,21 +166,19 @@ export default class ProductsOffered extends Component{
                                 this.state.data.map((u)=> (
                                 
                                 <div className="col-md-3">
-                                    <div className="card" >
+                                    <div className="card">
                                         
-                                        <div> Name: {u.name}</div>
-                                        <div>Price : {u.price}</div>
-                                        <div> Available Quantity: {u.available_quantity}</div>
+                                        <div className="card-heading"> Name: {u.name}</div>
+                                        <div className="card-desc">Price : {u.price}</div>
+                                        <div className="card-desc"> Available Quantity: {u.available_quantity}</div>
                                        
 
-                                        
-                                        <button className='card_button-green' onClick={()=>this.showDetails(u.farmer_email)}>
-                                            View farmer Details 
-                                        </button>
-                                        {/* Add to cart comes here connection left */}
-                                      
-                                        <button className='card_button-green'  onClick={() =>this.handleChange(u)}>Add to Cart</button>
-
+                                        <div className="button-display">
+                                            <button className='card_button-green' onClick={()=>this.showDetails(u.farmer_email)}>
+                                                Farmer Details 
+                                            </button>
+                                            <button className='card_button-green'  onClick={() =>this.handleChange(u)}>Add to Cart</button>
+                                        </div>
                                  
                                     </div>
                                 
