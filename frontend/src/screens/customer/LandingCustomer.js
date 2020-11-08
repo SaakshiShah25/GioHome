@@ -86,7 +86,7 @@ export default class LandingCustomer extends Component{
                     
                     
                     ))}
-                {/* </ul>  */}
+     
             </div>
         );
     }

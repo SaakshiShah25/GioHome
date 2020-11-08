@@ -314,7 +314,10 @@ export default class FarmerPage extends Component{
                 <Fragment>
                     <div className="col-md-4">
                         <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
-                            <img className="card-img-top" src={u.image} alt="Card image cap" />
+                            <img className="card-img-top" src={u.image}
+                            height="200"
+                            width="200"
+                            alt="Card image cap" />
                             <div className="card-body">
                                 <div style={{'display':'flex'}}> 
                                     <h5 className="card-title">{u.name}</h5>
@@ -324,7 +327,7 @@ export default class FarmerPage extends Component{
                                 <p className="card-text">Price: {u.price} ₹</p>
                                 <p className="card-text">Life: {u.life} Days</p>
 
-                                <p className="card-text">Updated on: {u.updatedAt}</p>
+                                {/* <p className="card-text">Updated on: {u.updatedAt}</p> */}
                                 
                             </div>
                             

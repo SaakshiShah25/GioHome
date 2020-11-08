@@ -191,14 +191,14 @@ class FarmerSignin extends Component {
               ) : (null)
             }
             <h1 style={{textAlign:'center'}}>Sign In</h1>
-            <input style={{marginLeft:'25%' ,width: '50%'}}
+            <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="email"
               placeholder="Email"
               value={signInEmail}
               onChange={this.onTextboxChangeSignInEmail}
             />
             <br />
-            <input style={{marginLeft:'25%' ,width: '50%'}}
+            <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="password"
               placeholder="Password"
               value={signInPassword}
@@ -228,7 +228,7 @@ class FarmerSignin extends Component {
 
                   
     
-            <div className="row" style={{display:"flex", justifyContent:"center"}}>
+            <div className="row" style={{display:"flex", justifyContent:"center",paddingLeft:"10px",borderRadius:"10px"}}>
             <div style={{justifyContent:'space-around'}}>
             <button className='card_button-green' onClick={this.onSignIn}>
              <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/farmer-signin">
@@ -236,10 +236,12 @@ class FarmerSignin extends Component {
              </Link>
               
               </button>
-              <h5 style={{textAlign:"center"}}>OR</h5>
-            <button style={{borderRadius:'5px'}} className='other-button'>
+              <h5 style={{textAlign:"center"}}>New to us? Join us </h5>
+            <div>
+            <button className='card_button-red' >
                 <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/farmer-signup">Signup</Link>
             </button>
+            </div>
             </div></div>
           <div>{this.state.userType}</div>
           </div>

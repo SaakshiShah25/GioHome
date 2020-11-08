@@ -63,6 +63,7 @@ export default class CartCheckout extends Component{
                 <Fragment>
                         {/* <img className="card-img-top" src="..." alt="Card image cap" /> */}
                             <div className="card-body">
+                              
                                 <p className="card-heading">{u.name}</p>
                                 <p className="card-details">Price: {u.price}</p>
                                 <p className="card-details">Quantity Ordered: {u.available_quantity}kg</p>
