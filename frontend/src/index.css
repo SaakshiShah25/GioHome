@@ -163,6 +163,10 @@ html {
  text-align: center;
  text-decoration:none !important;
 }
+
+.customer-link:hover{
+  color:white;
+}
 .other-button{
   text-align: center;
   cursor: pointer;
