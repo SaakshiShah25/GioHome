@@ -3,7 +3,7 @@ import 'whatwg-fetch';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import  { Redirect } from 'react-router-dom'
-//http://localhost:5000/api/signup
+
 
 
 import {
@@ -257,28 +257,28 @@ class CustomerSignup extends Component {
                 <p>{signUpError}</p>
               ) : (null)
             }
-            <h1 style={{textAlign:"center"}}>Sign Up</h1>
-            <input style={{marginLeft:'25%' ,width: '50%'}}
+            <h1 style={{textAlign:"center",paddingTop:"10px"}}>Register</h1>
+            <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="text"
               placeholder="First Name"
               value={signUpFirstName}
               onChange={this.onTextboxChangeSignUpFirstName}
             />
             <br />
-            <input style={{marginLeft:'25%' ,width: '50%'}}
+            <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="text"
               placeholder="Last Name"
               value={signUpLastName}
               onChange={this.onTextboxChangeSignUpLastName}
             />
             <br />
-            <input style={{marginLeft:'25%' ,width: '50%'}}
+            <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="email"
               placeholder="Email"
               value={signUpEmail}
               onChange={this.onTextboxChangeSignUpEmail}
             /><br />
-            <input style={{marginLeft:'25%' ,width: '50%'}}
+            <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="password"
               placeholder="Password"
               value={signUpPassword}
@@ -286,11 +286,14 @@ class CustomerSignup extends Component {
             /><br />
 
 
-<div className="row" style={{display:"flex", justifyContent:"center"}}>
+            <div className="row" style={{display:"flex", justifyContent:"center",borderRadius:"10px"}}>
             <div style={{justifyContent:'space-around'}}>
             <button className='card_button-green' onClick={this.onSignUp}>Sign Up</button>
-            <h5 style={{textAlign:"center"}}>OR</h5>
-            <button style={{borderRadius:'5px'}}className='other-button'>
+            <h5 style={{textAlign:"center"}}>Already registered?</h5>
+            {/* <button style={{borderRadius:'5px'}}className='other-button'>
+              <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/customer-signin">Signin</Link>
+            </button> */}
+            <button className='card_button-red'>
               <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/customer-signin">Signin</Link>
             </button>
             </div></div>

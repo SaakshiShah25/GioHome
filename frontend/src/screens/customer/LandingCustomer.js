@@ -75,14 +75,18 @@ export default class LandingCustomer extends Component{
                         
                     
                     <div className="col-md-3">
-                        <Link className="link" to={{pathname:'/customer/products-offered',data:{name: u.name,id: u.farmer_id}}}>
-                        <button className='customer-button'>{u.name}</button>
-                        </Link>
+                        <div className='customer-landing'>
+                          
+                            <Link className="customer-link" to={{pathname:'/customer/products-offered',data:{name: u.name,id: u.farmer_id}}}>
+                            {u.name}
+                            </Link>
+                          
+                        </div>
                     </div>
                     
                     
                     ))}
-                {/* </ul>  */}
+     
             </div>
         );
     }

@@ -186,43 +186,24 @@ class CustomerSignin extends Component {
                 <p>{signInError}</p>
               ) : (null)
             }
-            <h1 style={{textAlign:'center'}}>Sign In</h1>
-            <input style={{marginLeft:'25%' ,width: '50%'}}
+            <h1 style={{textAlign:'center',paddingTop:"10px",paddingBottom:"10px"}}>Sign In</h1>
+            <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="email"
               placeholder="Email"
               value={signInEmail}
               onChange={this.onTextboxChangeSignInEmail}
             />
             <br />
-            <input style={{marginLeft:'25%' ,width: '50%'}}
+            <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="password"
               placeholder="Password"
               value={signInPassword}
               onChange={this.onTextboxChangeSignInPassword}
             />
             <br />
-                  {/* <div className="radio" onChange={this.selectType}>
-              
-                  <input
-                    type="radio"
-                    value="Farmer"
-                    checked={this.state.userType === "Farmer"}
-                    name="userType"
                   
-                  />
-                    Farmer
-                  <input
-                    type="radio"
-                    value="Customer"
-                    checked={this.state.userType === "Customer"}
-                    name="userType"
                   
-                  />
-                    Customer
-       
-                  </div> */}
-                  
-                  <div className="row" style={{display:"flex", justifyContent:"center"}}>
+                  <div className="row" style={{display:"flex", justifyContent:"center",paddingLeft:"10px",borderRadius:"10px"}}>
             <div style={{justifyContent:'space-around'}}>
             <button className='card_button-green' onClick={this.onSignIn}>
              <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/customer-signin">
@@ -230,9 +211,9 @@ class CustomerSignin extends Component {
              </Link>
               
               </button>
-              <h5 style={{textAlign:"center"}}>OR</h5>
-            <button style={{borderRadius:'5px'}} className='other-button'>
-                <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/customer-signup">Signup</Link>
+              <h5 style={{textAlign:"center"}}>New to Farmers Mart?</h5>
+            <button className='card_button-red'>
+                <Link style={{color:'whitesmoke',textDecoration:'none'}} to="/customer-signup"> Join us</Link>
             </button>
             </div></div>
           <div>{this.state.userType}</div>

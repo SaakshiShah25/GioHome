@@ -8,19 +8,13 @@ html {
   font-size:16px;
   box-sizing: border-box;
 }
-/* body {
-  font: 1.6rem Helvetica;
-  height: 100vh;
-  margin: 0;
-} */
+
 
 .link {
   text-decoration: none;
   
 }
-/* .link:hover {
-  color: #ff8000;
-} */
+
 
 .navbar-custom{
   background-color:#3ab54a;
@@ -137,7 +131,7 @@ html {
   display: inline-block;
 }
 
-.customer-button {
+/* .customer-button {
   border-width: 0px;
   border-style: solid;
   color: #0E53A5;
@@ -149,8 +143,26 @@ html {
   width: 250px;
   height:200px;
 
+} */
+
+.customer-landing{
+  display: flex;
+  margin-left:120px;
+  height:100px;
+  width:200px;
+  justify-content: center;
+  align-items: center;
+  background: #655985;
+  border-radius:20px;
+  padding:20px;
 }
 
+.customer-link{
+ font-size:30px;
+ color: white;
+ text-align: center;
+ text-decoration:none !important;
+}
 .other-button{
   text-align: center;
   cursor: pointer;
