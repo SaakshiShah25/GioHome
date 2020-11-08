@@ -321,27 +321,23 @@ export default class FarmerPage extends Component{
                             height="200"
                             width="200" s
                              />
-                            <div className="card-body">
-                                <div style={{'display':'flex'}}> 
-                                    <h5 className="card-title">{u.name}</h5>
-                                </div>
-                                <p className="card-text">{u.description}</p>
-                                <p className="card-text">Stock: {u.available_quantity}kg</p>
-                                <p className="card-text">Price: ₹{u.price} </p>
-                                <p className="card-text">Life: {u.life} days</p>
+                             <h5 className="card-heading">{u.name}</h5>
+                                <p className="card-desc">{u.description}</p>
+                                <p className="card-details">Stock: {u.available_quantity}kg</p>
+                                <p className="card-details">Price: ₹{u.price} </p>
+                                <p className="card-details">Life: {u.life} days</p>
 
                                 {/* <p className="card-text">Updated on: {u.updatedAt}</p> */}
-                                
-                            </div>
+                            
                             
                             <button className="card_button-green" onClick={()=> this.setState({ showForm: true ,formdata: u})}>
                                 Update
                             </button>
+                            <button className="card_button-red" onClick={()=>this.remove(u.name)}>Stop Offering</button>
                             <button className="card_button-green" onClick={()=> this.setState({ showImageForm: true, formdata : u})}>
                                 Update Image
                             </button>
                             
-                            <button className="card_button-red" onClick={()=>this.remove(u.name)}>Stop Offering</button>
                             
                               
                             

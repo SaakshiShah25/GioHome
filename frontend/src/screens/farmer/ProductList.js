@@ -98,12 +98,12 @@ export default class ProductList extends Component{
                     </Link>
                             {/* <img className="card-img-top" src="..." alt="Card image cap" /> */}
                             <div className="card-body">
-                                <div style={{'display':'flex'}}> 
-                                    <h5 style={{'textAlign':'center'}} className="card-title"><Link to={'' + u._id}>{u.name}</Link></h5>
-                                </div>
-                                <div className="product-description">{u.description}</div>
-                                <div className="product-price">Price: ₹{u.price}</div>
-                                <div className="product-life">Life: {u.life} days</div>
+                               
+                                <p style={{'textAlign':'center'}} className="card-heading"><Link className="link" to={'' + u._id}>{u.name}</Link></p>
+                               
+                                <div className="card-desc">{u.description}</div>
+                                <div className="card-details">Price: ₹{u.price}</div>
+                                <div className="card-details">Life: {u.life} days</div>
                                 {/* <p className="card-text">{u.description}</p>
                                 <p className="card-text">Stock: {u.available_quantity}kg</p> */}
                                 
