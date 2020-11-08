@@ -140,8 +140,8 @@ export default class ProductsOffered extends Component{
                         </Modal.Header>
         
                         <Modal.Body className='model'>
-                            <div style={{fontWeight:"bolder",fontFamily:'Open Sans'}} >Name : {this.state.farmer_data[0].firstName}</div>
-                            <div style={{fontWeight:"bolder",fontFamily:'Open Sans'}}>Location: {this.state.farmer_data[0].location}</div>
+                            <div>Name : {this.state.farmer_data[0].firstName}</div>
+                            <div>Location: {this.state.farmer_data[0].location}</div>
                         </Modal.Body>
         
                         <Modal.Footer className='model'>
@@ -166,7 +166,7 @@ export default class ProductsOffered extends Component{
                                 this.state.data.map((u)=> (
                                 
                                 <div className="col-md-3">
-                                    <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
+                                    <div className="card" >
                                         
                                         <div> Name: {u.name}</div>
                                         <div>Price : {u.price}</div>

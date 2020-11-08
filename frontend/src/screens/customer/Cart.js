@@ -121,20 +121,21 @@ export default class Cart extends Component{
                             { 
                                 this.state.products.map((u)=> (
                                 
-                                <div className="col-md-4">
-                                    <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
-                                        <div>{u.name}</div>
-                                        <div>{u.description}</div>
-                                        <div>Price: Rs. {u.price}</div>
-                                        <div>In Stock: {u.available_quantity}</div>
-                                       
-                                            <button className="card_button-green" onClick={()=>this.setState({showForm:true,formdata: u})}>
-                                                Select Quantity
-                                            </button>
+                                <div className="col-md-3">
+                                    <div className="card" >
+                                        <div className="card-heading">{u.name}</div>
+                                        <div className="card-desc">{u.description}</div>
+                                        <div className="card-details">Price: Rs. {u.price}</div>
+                                        <div className="card-details">In Stock: {u.available_quantity}</div>
+                                            <div className="button-display">
+                                                <button className="card_button-green" onClick={()=>this.setState({showForm:true,formdata: u})}>
+                                                    Select Quantity
+                                                </button>
 
-                                            <button className="card_button-red" onClick={()=>this.remove(u.name)}>
-                                                Remove from Cart
-                                            </button>
+                                                <button className="card_button-red" onClick={()=>this.remove(u.name)}>
+                                                    Remove from Cart
+                                                </button>
+                                            </div>
                                     </div>
                                 
                                 </div>))

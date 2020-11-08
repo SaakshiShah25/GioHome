@@ -76,20 +76,15 @@ export default class Orders extends Component{
                 
                
                             <div className="col-md-3">
-                               <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
-                                    <img className="card-img-top" src="..." alt="Card image cap" />
-                                    <div className="card-body">
-                                        <div style={{'display':'flex'}}> 
-                                            <h5 className="card-title">{u.name}</h5>
-                                          
-                                        </div>
-                                        
-                                        <p className="card-text">Shipping Address: {u.address}</p>
-                                        <p className="card-text">Price: {u.net_amount} Rs.</p>
-                                    </div>
+                               <div className="card">
+                                    {/* <img className="card-img-top" src="..." alt="Card image cap" /> */}
                                     
-                                        <Link style={{textDecoration:'none'}} to={{pathname:'/orders/view',data:u.products}}>
-                                        <button className="card_button-green"> View details</button>
+                                        
+                                        <p className="card-heading">{u.name}</p>
+                                        <p className="order-details">Shipping Address: {u.address}</p>
+                                        <p className="order-details">Price: {u.net_amount} Rs.</p>
+                                        <Link className="link" to={{pathname:'/orders/view',data:u.products}}>
+                                            <button className="card_button-green"> View details</button>
                                         </Link>
                                     
                                 </div>
@@ -102,9 +97,9 @@ export default class Orders extends Component{
                         }
                         </div>
                     : 
-                    <h3 style={{display:"flex",justifyContent:'center'}}>
+                    <h3 style={{padding:'100px'}}>
                         No orders yet? 
-                        <Link style={{textDecoration:'none'}} to='/customer'> Find something for you </Link> 
+                        <Link className="link" to='/customer'> Find something for you </Link> 
                         
                     </h3>
                 }
