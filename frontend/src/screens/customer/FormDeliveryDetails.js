@@ -30,7 +30,7 @@ export class FormDeliveryDetails extends Component {
             maxWidth='sm'
           >
             
-           <form>
+           <form style={{backgroundColor:'#e8f5e9'}}>
             <div className="radio">
               <label >
                 <input type="radio"  name= "payment" value="cod" defaultValue={values.payment}  onChange={handleChange}/>
@@ -52,14 +52,16 @@ export class FormDeliveryDetails extends Component {
               </label>
             </div>
             </form>
-         
-            <button
+
+            <div style={{backgroundColor:'#e8f5e9'}}>
+            <button className='card_button-red'
              onClick={this.back}
             >Back</button>
 
-            <button
+            <button className='card_button-green'
               onClick={this.continue}
             >Continue</button>
+            </div>
            
       
 

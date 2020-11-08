@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 import Sidebar from './sidebar.component'
+import * as FaIcons from "react-icons/fa";
 
 import {
   getFromStorage,
@@ -38,7 +39,8 @@ export default class Navbar extends Component{
       {
         return(
           <nav className="navbar navbar-custom navbar-expand-lg">
-          <Sidebar />
+          {/* <Sidebar /> */}
+          <FaIcons.FaHamburger className='menu-bars'/>
           <Link to="/farmer" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
@@ -69,7 +71,8 @@ export default class Navbar extends Component{
       {
         return(
           <nav className="navbar navbar-custom navbar-expand-lg">
-          <Sidebar />
+          {/* <Sidebar /> */}
+          <FaIcons.FaHamburger className='menu-bars' />
           <Link to="/customer" className="navbar-brand">Gio Home Products</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
@@ -96,7 +99,8 @@ export default class Navbar extends Component{
       else {
         return(
           <nav className="navbar navbar-custom navbar-expand-lg">
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <FaIcons.FaHamburger className='menu-bars' />
             <Link to="/" className="navbar-brand">Gio Home Products</Link>
           </nav>
         )
