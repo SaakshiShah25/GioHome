@@ -131,7 +131,7 @@ html {
 
 .card_button-green{
   background: #3ab54a;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
   color: #fff;
   border: none;
   font-size: 14px;
@@ -147,7 +147,7 @@ html {
 
 .card_button-red{
   background: #ff4f63;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
   color: #fff;
   border: none;
   font-size: 14px;
@@ -164,19 +164,6 @@ html {
   display: inline-block;
 }
 
-/* .customer-button {
-  border-width: 0px;
-  border-style: solid;
-  color: #0E53A5;
-  padding: 20px;
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  border-radius: 20px;
-  width: 250px;
-  height:200px;
-
-} */
 
 .customer-landing{
   display: flex;
@@ -225,7 +212,7 @@ html {
   /* justify-content:space-around; */
   margin: 30px;
   padding-left: 20px;
-  display:inline-block;
+  /* display:inline-block; */
 
 }
 .col-md-4{
@@ -234,8 +221,9 @@ html {
   margin-left: 20px;
   
   padding-left: 30px;
-  
-
+/*   
+  justify-content:space-around;
+  display:inline-block; */
 }
 
 
@@ -250,8 +238,8 @@ html {
   display: flex;
   justify-content:center;
   align-items: center;
-  font-size: 10px;
-  font-family: 'Anton';
+  font-size: larger;
+  font-family: 'Open Sans';
   letter-spacing: 2px;
   border-radius: 20px;
   width: 225px;
@@ -261,6 +249,7 @@ html {
 }
 
 .landing-container{
+  font-family: 'Open Sans';
   justify-content: space-around;
   display: flex;
   align-items: center;
@@ -271,6 +260,7 @@ html {
   
 }
 .welcome{
+  font-family: 'Open Sans';
   display:flex;
   justify-content: center;
   align-items: center;
@@ -278,10 +268,11 @@ html {
 
 .model{
   background-color: #e8f5e9;
-  
+  font-family: 'Open Sans',sans-serif;
 }
 
 .order-details{
+  font-family: 'Open Sans',sans-serif;
   font-weight: 400;
   font-size: large;
   color:#333;

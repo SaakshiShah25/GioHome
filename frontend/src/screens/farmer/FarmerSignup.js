@@ -262,7 +262,7 @@ class FarmerSignup extends Component {
                 <p>{signUpError}</p>
               ) : (null)
             }
-            <h1 style={{textAlign:'center',paddingTop:"10px"}}>Register</h1>
+            <h1 style={{textAlign:'center',paddingTop:"10px"}}>Farmer Register</h1>
             <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="text"
               placeholder="First Name"

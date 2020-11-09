@@ -190,7 +190,7 @@ class FarmerSignin extends Component {
                 <p>{signInError}</p>
               ) : (null)
             }
-            <h1 style={{textAlign:'center'}}>Sign In</h1>
+            <h1 style={{textAlign:'center'}}>Farmer Sign In</h1>
             <input style={{marginLeft:'25%' ,width: '50%',paddingLeft:"10px",borderRadius:"10px"}}
               type="email"
               placeholder="Email"

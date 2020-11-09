@@ -92,7 +92,7 @@ router.route('/add').post(
         const name = String(req.body.name);
         const products = (req.body.products);
 
-        Cart.exists({email:User}, function(err, result)
+        Cart.exists({email:email}, function(err, result)
         {
             if(!result)
             {

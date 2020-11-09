@@ -49,7 +49,7 @@ export default class Landing extends Component{
             <div style={{display:"flex",justifyContent:"center",alignItems:"center",paddingTop:"70px"}}>
             <FaIcons.FaCarrot className='menu-bars' style={{fontSize:"70px"}}/>
 
-                          <div style={{fontSize:"70px",fontWeight:"bold"}}>  Farmer's Mart</div>
+                          <div style={{fontSize:"70px",fontWeight:"bolder",color:"black"}}>  Farmer's Mart</div>
           </div>
             <div className="landing-container">
                 

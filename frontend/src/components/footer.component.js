@@ -22,8 +22,11 @@ export default class Footer extends Component{
 
 render(){
     return(
-        <footer>
+        
+        
+        <footer style={{marginTop:'100px',height:'180px',fontFamily:'Open Sans'}}>
         <div className='col-md-3' style ={{backgroundColor:"#3ab54a"}}></div>
+        {/* <div className='col-md-3'></div> */}
         <div className="foot"> 
         <div className="col"> 
          <div> 

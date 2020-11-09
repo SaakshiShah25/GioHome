@@ -30,18 +30,19 @@ export class FormDeliveryDetails extends Component {
             maxWidth='sm'
           >
             
-           <form style={{backgroundColor:'#e8f5e9'}}>
-            <div className="radio">
-              <label >
+           <form>
+             <div>
+            <div className="radio" style={{marginLeft:"20px"}}>
+            <label>  Cash on Delivery 
                 <input type="radio"  name= "payment" value="cod" defaultValue={values.payment}  onChange={handleChange}/>
-                  Cash on Delivery
-              </label>
-              <label>
+                
+                </label>
+                <label> Credit Card/Debit Card 
                 <input type="radio"  name= "payment"  value="card" defaultValue={values.payment}  onChange={handleChange}/>
-                  Credit/Debit
-              </label>
+          
+                </label>
             </div>
-            <div className="radio">
+            <div className="radio" style={{marginLeft:"20px"}}>
               <label >
                 <input type="radio"  name= "delivery" value="express" defaultValue={values.delivery}  onChange={handleChange}/>
                   Express
@@ -50,6 +51,7 @@ export class FormDeliveryDetails extends Component {
                 <input type="radio"  name= "delivery" value="free" defaultValue={values.delivery} onChange={handleChange}/>
                   Free Delivery
               </label>
+            </div>
             </div>
             </form>
 
@@ -65,7 +67,7 @@ export class FormDeliveryDetails extends Component {
            
       
 
-            {/* </div> */}
+           
           </Dialog>
         </>
       </MuiThemeProvider>

@@ -100,11 +100,12 @@ export default class FarmerPage extends Component{
         const obj = getFromStorage('email');
         console.log("Email",obj)
         const id = this.state.formdata.name
-       
+       console.log("Final Testing",updatedData)
 
       axios.post('http://localhost:5000/farmer/updateproduct/'+id, updatedData)
 
       .then(res => console.log(res.data))
+      .then(window.location.reload())
       
       .catch((error) => {
           console.log(error);

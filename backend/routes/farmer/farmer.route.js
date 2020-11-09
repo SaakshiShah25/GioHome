@@ -165,7 +165,7 @@ router.route('/updateproduct/:id').post((req, res) => {
     var updateData = req.body
     var name = req.params.id
     console.log("Farmer",farmer)
-    FarmerUser.updateOne({email:farmer,"products.name":name},{$set:{"products.$.price": updateData.price,"products.$.life":updateData.life}},function (error, success) {
+    FarmerUser.updateOne({email:farmer,"products.name":name},{$set:{"products.$.price": updateData.price,"products.$.life":updateData.life,"products.$.available_quantity":updateData.available_quantity}},function (error, success) {
         if (error) {
             console.log(error);
         } else {
