@@ -7,7 +7,7 @@ import * as FaIcons from "react-icons/fa";
 import firebase from "firebase/app";
 import "firebase/storage";
 // *********************
-
+import Background from './fruit1.jpg';
 import {
     getFromStorage,
     setInStorage,
@@ -33,11 +33,20 @@ export default class Landing extends Component{
     render(){
         return(
             
-            <div >
+            <div style={{backgroundImage: `url(${Background})`
+            
+            , backgroundRepeat:"no-repeat",
+            backgroundPositionX:"center",
+            backgroundPositionY:"center",
+            backgroundSize:"cover"
+
+            
+            }}>
+            
             {/* <h1 style={{marginTop:'20px',textAlign:'center'}}>Welcome ! सुस्वागतम ! Bienvenue !</h1> */}
             
             {/* <h4 style={{marginTop:'20px',textAlign:'center'}}> A ONE-STOP SHOP FOR 100% FARM-FRESH PRODUCTS</h4> */}
-            <div style={{display:"flex",justifyContent:"center",alignItems:"center",paddingTop:"80px"}}>
+            <div style={{display:"flex",justifyContent:"center",alignItems:"center",paddingTop:"70px"}}>
             <FaIcons.FaCarrot className='menu-bars' style={{fontSize:"70px"}}/>
 
                           <div style={{fontSize:"70px",fontWeight:"bold"}}>  Farmer's Mart</div>
@@ -58,7 +67,9 @@ export default class Landing extends Component{
 
                 
                 /> */}
-            </div></div>
+            </div>
+            <div className='col-md-3' style={{height:"100px"}}></div>
+            </div>
         )
     }
 }
