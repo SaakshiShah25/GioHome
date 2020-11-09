@@ -77,7 +77,7 @@ export class Confirm extends Component {
                 <ListItemText primary="Mode of Payment" secondary={payment} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="Net Amount" secondary={net_amount} />
+                <ListItemText primary="Net Amount" secondary={"₹"+net_amount} />
               </ListItem>
               
               {
@@ -90,8 +90,8 @@ export class Confirm extends Component {
                     <ListItem>
                       <ListItemText primary="Sr. No." secondary={i} />
                       <ListItemText primary="Name" secondary={product.name} />
-                      <ListItemText primary="Price" secondary={product.price} />
-                      <ListItemText primary="Quantity" secondary={product.available_quantity} />
+                      <ListItemText primary="Price " secondary={"₹"+product.price} />
+                      <ListItemText primary="Quantity" secondary={product.available_quantity+"kg"} />
                     </ListItem>
                   )
                 }

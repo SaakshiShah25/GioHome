@@ -203,7 +203,7 @@ export default class AddProduct extends Component{
                         />
                     </div>
                     <div className="form-group">
-                    <label>Price :</label>
+                    <label>Price (in ₹):</label>
                     <input style={{paddingLeft:"10px",borderRadius:"10px"}}
                         type="text" 
                         className="form-control"
@@ -212,7 +212,7 @@ export default class AddProduct extends Component{
                         />
                     </div>
                     <div className="form-group">
-                    <label>Quantity</label>
+                    <label>Quantity (in Kg)</label>
                     <input style={{paddingLeft:"10px",borderRadius:"10px"}}
                         type="number" 
                         min="1"
@@ -233,7 +233,7 @@ export default class AddProduct extends Component{
                     
                     
                     <div className="form-group" >
-                    <label>Life :</label>
+                    <label>Life (in days):</label>
                     <input style={{paddingLeft:"10px",borderRadius:"10px"}}
                         type="text" 
                         className="form-control"

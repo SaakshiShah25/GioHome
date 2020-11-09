@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 import { Router, Route, Link } from 'react-router-dom';
+import empty_image from "../../stock_images/empty_image.jpg"
 import {
     getFromStorage,
     setInStorage,
@@ -89,7 +90,7 @@ export default class ProductList extends Component{
                         
                         className="product-image"
                         
-                        src={u.image}
+                        src={u.image || empty_image }
                         
                         height="200"
                         width="200"

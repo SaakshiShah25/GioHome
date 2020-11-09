@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import  { Redirect } from 'react-router-dom'
+import * as FaIcons from "react-icons/fa";
 // **Firebase imports **
 import firebase from "firebase/app";
 import "firebase/storage";
@@ -31,11 +32,19 @@ export default class Landing extends Component{
 
     render(){
         return(
-            <div>
-            <h1 style={{marginTop:'20px',textAlign:'center'}}>Welcome ! सुस्वागतम ! Bienvenue !</h1>
-            <h4 style={{marginTop:'20px',textAlign:'center'}}> A ONE-STOP SHOP FOR 100% FARM-FRESH PRODUCTS</h4>
             
+            <div >
+            {/* <h1 style={{marginTop:'20px',textAlign:'center'}}>Welcome ! सुस्वागतम ! Bienvenue !</h1> */}
+            
+            {/* <h4 style={{marginTop:'20px',textAlign:'center'}}> A ONE-STOP SHOP FOR 100% FARM-FRESH PRODUCTS</h4> */}
+            <div style={{display:"flex",justifyContent:"center",alignItems:"center",paddingTop:"80px"}}>
+            <FaIcons.FaCarrot className='menu-bars' style={{fontSize:"70px"}}/>
+
+                          <div style={{fontSize:"70px",fontWeight:"bold"}}>  Farmer's Mart</div>
+          </div>
             <div className="landing-container">
+                
+            
                 <button className='landing-button' onClick={()=>setInStorage("type","Customer")}>
                     <Link style={{textDecoration:'none',color:'#3ab54a', fontFamily:'Open Sans',fontSize:'40px',fontWeight:'bolder'}} to="/customer-signup">Customer</Link>
                 </button>

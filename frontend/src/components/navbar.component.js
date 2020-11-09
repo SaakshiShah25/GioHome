@@ -40,7 +40,7 @@ export default class Navbar extends Component{
         return(
           <nav className="navbar navbar-custom navbar-expand-lg" id="nav">
           {/* <Sidebar /> */}
-          <FaIcons.FaHamburger className='menu-bars'/>
+          <FaIcons.FaCarrot className='menu-bars'/>
           <Link to="/farmer" className="navbar-brand">Farmer's Mart</Link>
           <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
@@ -100,7 +100,7 @@ export default class Navbar extends Component{
         return(
           <nav className="navbar navbar-custom navbar-expand-lg">
             {/* <Sidebar /> */}
-            <FaIcons.FaHamburger className='menu-bars' />
+            <FaIcons.FaCarrot className='menu-bars'/>
             <Link to="/" className="navbar-brand">Gio Home Products</Link>
           </nav>
         )

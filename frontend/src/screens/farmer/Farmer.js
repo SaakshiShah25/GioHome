@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
 import storage from "../../Firebase/index";
+import empty_image from "../../stock_images/empty_image.jpg";
+
+
 
 import {
     getFromStorage,
@@ -118,11 +121,11 @@ export default class FarmerPage extends Component{
 
             <Modal.Body className='model'>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Price: </label>
+                    <label>Price (in ₹): </label>
                     <input type="text"  onChange={this.handlePriceChange}></input>
-                    <label>Available Quantity: </label>
+                    <label>Available Quantity (in kg): </label>
                     <input type="text"  onChange={this.handleQtyChange}></input>
-                    <label>Life: </label>
+                    <label>Life (in days): </label>
                     <input type="text"  onChange={this.handleLifeChange}></input>
                     <input className='card_button-green' type="submit" value="Save"></input>
                 </form>
@@ -314,9 +317,9 @@ export default class FarmerPage extends Component{
                 <Fragment>
                     <div className="col-md-3">
                         <div className="card green lighten-5" style={{width:'18rem','margin-top':'20px'}}>
-                            <img className="card-img-top" src={u.image}
+                            <img className="card-img-top" src={u.image || empty_image}
                             height="200"
-                            width="200"
+                            width="200" s
                              />
                             <div className="card-body">
                                 
@@ -327,40 +330,35 @@ export default class FarmerPage extends Component{
                                 <p className="card-text">Life: {u.life} Days</p>
 
                                 {/* <p className="card-text">Updated on: {u.updatedAt}</p> */}
-                                
-                            </div>
+                            
                             
                             <button className="card_button-green" onClick={()=> this.setState({ showForm: true ,formdata: u})}>
                                 Update
                             </button>
+                            <button className="card_button-red" onClick={()=>this.remove(u.name)}>Stop Offering</button>
                             <button className="card_button-green" onClick={()=> this.setState({ showImageForm: true, formdata : u})}>
                                 Update Image
                             </button>
                             
-                            <button className="card_button-red" onClick={()=>this.remove(u.name)}>Stop Offering</button>
                             
                               
                             
                         </div>
                     </div>
+                  </div>
                     
                 </Fragment>
                 ))}
                 {/* Out of fragment but the value triggered from a specific card in the fragment */}
                   {this.state.showForm ? this.showform() : null}
                    {this.state.showImageForm ? this.showImageForm() : null}
-            </div></div>
-           
+            </div>
+            </div>
         );
-    }
+      
+
+    
+    
+}
 }
 
-// <form onSubmit={this.handleSubmit}>
-//                                     <label for="price">Price:
-//                                     <input type="text" id="price" name="price" value={this.state.price} onChange={(u)=>this.handleChange()}></input>
-//                                     </label>
-//                                     <label for="life">Life:
-//                                     <input type="text" id="life" name="life" value={this.state.life} onChange={this.handleChange}/>
-//                                     </label>
-//                                     <input type="submit" value="Save Changes" />
-//                                 </form>

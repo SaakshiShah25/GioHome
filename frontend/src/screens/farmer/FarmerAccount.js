@@ -87,13 +87,14 @@ class FarmerAccount extends Component {
     
     return (
       <div>
-      <h2 style={{textAlign:'center',marginTop:'200px'}}>My Farmer's Account</h2>
-      <br/>
-      <h2 style={{textAlign:'center',fontWeight:"bold"}}>{this.state.data.firstName} {this.state.data.lastName}</h2>
-      <h2 style={{textAlign:'center',fontWeight:"bold"}}> {this.state.data.location} </h2>
+      <h2 style={{textAlign:'center',marginTop:'15%'}}>My Farmer's Account</h2>
+      
+      
+          <div style={{fontWeight:'bolder',display:"flex",justifyContent:"center"}}>{this.state.data.firstName} {this.state.data.lastName}</div>
+          <div style={{fontWeight:'bolder',display:"flex",justifyContent:"center"}}> {this.state.data.location} </div>
+        
       <div  style={{display:"flex",justifyContent:"center"}}>
-
-    
+      
       <button className="card_button-red" onClick={this.logout}>
         <Link onClick={this.logout} style={{textDecoration:'none',color:"whitesmoke"}} to="/farmer-signin">
         Logout
