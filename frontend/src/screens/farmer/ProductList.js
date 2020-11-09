@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 import { Router, Route, Link } from 'react-router-dom';
+import empty_image from "../../stock_images/empty_image.jpg"
 import {
     getFromStorage,
     setInStorage,
@@ -89,7 +90,7 @@ export default class ProductList extends Component{
                         
                         className="product-image"
                         
-                        src={u.image}
+                        src={u.image || empty_image }
                         
                         height="200"
                         width="200"
@@ -101,8 +102,8 @@ export default class ProductList extends Component{
                                 <p style={{'textAlign':'center'}} className="card-heading"><Link className="link" to={'' + u._id}>{u.name}</Link></p>
                                
                                 <div className="card-desc">{u.description}</div>
-                                <div className="card-details">Price: {u.price}</div>
-                                <div className="card-details">Life: {u.life}</div>
+                                <div className="card-details">Price: ₹{u.price}</div>
+                                <div className="card-details">Life: {u.life} days</div>
                                 {/* <p className="card-text">{u.description}</p>
                                 <p className="card-text">Stock: {u.available_quantity}kg</p> */}
                                 

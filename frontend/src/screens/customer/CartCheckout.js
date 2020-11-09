@@ -65,14 +65,14 @@ export default class CartCheckout extends Component{
                             <div className="card-body">
                               
                                 <p className="card-heading">{u.name}</p>
-                                <p className="card-details">Price: {u.price}</p>
+                                <p className="card-details">Price: ₹{u.price}</p>
                                 <p className="card-details">Quantity Ordered: {u.available_quantity}kg</p>
-                                <p className="card-desc">Total product price: {u.price*u.available_quantity}</p>
+                                <p className="card-desc">Total product price: ₹{u.price*u.available_quantity}</p>
                             </div>
                 </Fragment>
              
                 ))}
-                <div style={{'textAlign':"center",fontWeight:'700'}}>Net Total:{this.state.net_amount}</div>
+                <div style={{'textAlign':"center",fontWeight:'700'}}>Net Total: ₹{this.state.net_amount}</div>
                 <button className='other-button' style={{marginTop:'20px'}}>
                    <Link style={{color:'white',textDecoration:'none'}} to={{pathname:"/cart/checkout/details", data:{products:this.state.products, net_amount : this.state.net_amount}}}>Fill Details</Link> 
                 </button>

@@ -169,8 +169,8 @@ export default class ProductsOffered extends Component{
                                     <div className="card" style={{marginLeft:'40px'}}>
                                         
                                         <div className="card-heading"> Name: {u.name}</div>
-                                        <div className="card-desc">Price : {u.price}</div>
-                                        <div className="card-desc"> Available Quantity: {u.available_quantity}</div>
+                                        <div className="card-desc">Price : ₹{u.price}</div>
+                                        <div className="card-desc"> Available Quantity: {u.available_quantity}kg</div>
                                        
 
                                         <div className="button-display">

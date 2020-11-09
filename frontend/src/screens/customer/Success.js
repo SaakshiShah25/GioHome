@@ -25,14 +25,17 @@ export class Success extends Component {
             maxWidth='sm'
           >
             <AppBar title="Success" />
-            <h1>Thank You For Your Submission</h1>
-            <p>You will get an email with further instructions.</p>
-            <p>This is your order summary</p>
-            <button>
-              <Link to="/customer">
+            <div style={{backgroundColor:'#e8f5e9'}}>
+            <h1 style={{textAlign:"center"}}>Thank You For Your Submission</h1>
+            <p style={{textAlign:"center",fontWeight:'bolder'}}>You will get an email with further instructions.</p>
+            <p style={{textAlign:"center",fontWeight:'bolder'}}>This is your order summary</p>
+            <div style={{display:'flex',justifyContent:'center'}}>
+            <button className='other-button'>
+              <Link style={{textDecoration:'none',color:'whitesmoke'}} to="/customer">
               Go to Home Page
               </Link>
             </button>
+            </div></div>
           </Dialog>
         </>
       </MuiThemeProvider>

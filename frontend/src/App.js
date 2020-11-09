@@ -25,6 +25,7 @@ import FarmerAccount from './screens/farmer/FarmerAccount'
 import FarmerOrders from './screens/farmer/FarmerOrders'
 import ImageUpload from './image/ImageUpload'
 import './index.css';
+import Footer from './components/footer.component.js'
 
 import history from './history.js';
 function App({history}) {
@@ -53,11 +54,12 @@ function App({history}) {
       <Route path="/customer/products-offered/moredetails" exact component={MoreDetails} />
       <Route path="/farmer-account" exact component={FarmerAccount} />
       <Route path="/farmer-orders" exact component={FarmerOrders} />
-
+      <Footer />
       
 
 
     </BrowserRouter>
+    
   );
 }
 
