@@ -1,30 +1,39 @@
-# GioHome - Name Conventions 
+# GioHome 
 
-### Folder 
-templates
+## Team
+* <a href="https://github.com/SaakshiShah25"><b>Saakshi Shah</b></a> - Full Stack 
+* <a href="https://github.com/sanket1703"><b>Sanket Shah</b></a> - Full Stack
+* <a href="https://github.com/SidT12"><b>Siddharth Trivedi</b></a> - Frontend
 
-### Components 
-userProducts.component.js
+## About the Project (Click on the below links to see a demo)
+### Farmer Side 
+### Pages
+* Landing
+* Signup
+* Signin
+* Stock 
+* Offer New Products
+* Orders
+* Account
 
-### Files 
-SignUp.js
+[Working Demo](https://imgur.com/EnWOAyD)
+### Customer Side 
+### Pages
+* Landing
+* Signup
+* Signin
+* Available Products
+* Cart 
+* Orders
+* Account
 
-### URL Patterns (kebab-case)
-/customer-details
+[Working Demo](https://imgur.com/fOTAnf9)
 
-### Functions (camelCase)
-getComponents()
-
-### Models 
-userProduct.model.js
-
-# Notes
-- ### MongoDb has two kinds -> Mongoose and MongoDb native driver
-- ### Mongoose = ORM (makes life easy, no complicated queries)
-- ### MongoDb native driver = complex queries etc just like SQL
-- ### .env -> in backend -> mongo uri
+### Built Using
+* [MongoDb](https://www.mongodb.com/) - The database used
+* [Express.js](https://expressjs.com/) - Node.js web framework
+* [React](https://reactjs.org/docs/getting-started.html) - Framework used for client-side
+* [Node.js](https://nodejs.org/en/docs/) - Javascript web server
+* [Firebase](https://firebase.google.com/docs) - For storing images
 
 
-### Folder structure 
-- frontend
-- backend
